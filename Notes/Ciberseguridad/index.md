@@ -1,0 +1,95 @@
+# Apuntes
+
+- ### Criptografía
+	- **Encoding**
+		- [[Base64]] (incompleto)
+	- **Encryption**
+		- [[AES]] (incompleto)
+		- [[RSA]] (incompleto)
+	- **Hashing**
+		- [[MD5]] (incompleto)
+		- [[SHA]] (incompleto)
+	- [[String Matching]] (incompleto)
+	- [[Criptografía 101]]
+- ### Hacking
+	- **Base**
+		- **LLM**
+			- [[!LLM 101]]
+			- [[Prompt Injection]]
+		- **Misc**
+			- Todo incompleto
+		- **Network**
+			- **DNS**
+				- DNS Amplification and Reflection (incompleto)
+				- DNS Tunneling (incompleto)
+				- DNS Cache Poisoning
+				- DNS Resource Utilization
+				- Fast Flux
+			- **WLAN**
+				- KRACK (incompleto)
+				- SAE (incompleto)
+				- WLAN 101
+			- Domain Shadowing (incompleto)
+			- ARP Cache Poisoning
+			- DHCP Spoofing
+			- MAC Spoofing
+		- **OpSec**
+			- **Tor**
+				- Tor
+		- **OS**
+			- **Linux**
+				- File Systems (incompleto)
+				- Comandos básicos (incompleto)
+				- Hardening (incompleto)
+				- PrivEsc
+			- **Windows**
+				- File Systems
+				- Firmware
+		- **Social**
+			- Biometrics Spoofing (incompleto)
+			- Credential stuffing (incompleto)
+			- Phishing
+			- Social Engineering
+		- **Web**
+			- [[NoSQL injection]] (incompleto)
+			- [[Prototype pollution]] (incompleto)
+			- [[403Bypass]]
+			- [[Clickjacking]]
+			- [[Command Injection]]
+			- [[CRLF Injection]]
+			- [[CSRF]]
+			- [[CSTI]]
+			- [[CSVi]]
+			- [[DoS & DDoS]]
+			- [[File Upload]]
+			- [[HTTP Request Smuggling]]
+			- [[IDOR]]
+			- [[LDAP Injection]]
+			- [[Log Poisoning]]
+			- [[Open Redirect]]
+			- [[Password spraying]]
+			- [[Path Trasversal]]
+			- [[RFI & LFI]]
+			- [[SQL Injection]]
+			- [[SSRF]]
+			- [[SSTI]]
+			- [[Type Juggling Attack]]
+			- [[XSS]]
+			- [[XXE]]
+	- **Dev**
+		- Solo tiene completo Dev/Langs/Python/Python 101
+	- **Herramientas**
+	- **Writeups**
+- ### Inteligencia
+# Contenido
+- ### Libros
+	- Una lista de libros sobre hacking, sin reseñas ya que no he leído ninguno XD
+- ### Webs
+	- Una lista muy completa con páginas y recursos web
+		- Herramientas
+		- Información
+		- Laboratorios y formación
+		- Certificados
+		- Bug Hunting
+		- Fuentes
+		- Enlaces de Tor

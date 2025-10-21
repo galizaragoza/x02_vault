@@ -1,0 +1,1 @@
+https://thehackernews.com/2025/08/simple-steps-for-attack-surface.html?_m=3n%2e009a%2e3764%2ewr0ao46ccw%2e2st5

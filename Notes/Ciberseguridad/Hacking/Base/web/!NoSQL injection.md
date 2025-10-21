@@ -1,0 +1,1 @@
+https://www.ovhcloud.com/es-es/learn/relational-vs-non-relational-databases/

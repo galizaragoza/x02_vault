@@ -1,0 +1,3 @@
+Zero Trust es un principio de seguridad que aplica para securizar cualquier entorno, desde redes, aplicaciones, microservicios hasta APIs, IoTs o dispositivos. 
+Se basa en aplicar un principio sencillo: *"Never trust, always verify"*.
+Esto significa que a la hora de diseñar, implementar y mantener cualquier dispositivo, software o entorno, se debe aplicar la idea de que todo input externo es potencialmente malicioso y puede llevar al compromiso de dicho activo, por tanto, toda la información entrante a uno de estos entornos ha de ser cuidadosamente verificada y sanitizada antes de tratarla como tal.
