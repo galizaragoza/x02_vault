@@ -1,104 +1,113 @@
 {
   "main": {
-    "id": "2e9225e34664efd4",
+    "id": "7c2bcc46485c1c1c",
     "type": "split",
     "children": [
       {
-        "id": "0571c1c94d829fac",
+        "id": "fe62db9f4c76653c",
         "type": "tabs",
         "children": [
           {
-            "id": "47ef711f7e8c1d64",
+            "id": "d1a3b50abc21ba60",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "bases",
               "state": {
-                "file": "index.md",
-                "mode": "source",
-                "source": false
-              }
+                "file": "list.base",
+                "viewName": "Table"
+              },
+              "icon": "lucide-table",
+              "title": "list"
             }
           },
           {
-            "id": "2d8837e6263008e3",
+            "id": "d1ad7ef298635a43",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "category-folder/Some note.md",
+                "file": "Ciberseguridad/Inteligencia/SecOps/Network/Firewall.md",
                 "mode": "source",
                 "source": false
-              }
+              },
+              "icon": "lucide-file",
+              "title": "Firewall"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
   },
   "left": {
-    "id": "1243752a4df710bb",
+    "id": "6f39d8b56b039c81",
     "type": "split",
     "children": [
       {
-        "id": "8a4c81639dc8783e",
+        "id": "40272c528fc0842e",
         "type": "tabs",
         "children": [
           {
-            "id": "b77831b90dd9f87b",
+            "id": "c5bb049302374f6f",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabetical"
-              }
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
             }
           },
           {
-            "id": "0829eb50dbb8a2b3",
+            "id": "b8b498c39900bb73",
             "type": "leaf",
             "state": {
               "type": "search",
               "state": {
                 "query": "",
-                "matchingCase": false,
+                "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-search",
+              "title": "Search"
             }
           },
           {
-            "id": "436d75c49c949463",
+            "id": "67dbdc03f71836a1",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
-              "state": {}
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
             }
           }
         ]
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 299.50328826904297
   },
   "right": {
-    "id": "ba1ec06a672fb227",
+    "id": "cd5060386c340943",
     "type": "split",
     "children": [
       {
-        "id": "6cea78168fbf9ccd",
+        "id": "5e6b609a5f1df9f2",
         "type": "tabs",
         "children": [
           {
-            "id": "2aa5a4c073617928",
+            "id": "439503918a6c62b8",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "category-folder/Some note.md",
+                "file": "Ciberseguridad/CTFs/253_septiembre/4-redirection/redirection.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -106,43 +115,71 @@
                 "searchQuery": "",
                 "backlinkCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for redirection"
             }
           },
           {
-            "id": "5acb7020384970a8",
+            "id": "9802865dddaa9fe7",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "category-folder/Some note.md",
+                "file": "Ciberseguridad/CTFs/Atrium/Wackopicko/Wackopicko.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Wackopicko"
             }
           },
           {
-            "id": "f850ba7e9e699bea",
+            "id": "18072636a828d77a",
             "type": "leaf",
             "state": {
               "type": "tag",
               "state": {
                 "sortOrder": "frequency",
-                "useHierarchy": true
-              }
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
             }
           },
           {
-            "id": "2d9129bb8dcf7983",
+            "id": "2956dfe95391d433",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "category-folder/Some note.md"
-              }
+                "file": "Ciberseguridad/CTFs/Atrium/Wackopicko/Wackopicko.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Wackopicko"
+            }
+          },
+          {
+            "id": "189d35b9169eafcd",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
             }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
@@ -151,20 +188,65 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "obsidian-git:Open Git source control": false,
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
       "canvas:Create new canvas": false,
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
-      "command-palette:Open command palette": false
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false,
+      "workspaces:Manage workspace layouts": false,
+      "3d-graph:3D Graph": false,
+      "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "2d8837e6263008e3",
+  "active": "c5bb049302374f6f",
   "lastOpenFiles": [
-    "category-folder/index.md",
-    "category-folder/Some note.md",
-    "index.md",
-    "category-folder"
+    "to-do.md",
+    "list.base",
+    "X02/Ideas.md",
+    "Ciberseguridad/glossary.md",
+    "Ciberseguridad/Inteligencia/SecOps/Network/Firewall.md",
+    "Ciberseguridad/Hacking/Base/Network/!IP spoofing.md",
+    "Ciberseguridad/Hacking/Base/Network/!Proxy Bypass.md",
+    "Ciberseguridad/Inteligencia/SecOps/Network/!OSI model.md",
+    "X02/2025/Resumenes 2025/Semana 39/imgs/firewall.png",
+    "X02/2025/Short/10-oct-25/API/imgs/ssrf-1.png",
+    "X02/2025/Short/10-oct-25/API/API.md",
+    "X02/2025/Short/10-oct-25/API/imgs/ssrf-2.png",
+    "X02/2025/Short/10-oct-25/API/imgs/broken-auth-1.png",
+    "X02/2025/Short/10-oct-25/API/imgs/broken-auth-2.png",
+    "Ciberseguridad/Hacking/Herramientas/CLI/Hydra.md",
+    "Ciberseguridad/Hacking/Base/OS/Linux/PrivEsc.md",
+    "Ciberseguridad/Hacking/Herramientas/CLI/Ffuf.md",
+    "Ciberseguridad/Contenido/Webs.md",
+    "Ciberseguridad/Inteligencia/SecOps/Security 101.md",
+    "Ciberseguridad/Inteligencia/Inteligencia.md",
+    "Ciberseguridad/Inteligencia/SecOps/Resilience 101.md",
+    "Ciberseguridad/Inteligencia/SecOps/SecOps.md",
+    "Ciberseguridad/Inteligencia/SecOps/!Supply chain attacks.md",
+    "Ciberseguridad/Inteligencia/SecOps/Logging/Logging 101.md",
+    "Ciberseguridad/Inteligencia/SecOps/Design/Zero Trust.md",
+    "Ciberseguridad/Inteligencia/SecOps/Design/!Physical.md",
+    "Ciberseguridad/Inteligencia/SecOps/Design/Defense in Depth.md",
+    "Ciberseguridad/Inteligencia/SecOps/Design/!Secure Configuration.md",
+    "Ciberseguridad/Inteligencia/SecOps/Design/Default Deny Policy.md",
+    "Ciberseguridad/Inteligencia/SecOps/App security/AppSec 101.md",
+    "Ciberseguridad/Inteligencia/SecOps/App security/Secret Sprawl.md",
+    "Ciberseguridad/Hacking/Herramientas/Exploits/Untitled",
+    "Ciberseguridad/Hacking/Base/web/(imgs)/0154-cookies-vs-session.png",
+    "Ciberseguridad/Hacking/Base/web/CMS",
+    "Ciberseguridad/Inteligencia/SecOps/(imgs)/AWS_IAM.png",
+    "Ciberseguridad/Inteligencia/SecOps/(imgs)/AAA.png",
+    "Camara/Agentic_Misalignment_Appendix_20Jun25.pdf",
+    "Ciberseguridad/Hacking/Base/OS/(imgs)/apt-cs.png",
+    "Ciberseguridad/Inteligencia/SecOps/(imgs)/min-privilege.png",
+    "Ciberseguridad/Hacking/Base/Physical",
+    "Camara/system-design.pdf",
+    "Camara/liars-dividend.pdf",
+    "Ciberseguridad/Hacking/OpSec/Privacy",
+    "Camara/Lecturas/a-hackers-manifesto.pdf",
+    "Untitled.base",
+    "Ciberseguridad/Contenido/Untitled.canvas"
   ]
 }
