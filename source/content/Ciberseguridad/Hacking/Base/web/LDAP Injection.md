@@ -67,7 +67,8 @@ commonName
 ### Fuentes
 [PATT](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/LDAP%20Injection#methodology)
 https://www.redeszone.net/tutoriales/servidores/que-es-ldap-funcionamiento/#538404-que-es-ldap-y-para-que-sirve
-https://www.blackduck.com/glossary/what-is-ldap-injection.html
-https://www.imperva.com/learn/application-security/ldap-injection/
-https://portswigger.net/kb/issues/00100500_ldap-injection
-https://owasp.org/www-community/attacks/LDAP_Injection
+[What is LDAP injection](https://www.blackduck.com/glossary/what-is-ldap-injection.html)
+[Imperva](https://www.imperva.com/learn/application-security/ldap-injection/)
+[PortSwigger](https://portswigger.net/kb/issues/00100500_ldap-injection)
+[OWASP](https://owasp.org/www-community/attacks/LDAP_Injection)
+[# LDAP Injections | Owasp Top 10 Explainer Video | Secure Code Warrior](https://youtu.be/QjeuNiQmRrc?list=PL65_wYSEg5HdSq1pSZxQmz7SoNE48vOgR)

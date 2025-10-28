@@ -68,6 +68,10 @@ ffuf -u <URL> -w <lista_palabras> [opciones]
 ```
 Lista default de extensiones para fuzzear
 ```
+-e .php,.html,.txt,.js,.py,.zip,.jpg,.jpeg,.png,.json
+```
+Lista chill para labs
+```
 ./ffuf_basicauth.sh usernames.txt passwords.txt |ffuf -w -:AUTH -u http://172.17.0.2:8080/manager/html -H "Authorization: Basic AUTH" -fc 403,401 -c
 ```
 **Requiere descargar** el [script](https://github.com/ffuf/ffuf-scripts/blob/master/README.md), codifica en base64 todas las combinaciones posibles de las listas seleccionadas y fuzzea por el Basic Auth hasta dar con la clave.

@@ -14,7 +14,7 @@
 - ### Hacking
 	- **Base**
 		- **LLM**
-			- [[!LLM 101]]
+			- [[LLM 101]]
 			- [[Prompt Injection]]
 		- **Misc**
 			- Todo incompleto
@@ -51,7 +51,7 @@
 			- Phishing
 			- Social Engineering
 		- **Web**
-			- [[NoSQL injection]] (incompleto)
+			- [[!NoSQL injection]] (incompleto)
 			- [[Prototype pollution]] (incompleto)
 			- [[403Bypass]]
 			- [[Clickjacking]]

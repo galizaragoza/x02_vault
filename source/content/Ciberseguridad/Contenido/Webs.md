@@ -14,7 +14,8 @@
 | [Dencoder](https://dencode.com/en/)                                           | Desencodea en decenas de lenguajes a la vez                              | [Hacker Warehouse](https://hackerwarehouse.com/)                                                                                                   | Tienda de herramientas hacking                           | [UserSearch](https://usersearch.com/)                                                                          | Herramienta OSINT                           |
 | [Forensically](https://29a.ch/photo-forensics/#forensic-magnifier)            | Análisis de imágenes                                                     | [W3](https://www.w3schools.com/)                                                                                                                   | Brutal para dudas de programación                        | [OSINT UI](https://osint-ui.com/)                                                                              | Autodescriptivo                             |
 | [Infogram](https://infogram.com/app/#/login)                                  | Herramienta 100% online para hacer gráficos                              | [Excalidraw](https://excalidraw.com/)                                                                                                              | Herramienta 100% online para hacer diagramas             | [HackForums](https://hackforums.net/)                                                                          |                                             |
-| [JustBeamIt](https://www.justbeamit.com/)                                     |                                                                          | [Windows CS](https://afsh4ck.gitbook.io/ethical-hacking-cheatsheet/sistemas-basicos/windows)                                                       |                                                          |                                                                                                                |                                             |
+| [JustBeamIt](https://www.justbeamit.com/)                                     |                                                                          | [Windows CS](https://afsh4ck.gitbook.io/ethical-hacking-cheatsheet/sistemas-basicos/windows)                                                       |                                                          | [Wasabi Wallet](https://wasabiwallet.io/)                                                                      |                                             |
+| [Vim CS](https://vim.rtorr.com/lang/es_es)                                    |                                                                          |                                                                                                                                                    |                                                          | [Electrum Wallet](https://electrum.org/)                                                                       |                                             |
 
 ## Información
 
@@ -77,6 +78,11 @@
 | [HELP+NET](https://www.helpnetsecurity.com/)      | Buena fuente para actualidad Sec | [BBC Cyber](https://www.bbc.com/news/topics/cz4pr2gd85qt) |                                                           |
 | [WIRED](https://www.wired.com/category/security/) |                                  |                                                           |                                                           |
 
+## Misc
+
+|                                                                                                                             |     |
+| --------------------------------------------------------------------------------------------------------------------------- | --- |
+| [Como subir vault Obsidian gratis](https://dev.to/defenderofbasic/host-your-obsidian-notebook-on-github-pages-for-free-8l1) |     |
 
 # Tor Links
 

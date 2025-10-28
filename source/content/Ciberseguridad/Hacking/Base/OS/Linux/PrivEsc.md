@@ -30,6 +30,10 @@ Muestra el identificador de la distribución del sistema operativo
 cat /proc/version
 ```
 Muestra información detallada de la versión del kernel de Linux, incluyendo el compilador usado y la fecha de compilación.
+```bash
+sudo -V | grep "Sudo ver" | grep "1\.[01234567]\.[0-9]\+\|1\.8\.1[0-9]\*\|1\.8\.2[01234567]"
+```
+Comprueba si la versión de `sudo` es vulnerable.
 ### Información de la red
 ```shell
 ipconfig

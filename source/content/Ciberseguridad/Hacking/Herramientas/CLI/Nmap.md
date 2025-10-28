@@ -25,5 +25,5 @@ nmap -sV -p 1-65535 192.168.1.1
 | --stats-every=<número de segundos> | muestra stats del escaneo cada X segundos                                                                 | nmap --stats-every=5 <IP víctima> |
 ### Añadir al final para generar un reporte HTML
 ``` bash
--oX nmapScan.xml && xsltproc nmapScan.xml -o nmapScan.html && open nmapScan.html &>/dev/null & disown
+-oX nmapScan.xml && xsltproc nmapScan.xml -o nmapScan.html && firefox nmapScan.html &>/dev/null & disown
 ```

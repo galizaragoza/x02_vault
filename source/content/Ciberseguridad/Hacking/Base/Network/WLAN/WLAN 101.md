@@ -20,7 +20,7 @@ Legacy, totalmente obsoleto
 ### WPA
 También obsoleto, usa el protocolo de encriptado TKIP (Temporal Key Integrity Protocol), aún está presente como opción mixta en algunos routers por razones de compatibilidad con dispositivos viejos.
 ### WPA2
-Cayendo en desuso pero aún compatible en la mayoría de APs debido a dispositivos que no soportan WPA3, usa el algoritmo [[!AES]], que es un estándar de cifrado simétrico.
+Cayendo en desuso pero aún compatible en la mayoría de APs debido a dispositivos que no soportan WPA3, usa el algoritmo [[¡AES]], que es un estándar de cifrado simétrico.
 ### WPA3
 Incorpora [[!SAE]] (Simultaneous Authentication of Equals), reforzando contra ataques de diccionario y fuerza bruta respecto al handshake PSK de WPA2, mejora los métodos de encriptado, cifra por dispositivo, protege contra [[!KRACK]]
 

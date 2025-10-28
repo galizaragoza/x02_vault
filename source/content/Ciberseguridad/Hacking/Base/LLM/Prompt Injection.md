@@ -27,3 +27,5 @@ Los ataques de prompt injection suponen una amenaza cada vez mayor conforme vamo
 [Impresionante demostración de un caso real de ataque prompt injection](https://www.youtube.com/watch?v=JNHpZUpeOCg) --> Se inyecta a través de un archivo malicioso compartido con la víctima vía Google Drive (es necesario que la víctima tenga Drive conectado a ChatGPT) instrucciones ocultas en el documento que exfiltran la totalidad del Drive 
 [Stealthy attack serves poisoned web pages only to AI agents](https://www.helpnetsecurity.com/2025/09/05/ai-agents-prompt-injection-poisoned-web/)
 [# Ticket2Secret: When a Jira Ticket Can Steal Your Secrets](https://youtu.be/l9gTcfUJOcc?list=PL65_wYSEg5HdSq1pSZxQmz7SoNE48vOgR)
+[# Unseeable prompt injections in screenshots: more vulnerabilities in Comet and other AI browsers](https://brave.com/blog/unseeable-prompt-injections/)
+[Caso de prompt injection en el browser Atlas](https://neuraltrust.ai/blog/openai-atlas-omnibox-prompt-injection)

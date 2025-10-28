@@ -19,3 +19,7 @@
 - Mantener el dispositivo alejado de cualquier otra red o dispositivo que se pueda asociar a ti, ya sea físicamente, apagándolo o aislándolo de dichas redes
 - Implementar el uso de bolsas de faraday o papel de aluminio
 [# How to Get a Private Phone, Number, and Cellular Data](https://youtu.be/XaHWcttD0tM)
+
+## Recursos
+[# Cellphone data used to solve murder case from 2 years ago, police say](https://youtu.be/EmWsW_p_ta4)
+[# The Stingray: How Law Enforcement Can Track Your Every Move](https://youtu.be/wzSgLpNrr2E)

@@ -13,15 +13,17 @@ Mientras que Path Trasversal se centra en manipular el path del sistema (en el c
 
 Dentro de lo que es el File Inclusion se puede clasificar la vulnerabilidad según su lógica y funcionamiento en dos: RFI (Remote File Inclusion o "Inclusión" Remota de Archivos) y LFI (Local File Inclusion o "Inclusión Local de Archivos")
 ## LFI
-Una vulnerabilidad Local File Inclusion explota una aplicación que incluye archivos. Si esta inclusión no está correctamente sanitizada como en el ejemplo de script más arriba, podemos modificar los parámetros de búsqueda para `include` nos sirva archivos que no deberíamos poder ver, por ejemplo, `/etc/passwd`:
+Una vulnerabilidad Local File Inclusion explota una aplicación que incluye archivos. Si esta inclusión no está correctamente sanitizada como en el ejemplo de script más arriba, podemos modificar los parámetros de búsqueda para que la función `include` nos sirva archivos que no deberíamos poder ver, por ejemplo, aplicando un bypass básico (`../../../`), se pueden exfiltrar archivos críticos del servidor que aloja la página:
+
 ```
 http://example.com/index.php?page=../../../etc/passwd
 ```
-Esto le da al atacante la capacidad de leer archivos internos, pudiendo llevar a la exfiltración de documentos o información sensible, más gravemente aún, si la página en cuestión permite la subida de archivos no sanitizada, podríamos, por ejemplo, subir una reverse shell y accederla abusando `include`. 
+
+Sí, además, la aplicación permite subida de archivos (también incorrectamente sanitizada), y podemos abusar [[File Upload]], podríamos acceder un archivo malicioso a través del LFI.
 ### LFI to RCE
 A veces, es posible emplear un LFI para lograr la ejecución de código remoto a través de distintos métodos.
 
-Utilizando el script citado abajo #FilterChainGenerator se puede llegar a ejecutar código.
+Utilizando [[RFI & LFI#^57ce82|filter chain generator]] se puede llegar a ejecutar código.
 ## RFI
 El funcionamiento de RFI es muy similar en lógica al LFI, la diferencia se da cuando una aplicación permite la inclusión de archivos remotos, normalmente a través de input del usuario, en este caso, en lugar de buscar un lugar desde el cual subir archivos para accederlos después, podríamos subir directamente la revshell con un servidor malicioso o incluso nuestra propia máquina (EXTREMADAMENTE RASTREABLE, SOLO CON PERMISO O EN CTFS)
 ```php
@@ -35,9 +37,9 @@ include($templateUrl); // En caso de tener un servidor malicioso podríamos usar
 
 ### Recursos
 [RFI/LFI Payload list](https://github.com/payloadbox/rfi-lfi-payload-list)
-[PHP Filter Chain Generator](https://github.com/synacktiv/php_filter_chain_generator) #FilterChainGenerator
+[PHP Filter Chain Generator](https://github.com/synacktiv/php_filter_chain_generator)
 [Writeup d1se0 para entender LFI to RCE](https://dise0.gitbook.io/h4cker_b00k/ctf/ctfs/ctf-forbiddenhack-easy)
-[Muy buen vídeo](https://youtu.be/1WIVW1d37kz)
+[Muy buen vídeo](https://youtu.be/1WIVW1d37kz) ^57ce82
 ### Cheats
 ```
 wfuzz -t 200 -L --hc 404 -w <Diccionario de parametros> -w <Diccionario de Payloads LFI> -u "http://example.com/file.php?FUZZ=FUZ2Z"
