@@ -30,6 +30,3 @@ hydra [opciones] <objetivo> <protocolo>
 hydra -L /lista/password.txt -P /lista/usernames.txt http-get://172.17.0.2:8080/recurso.ejemplo
 ```
 Este comando sirve para hacer ataques a paneles de login HTTP Basic Auth
-```
-php,html,db,conf,config,txt,js,py,bak,conf,env,jar,csv,xml,md,pdf,zip,rar,jpg,jpeg,png,db,sql,log,json
-```

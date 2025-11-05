@@ -24,3 +24,8 @@ De forma similar pero tardando menos que en el puesto anterior, un atacante pued
 3. **Tailgating**
 4. **Watering hole**
 5. **Typosquatting** 
+
+
+## Fuentes
+[# The Basics of Social Engineering](https://youtu.be/jfXwdH-fkLE)
+[# The Science Behind Human Hacking - Christopher Hadnagy](https://youtu.be/JraHV1ai9eQ?list=PL65_wYSEg5HdSq1pSZxQmz7SoNE48vOgR)

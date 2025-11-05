@@ -7,6 +7,7 @@
 # B
 # C
 - **C2 (Command and Control)**
+- **Critical National Infraestructure (CNI)**: Autoexplicativo, en castellano "infraestructura nacional crítica"
 - **Continuous Threat Exposure Management (CTEM)**: Es un framework para controlar y mitigar amenazas basado en la revisión constante y riesgo real al que están expuestos los activos.
 # D
 - **Demilitarized Zone (DMZ)**: En el contexto de arquitectura de redes, es un segmento intermedio entre la red interna (confiada y segura) e Internet (desconfiada e insegura)
@@ -17,6 +18,8 @@
 # G
 # H
 # I
+- **Internet Service Provider (ISP)**: Proveedor de Internet, se refiere a la compañía/empresa a la que se paga por acceso a Internet
+- **Indicators of Compromise (IoC)**: Término de forense usado para referirse a la(s) prueba(s) de que ha acontecido un incidente de ciberseguridad
 - **Initial Access Brokers (IAB)**: Grupos cibercriminales especializados en la explotación de redes o sistemas, para la posterior venta de dicho acceso. p.ej: Credenciales VPN, acceso a admin panel o webshell.
 - **Intrusion Detection System (IDS)**: Dispositivo y/o software de defensa que monitoriza el tráfico de una red o segmento con el objetivo de detectar intrusiones mediante distintos métodos, registrarlas y alertarlas, similar a ==IPS== pero de forma pasiva. [[glossary#^c9abfc|IPS]] ^ac5dbe
 - **Intrusion Preventenion System (IPS)**: Dispositivo y/o software de defensa que monitoriza el tráfico de una red o segmento con el objetivo de prevenir y/o detener intrusiones mediante distintos métodos, similar a ==IDS== pero de forma activa. [[glossary#^ac5dbe|IDS]] ^c9abfc
@@ -29,11 +32,13 @@
 - **Master File Table (MFT)**: Registro principal en el cual se almacenan todos los archivos alojados en un disco que corre en un filesystem ==NTFS==. [[glossary#^64e008|NTFS]] ^d1cfda
 - **Multi Factor Authentication (MFA)**:Método de autenticación que consiste en combinar dos más de dos métodos de autenticación para identificarse, ==2FA== es cuando son dos métodos. [[glossary#^7d9f1a|2FA]] ^6ed1aa
 # N
+- **Network Behavior Analysis (NBA)**: Técnica de análisis para detección de intrusión en redes que se basa analizar grandes cuerpos de información desorganizada mediante una serie de técnicas de Big Data
 - **Near-Field Communication (NFC)**: Método de comunicación que utiliza campos electromagnéticos para transmitir información a distancias muy cortas o mediante contacto con el lector, p.ej: Contactless 
 - **New Technology File System (NTFS)**: Filesystem por defecto de Windows, ver en [[NTFS]] ^64e008
 - **Next Generation Firewalls (NGFWs)**: Firewalls de nueva generación, tecnologías más nuevas como IPS o IDS. [[glossary#^c9abfc|IPS]] [[glossary#^ac5dbe|IDS]] 
 # O
 - **OSI model (modelo OSI)**
+- **Open Source INTelligence (OSINT)**: Información de fuentes abiertas. Es un cuerpo de datos X al que se puede acceder de forma pública, por ejemplo buscando en google o redes sociales.
 # P
 - **Policies (Políticas)**: Declaraciones de intenciones
 - **Procedures (Procedimientos)**: Pasos detallados para realizar una actividad
@@ -43,6 +48,7 @@
 - **Real Time Operating System (RTOS)**: Es un OS diseñado para realizar tareas dentro de unos periodos de tiempo predefinidos e inelásticos, no busca ser rápido si no asegurar la ejecución de las tareas críticas en un tiempo máximo X
 - **Redundancy**: Concepto que se refiere a la filosofía de diseño de arquitecturas/redes/sistemas que pone una serie de componentes de refuerzo para asegurar la continuidad operativa a pesar de interrupciones en el servicio "principal", p.ej: Generadores en datacenters por si se corta la luz
 # S
+- **Social Engineering (SE)**: Ingeniería social, conjunto de técnicas de hacking no-técnico que buscan aprovecharse de vulnerabilidades humanas, sociales y/o psicológicas.
 - **Session Initiation Protocol (SIP)**: Es un protocolo utilizado para conexiones ==VoIP==, y es responsable de inicializar, modificar y terminar las sesiones entre 2 o más participantes. [[glossary#^4e0d5e|VoIP]]
 - **Secure Sockets Layer (SSL)**: Protocolo de seguridad de Internet basado en el cifrado que protege la integridad y privacidad de la información. En versiones posteriores pasaría a ser TLS. [[glossary#^c4992d|TLS]] ^6e1794
 - **Security Information and Event Management (SIEM)**: Sistema que recopila logs de distintas fuentes (dispositivos finales, de red...) y los combina.

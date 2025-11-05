@@ -9,10 +9,9 @@ source /etc/skel/.bashrc
 Si esta da algún error, probar con:
 ```
 script /dev/null -c bash
-## Aquí presionamos CTRL+Z
+## CTRL+Z
 stty raw -echo; fg
->reset
->xterm
+reset xterm
 export TERM=xterm
 export SHELL=bash
 ``` 
