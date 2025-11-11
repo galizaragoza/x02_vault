@@ -220,8 +220,8 @@ Este otro ejemplo, por otro lado, tiene varias medidas de seguridad añadidas:
 - Criptografía: Hay que asegurar que toda la información, o al menos la sensible, esta correctamente protegida mediante métodos criptográficos para que en caso de sufrir una brecha, el atacante no tenga acceso a los datos en texto plano
 ### Recursos
 [PortSwigger SQLi cheatseet](https://portswigger.net/web-security/sql-injection/cheat-sheet)
-### Fuentes
 [OVHCloud](https://www.ovhcloud.com/es-es/learn/relational-vs-non-relational-databases/)
 [Imperva](https://www.imperva.com/learn/application-security/sql-injection-sqli/)
 [PortSwigger](https://portswigger.net/web-security/sql-injection#what-is-the-impact-of-a-successful-sql-injection-attack)
 [PATT](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/SQL%20Injection#authentication-bypass)
+[# Bug Bounty Hunters are WRONG about this‘ OR 1=1](https://youtu.be/-7mrIzjQnhs)

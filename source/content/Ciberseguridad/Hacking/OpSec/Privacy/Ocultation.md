@@ -23,3 +23,4 @@
 ## Recursos
 [# Cellphone data used to solve murder case from 2 years ago, police say](https://youtu.be/EmWsW_p_ta4)
 [# The Stingray: How Law Enforcement Can Track Your Every Move](https://youtu.be/wzSgLpNrr2E)
+[Privacidad Avanzada Firefox](https://defsec.noblogs.org/privacidad-avanzada-en-navegadores-firefox/)

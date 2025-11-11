@@ -14,7 +14,11 @@ Consiste en averiguar la tecnología, versión y otra info sobre el servidor obj
 
 - **Metafiles**
 Además de perfilar el objetivo averiguando en que servidor corre, es útil investigar posibles archivos que a menudo contienen info jugosa
-	- Google Webmaster Tools; `robots.txt`; `META` tags; Sitemaps; `security.txt`; `.well-known/`; `humans.txt`
+	Google Webmaster Tools; `robots.txt`; `META` tags; Sitemaps; `security.txt`; `.well-known/`; `humans.txt`
+- **Herramientas**
+	DevTools, Ver código fuente, Burp Suite, OWASP ZAP
 
 
 
+## Fuentes
+Web Security Testing Guide 4.2 (OWASP)
