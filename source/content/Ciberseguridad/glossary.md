@@ -15,6 +15,7 @@
 - **Encryption (Cifrado)**: Es el proceso tomar texto plano 
 # F
 - **Field-Programmable Gate Array (FGPA)**
+- **Financial Intelligence (FININT)**: Inteligencia asociada a información financiera
 # G
 # H
 # I
@@ -40,6 +41,7 @@
 - **OSI model (modelo OSI)**
 - **Open Source INTelligence (OSINT)**: Información de fuentes abiertas. Es un cuerpo de datos X al que se puede acceder de forma pública, por ejemplo buscando en google o redes sociales.
 # P
+- **Personally Identifiable Information (PII)**: Información personalmente identificable, término referido a datos específicos que son fácilmente relacionables a una persona concreta
 - **Policies (Políticas)**: Declaraciones de intenciones
 - **Procedures (Procedimientos)**: Pasos detallados para realizar una actividad
 # Q
@@ -60,6 +62,7 @@
 # T
 - **Transport Layer Security (TLS)**: La versión posterior de SSL 3.0. [[glossary#^6e1794|SSL]] ^c4992d
 # U
+- **Unique Identifier (UID)**: Identificador único
 # V 
 - **Voice over Internet Protocol (VoIP)**: Protocolo mediante el que se transmiten comunicaciones de voz por IP ^4e0d5e
 # W

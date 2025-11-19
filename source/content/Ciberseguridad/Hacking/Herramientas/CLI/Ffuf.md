@@ -44,7 +44,7 @@ ffuf -u <URL> -w <lista_palabras> [opciones]
 | -b                      | Especifica las cookies para la solicitud HTTP. Útil para acceder a recursos autenticados o mantener sesiones.                                                         | ffuf -u https://target.com/FUZZ -w lista.txt -b "session=abc123"                                     |
 | -d                      | Define la información a mandar por POST para fuzzing                                                                                                                  | ffuf -u https://target.com/api -w lista.txt -X POST -d "key=FUZZ"                                    |
 | -o                      | Guarda el resultado en un archivo                                                                                                                                     | ffuf -u https://target.com/FUZZ -w lista.txt -o resultados.json                                      |
-|                         |                                                                                                                                                                       |                                                                                                      |
+| `-of`                   | Output file format. Available formats: json, ejson, html, md, csv, ecsv                                                                                               |                                                                                                      |
 |                         |                                                                                                                                                                       |                                                                                                      |
 	1 --> Los modos disponibles en -mode explicados:
 	**Clusterbomb**:
@@ -64,18 +64,42 @@ ffuf -u <URL> -w <lista_palabras> [opciones]
     - **Nota**: Preciso y eficiente para pruebas focalizadas.
 ## Cheats
 ```
-.php,.html,.db,.conf,.config,.txt,.js,.py,.bak,.conf,.env,.jar,.csv,.xml,.md,.pdf,.zip,.rar,.jpg,.jpeg,.png,.db,.sql,.log,.json
+ffuf -u "url/function.php/FUZZ?=FUZZ2" -w dict1.txt:FUZZ -w dict2.txt:FUZZ2 
+```
+Fuzzear en varias posiciones
+
+```
+.php,.html,.db,.conf,.config,.txt,.js,.py,.bak,.conf,.env,.jar,.csv,.xml,.md,.pdf,.zip,.rar,.jpg,.jpeg,.png,.db,.sql,.log,.json,.aspx
 ```
 Lista default de extensiones para fuzzear
+
 ```
--e .php,.html,.txt,.js,.py,.zip,.jpg,.jpeg,.png,.json
+-e .php,.html,.txt,.js,.py,.zip,.jpg,.jpeg,.png,.json,.md
 ```
 Lista chill para labs
+
 ```
 ./ffuf_basicauth.sh usernames.txt passwords.txt |ffuf -w -:AUTH -u http://172.17.0.2:8080/manager/html -H "Authorization: Basic AUTH" -fc 403,401 -c
 ```
 **Requiere descargar** el [script](https://github.com/ffuf/ffuf-scripts/blob/master/README.md), codifica en base64 todas las combinaciones posibles de las listas seleccionadas y fuzzea por el Basic Auth hasta dar con la clave.
+
 ```shell
 ffuf -u "http://vulnerable/index.php?page=FUZZ" -w <ruta al diccionario> -c -recursion -recursion-depth 2 -t 64
 ```
 Template para fuzzear en busca de URLs vulnerables a LFI
+
+```shell
+ffuf -u "http://192.168.1.167:8088/shell.php" \
+-w /usr/share/wordlists/rockyou.txt \
+-X POST \
+-d "username=campana&password=FUZZ" \
+-H "Content-Type: application/x-www-form-urlencoded" \
+-H "Cookie: PHPSESSID=binbvlhd5smitqce7vrovmvm72" \
+-c -t 100
+```
+Ejemplo de para hacer bruteforce a un login
+
+```bash
+-o fuzzing.html -of html -ic
+```
+Añadir al final para generar un archivo con los resultados que se puede ver con `firefox fuzzing.html` (sin ser root)

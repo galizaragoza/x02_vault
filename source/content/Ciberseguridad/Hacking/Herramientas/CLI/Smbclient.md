@@ -27,3 +27,11 @@ smbclient [OPCIONES] //servidor/recurso [contraseña] [OPCIONES]
 | `--pw-nt-hash` | Conexión con hash NTLM         | smbclient //192.168.1.100/C$ -U usuario --pw-nt-hash AAD3B435B51404EEAAD3B435B51404EE |
 |                |                                |                                                                                       |
 
+## Protips
+```
+mask ""
+recurse ON
+prompt OFF
+mget *
+```
+Sirve para descargar dirs completos

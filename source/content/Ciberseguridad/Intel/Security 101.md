@@ -1,3 +1,20 @@
+# Data VS Info Vs Intel
+
+```mermaid
+flowchart LR
+
+data[Conjunto de datos]
+info[Conjunto de datos organizados]
+intel[Conjunto de datos sintetizados y analizados]
+
+data --Organización-->info--Análisis-->intel
+
+```
+
+- **Data (Datos)**: Hechos aislados, sin mucho valor por separado ni coherencia. Por ejemplo, tres datos podrían ser: una ubicación, una hora y una MAC
+- **Info**: Después de pasar una serie de datos por un proceso de organización, se les da una cierta estructura y se relacionan entre sí para darles coherencia (y valor). Por ejemplo, los tres datos anteriores organizados nos dan la información de cuándo exactamente estuvo una persona X en un lugar, otros ejemplos podrían ser un historial de compras y un historial de problemas psicológicos
+- **Intel (inteligencia)**: La información obtenida de organizar datos sueltos puede o no ser reveladora o útil (contra más datos más completa será la info), en cualquier caso, someter esta información a un proceso de análisis y síntesis la convierte en inteligencia, es decir, información procesada con el objetivo saber más sobre algo o alguien, ya sea para predecir o investigar algo. Por ejemplo, con toda la información anterior se puede dar con el actor de un tiroteo, gracias a la información de su posición a la hora del crimen, junto a sus recientes compras de munición y su historial de esquizofrenia.
+
 # Los principios de la ciberseguridad
 ## Seguridad (CIA)
 - **Confidencialidad**

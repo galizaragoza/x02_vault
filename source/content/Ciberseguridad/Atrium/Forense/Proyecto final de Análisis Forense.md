@@ -67,3 +67,37 @@ De esta investigación se deduce la siguiente lista de correos afectados:
 - jdarwin@invent.com <div class="page-break" style="page-break-before: always;"></div>
 
 ## Diagnóstico incidente Madrid
+### ¿Cómo funciona?
+Tras una brecha inicial, sea cual sea el vector de ataque/escalada, el atacante consigue los privilegios necesarios para encriptar todos los archivos (o archivos necesarios para el funcionamiento del sistema) de uno o varios equipos. Esto hace que el equipo quede totalmente inservible y su información irrecuperable, entonces, el atacante pide un rescate a cambio de la llave para recuperar información.
+
+### ¿Es posible la recuperación?
+En todos los casos de ransomware, siempre existe la opción de pagar el rescate. Evidentemente, no es la mejor opción, ya que sin conocer la reputación del atacante no hay garantías de que se pueda recuperar la información aún después de pagar.
+
+Basándome en la captura de la notificación del ransomware, se ha determinado que se trata de la distribución NM4, la cual puede ser eliminada con relativa sencillez siguiendo unos pasos o con software de terceros.
+En lo que respecta a los archivos, lo ideal sería restaurarlos desde una copia de seguridad previamente hecha, de todas formas, en caso de que no haya tal cosa, hay otras opciones:
+1. **Software de terceros para recuperación de archivos**
+2. **System Restore Point**
+3. **File History**
+
+### Diagnóstico del vector de entrada
+Un servidor SMB en el puerto 139 ha quedado expuesto a Internet, el atacante probablemente ha recopilado toda la información posible de ese servidor y la ha aprovechado para ganar acceso no autorizado a los sistemas (probablemente mediante credenciales recicladas o alguna otra información similar).
+<div class="page-break" style="page-break-before: always;"></div>
+
+## Prevención
+### Australia
+Algunas medidas que podrían implementarse para evitar que vuelva a suceder algo así:
+1. Formación periódica y concienciación de los empleados.
+2. Implementación de firewalls que bloqueen dominios e IPs no confiados.
+3. Aplicar el principio de cero confianza: Desconfiar de toda acción, solicitud, input o paquete hasta que se verifique su legitimidad o venga de una fuente confiada.
+4. Implementación de firewalls host-based en cada equipo, operan en la capa 7 del modelo OSI y aumentan la protección frente a este tipo de ataques.
+5. Auditar mediante terceros frecuentemente la organización
+
+### Madrid
+Respecto al incidente de Madrid:
+1. Aplicar el principio de cero confianza: Desconfiar de toda acción, solicitud, input o paquete hasta que se verifique su legitimidad o venga de una fuente confiada.
+2. No exponer a Internet todo servicio que no sea absolutamente necesario.
+3. Implementar soluciones IDS (Intrusion Detection System) o IPS (Intrusion Prevention System) para proteger la infraestructura en caso de haber una brecha inicial.
+4. Revisar y asegurar que se cumple con las políticas de empresa, el plan de respuesta a incidentes y continuidad de negocio.
+5. Revisar y mejorar los sistemas para reforzar el principio AAA (Autenticación, Autorización y Responsabilidad).
+6. Hacer copias de seguridad frecuentes y mantener el software parcheado y al día.
+7. Auditar mediante terceros frecuentemente la organización.

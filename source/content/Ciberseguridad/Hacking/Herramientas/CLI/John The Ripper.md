@@ -41,6 +41,8 @@ rar2john archivo.rar > rar_hash.txt
 ```
 pdf2john documento.pdf > pdf_hash.txt
 ```
+### keepass2john
+### gpg2john
 
 ## Ejemplo de uso
 Suponiendo que, por ejemplo, hemos obtenido a clave SSH tunratando de ganar acceso a un sistema y queremos crackear dicha passphrase para ganar una shell privilegiada. Teniendo el archivo `id_rsa`, los pasos a seguir serían los siguientes:
