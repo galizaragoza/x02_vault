@@ -6,8 +6,10 @@
     "pageSize": "A4",
     "landscape": false,
     "margin": "0",
-    "downscalePercent": 50
+    "downscalePercent": 90
   },
   "alwaysUpdateLinks": true,
-  "strictLineBreaks": false
+  "strictLineBreaks": false,
+  "rightToLeft": false,
+  "vimMode": true
 }

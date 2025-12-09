@@ -11,7 +11,7 @@ Realmente, la encriptación es *una forma de cifrado*, sin embargo, hay una gran
 Los mecanismos de encriptación requieren, tanto para encriptar como desencriptar, algoritmos matemáticos que no pueden ser descifrados sin el uso de una llave (o con un poder computacional inmenso como el de un ordenador cuántico).
 
 ### Tipos de encriptación
-- **Algoritmos de llave simétrica** (Symmetric-key algorithms): Estos algoritmos utilizan **la misma llave** para encriptar y desencriptar la información contenida. El algoritmo [[¡AES]] es un ejemplo.
+- **Algoritmos de llave simétrica** (Symmetric-key algorithms): Estos algoritmos utilizan **la misma llave** para encriptar y desencriptar la información contenida. El algoritmo [[AES]] es un ejemplo.
 - **Algoritmos de llave asimétrica** (Asymmetric-key algorithms): Este tipo de algoritmos utilizan **llaves distintas** para encriptar y desencriptar el contenido. Dichas llaves están relacionadas mediante matemáticas complejas, [[RSA]] es un ejemplo de encriptación asimétrica. 
 
 ![[asymmetric-encryption.png|446x218]]![[symmetric-encryption.png|442x217]]

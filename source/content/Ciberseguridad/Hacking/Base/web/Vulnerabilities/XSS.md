@@ -12,11 +12,12 @@ Por ejemplo, podría darse el caso de una inyección XSS que queda almacenada en
 
 Los ataques XSS DOM-based$¹$  suceden  cuando una web vulnerable modifica el DOM en el navegador del lado del cliente, el código malicioso no se envía directamente al servidor, si no que se ejecuta directamente en el navegador del usuario, dificultando mucho la detección y dianóstico, ya que por la naturaleza del ataque y la capa en la que ocurre no queda registrado.
 Por ejemplo, si un input del usuario activa un cambio en el código de la página de alguna forma (algún tipo de pop-up, un mensaje de bienvenida...), el código inyectado se ejecuta junto la carga de estos cambios y se ejecuta en el propio navegador.
-	1 --> El DOM es una interfaz de programación para documentos web, y sirve el código que conforma la página de manera que este pueda ser modificado por programas y hacer cambios en la estructura, estilo o contenido.
+
 # Mutated XSS
 
 https://youtu.be/dqacCUt6JfE?list=PL65_wYSEg5HdSq1pSZxQmz7SoNE48vOgR&t=369
-### Payloads básicos
+# Bypasses
+
 ``` javascript
 // Basic payload
 <script>alert('XSS')</script>
@@ -59,10 +60,9 @@ https://youtu.be/dqacCUt6JfE?list=PL65_wYSEg5HdSq1pSZxQmz7SoNE48vOgR&t=369
 <div onpointerout="alert(45)">MOVE HERE</div>
 <div onpointerup="alert(45)">MOVE HERE</div>
 ```
-## Recursos
+# Recursos
 [XSS Filter Bypass List](https://gist.github.com/rvrsh3ll/09a8b933291f9f98e8ec)
 [XSS Payload List](https://github.com/payloadbox/xss-payload-list/blob/master/Intruder/xss-payload-list.txt)
-## Fuentes
 [Artículo de la OWASP](https://owasp.org/www-community/attacks/xss/)
 [OWASP profundizando en los ataques DOM-based](https://owasp.org/www-community/attacks/DOM_Based_XSS)
 [Artículo de PayLoadsAllTheThings sobre la detección y explotación](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/XSS%20Injection#methodology)

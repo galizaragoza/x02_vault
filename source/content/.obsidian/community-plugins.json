@@ -2,8 +2,6 @@
   "image-converter",
   "break-page",
   "obsidian-style-settings",
-  "obsidian-icon-folder",
-  "extended-graph",
-  "3d-graph",
-  "obsidian-excalidraw-plugin"
+  "templater-obsidian",
+  "better-export-pdf"
 ]

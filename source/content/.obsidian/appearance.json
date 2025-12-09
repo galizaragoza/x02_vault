@@ -1,7 +1,8 @@
 {
   "accentColor": "#a01bb1",
   "cssTheme": "Things",
-  "interfaceFontFamily": "Fira Code Retina,Noto Sans",
-  "textFontFamily": "Fira Code Retina",
-  "baseFontSize": 18
+  "interfaceFontFamily": "JetBrains Mono,Bodoni 72 Smallcaps,Rubik",
+  "textFontFamily": "JetBrains Mono",
+  "baseFontSize": 19,
+  "showRibbon": false
 }

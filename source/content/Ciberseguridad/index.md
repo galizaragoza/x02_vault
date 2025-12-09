@@ -4,7 +4,7 @@
 	- **Encoding**
 		- [[Base64]] (incompleto)
 	- **Encryption**
-		- [[¡AES]] (incompleto)
+		- [[AES]] (incompleto)
 		- [[RSA]] (incompleto)
 	- **Hashing**
 		- [[MD5]] (incompleto)
@@ -51,7 +51,7 @@
 			- Phishing
 			- Social Engineering
 		- **Web**
-			- [[!NoSQL injection]] (incompleto)
+			- [[NoSQL injection]] (incompleto)
 			- [[Prototype pollution]] (incompleto)
 			- [[403Bypass]]
 			- [[Clickjacking]]

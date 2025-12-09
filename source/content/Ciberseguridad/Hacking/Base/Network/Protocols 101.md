@@ -22,6 +22,10 @@ https://youtu.be/a-sBfyiXysI?list=PL65_wYSEg5HdGgpkBRymedI24hCXWqB6l
 
 
 # WebSocket
+WebSocket es relativamente similar a HTTP/S, la diferencia principal (y la razón de ser de Sockets) es que HTTP se basa en un método de comunicación de solicitud-respuesta, el estado de las comunicaciones en HTTP se mantiene y recuerda mediante sesiones y cookies.
+
+Por otro lado WebSockets habilita un canal de comunicación bidireccional que puede enviar y recibir por ambas partes mensajes sin esperar a la respuesta. 
+![[HTTPvsWebSockets.jpg|415x306]]
 https://ably.com/topic/websockets
 
 
