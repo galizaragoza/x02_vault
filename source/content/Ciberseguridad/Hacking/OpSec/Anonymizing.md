@@ -41,4 +41,4 @@ Estos servidores jamás van a interactuar con el objetivo, de manera que podemos
 
 # La infaestructura de ataque
 La infraestructura de ataque es mucho más volátil y solo debe conservarse un par de días. Se debe rotar por cada operación y/u objetivo, si es posible, para evitar que se pueda atar la misma IP a distintos ataques en distintos targets.
-[[Attack_Infraestructure]]
+[[Attck_Inf]]

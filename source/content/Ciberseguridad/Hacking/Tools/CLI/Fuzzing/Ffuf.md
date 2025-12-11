@@ -37,7 +37,7 @@ ffuf -u <URL> -w <lista_palabras> [opciones]
 | `-enc`                  | Encoder para las keywords (FUZZ:urlencode b64encode)                                                                                                                  |                                                                                                      |
 | `-ac`                   | Calibración automática del filtrado                                                                                                                                   |                                                                                                      |
 
-# Cheats
+# Protips
 ```
 ffuf -u "url/function.php/FUZZ?=FUZZ2" -w dict1.txt:FUZZ -w dict2.txt:FUZZ2 
 ```

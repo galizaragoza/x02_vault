@@ -26,7 +26,7 @@ nmap -sV -p 1-65535 192.168.1.1
 |                                        |                                                                                                           |                                   |
 # NS engine
 https://nmap.org/book/nse-usage.html
-
+[NSE categories](https://nmap.org/book/nse-usage.html#nse-categories)
 # Tips
 ### Añadir al final para generar un reporte HTML
 ``` bash

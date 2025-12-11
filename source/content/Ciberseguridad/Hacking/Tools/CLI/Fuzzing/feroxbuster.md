@@ -1,4 +1,4 @@
-Feroxbuster es un fuzzer ultrarápido escrito en Rust, ideal para la mayoría de tareas de fuzzing, como encontrar archivos, recursión, reconocimiento, según Grok, es idea y estándar para el 90% de tareas de fuzzing, siendo superado por [[FFUF]] para casos específicos como:
+Feroxbuster es un fuzzer ultrarápido escrito en Rust, ideal para la mayoría de tareas de fuzzing, como encontrar archivos, recursión, reconocimiento, según Grok, es idea y estándar para el 90% de tareas de fuzzing, siendo superado por [[Ffuf]] para casos específicos como:
 - Fuzzing de parámetros
 - Evadir WAF
 - Wordlists muy grandes
