@@ -1,15 +1,17 @@
 # Wikis/cheatsheets
 
-| [Hacktricks](https://book.hacktricks.wiki/en/index.html)                                       | Cheatsheet                                                                                                              |
-| ---------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| [PayLoadsAllTheThings](https://github.com/swisskyrepo/PayloadsAllTheThings)                    | Repo con metodologías y explicaciones de cientos de vulnerabilidades web                                                |
-| [Bughunting arsenal](https://github.com/thevillagehacker/Bug-Hunting-Arsenal)                  | Repo con buenos cheatsheets                                                                                             |
-| [ExploitDB](https://www.exploit-db.com/)                                                       | Base de datos de exploits                                                                                               |
-| [Windows CS](https://afsh4ck.gitbook.io/ethical-hacking-cheatsheet/sistemas-basicos/windows)   | Windows cheatsheet                                                                                                      |
-| [Mittre Att&ck](https://attack.mitre.org/)                                                     | Framework por excelencia para red teaming                                                                               |
-| [Google Dorks Cheatsheet](https://gist.github.com/sundowndev/283efaddbcf896ab405488330d1bbc06) | Autodescriptivo                                                                                                         |
-| [URLencoded chars](https://www.w3schools.com/tags/ref_urlencode.ASP)                           | Lista de caracteres en URLencoding                                                                                      |
-| [BeEF Framework](https://beefproject.com/)                                                     | BeEF is short for The Browser Exploitation Framework. It is a penetration testing tool that focuses on the web browser. |
+| [Hacktricks](https://book.hacktricks.wiki/en/index.html)                                        | Cheatsheet                                                                                                              |
+| ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| [PayLoadsAllTheThings](https://github.com/swisskyrepo/PayloadsAllTheThings)                     | Repo con metodologías y explicaciones de cientos de vulnerabilidades web                                                |
+| [Bughunting arsenal](https://github.com/thevillagehacker/Bug-Hunting-Arsenal)                   | Repo con buenos cheatsheets                                                                                             |
+| [ExploitDB](https://www.exploit-db.com/)                                                        | Base de datos de exploits                                                                                               |
+| [Windows CS](https://afsh4ck.gitbook.io/ethical-hacking-cheatsheet/sistemas-basicos/windows)    | Windows cheatsheet                                                                                                      |
+| [Mittre Att&ck](https://attack.mitre.org/)                                                      | Framework por excelencia para red teaming                                                                               |
+| [Google Dorks Cheatsheet](https://gist.github.com/sundowndev/283efaddbcf896ab405488330d1bbc06)  | Autodescriptivo                                                                                                         |
+| [URLencoded chars](https://www.w3schools.com/tags/ref_urlencode.ASP)                            | Lista de caracteres en URLencoding                                                                                      |
+| [BeEF Framework](https://beefproject.com/)                                                      | BeEF is short for The Browser Exploitation Framework. It is a penetration testing tool that focuses on the web browser. |
+| [Security Encyclopedia(Win)](https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/) |                                                                                                                         |
+| [Win-Syscalls](https://github.com/j00ru/windows-syscalls)                                       | Repo masivo de IDs de syscalls en distintas versiones                                                                   |
 
 # Research
 

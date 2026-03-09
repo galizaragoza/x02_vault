@@ -23,18 +23,22 @@
 |                                                                                          |     |                                                                       |     |     |
 
 ## Certificados Top
+https://www.linkedin.com/posts/kendry-montes-0340a0228_cybersecurity-ciberseguridad-ethicalhacking-share-7432162394371641344-4xzL?utm_source=share&utm_medium=member_desktop&rcm=ACoAAExVGZQBgbPjdpP6Hwg2mKF7rAaeH5Vhgs0
 
 | **Cert**  | **Level** | **Price** | **Corp**   | **Area**        | **Link**                                                                                           |
 | --------- | --------- | --------- | ---------- | --------------- | -------------------------------------------------------------------------------------------------- |
 | eJPPT     | Entry     | 249$      | INE        | Pentesting      | https://checkout.ine.com/#certification-prep-bundles                                               |
 | Security+ | Entry     | 313€      | CompTIA    | Essential       | https://www.comptia.org/en-eu/certifications/security/#overview                                    |
 | Network+  | Entry     | 287€      | CompTIA    | Network         | https://www.comptia.org/en-eu/certifications/network/                                              |
-| Linux+    | Entry     | 287€      | CompTIA    | Sysadmin        | https://www.comptia.org/en-eu/certifications/linux/v8/#overview                                    |
 | SAL1      | Entry     | 349€      | THM        | SOC             | https://tryhackme.com/certification/security-analyst-level-1/details                               |
-| CJCA      | Entry     |           | HTB        | General         | https://academy.hackthebox.com/preview/certifications/htb-certified-junior-cybersecurity-associate |
-| PenTest+  | Entry     | 313€      | CompTIA    | Pentest         | https://www.comptia.org/en-eu/certifications/pentest/#overview                                     |
-| CPTS      | Mid       |           | HTB        | Pentest         | https://academy.hackthebox.com/preview/certifications/htb-certified-penetration-testing-specialist |
+| CEH       | Beginner  |           | EC-Council | Hacking         | https://www.eccouncil.org/train-certify/certified-ethical-hacker-ceh/                              |
+| CDSA      | Mid       |           | HTB        | SOC             | https://academy.hackthebox.com/preview/certifications/htb-certified-defensive-security-analyst     |
 | CWES      | Mid       |           | HTB        | Web Pentest     | https://academy.hackthebox.com/preview/certifications/htb-certified-web-exploitation-specialist    |
 | PNPT      | Mid       | 499$      | TCM Sec    | Network pentest | https://certifications.tcm-sec.com/pnpt/                                                           |
+| CPTS      | Advanced  |           | HTB        | Pentest         | https://academy.hackthebox.com/preview/certifications/htb-certified-penetration-testing-specialist |
 | OSCP      | Advanced  | 1,699$    | OffSec     | Pentest         | https://www.offsec.com/courses/pen-200/                                                            |
-| CEH       | Advanced  |           | EC-Council | Hacking         | https://www.eccouncil.org/train-certify/certified-ethical-hacker-ceh/                              |
+| OSWP      |           |           |            |                 |                                                                                                    |
+| OSWA      |           |           |            |                 |                                                                                                    |
+| OSEP      |           |           |            |                 |                                                                                                    |
+| OSCE3     |           |           |            |                 |                                                                                                    |
+CEH > (eJPT) > OSCP > OSWA > OSCE³ > OSEE

@@ -1,0 +1,11 @@
+| **Parámetro (Flag)**   | **Función**                                                                                                                                               | **Ejemplo de Sintaxis**      |
+| ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------ |
+| `-b <estilo>`      | Define el estilo de numeración: `a` (todas las líneas), `t` (solo líneas no vacías), `n` (ninguna), `p<regex>` (solo líneas que coincidan con regex). | `nl -b a archivo.txt`    |
+| `-i <número>`      | Incremento entre números de línea (por defecto: 1).                                                                                                   | `nl -i 5 archivo.txt`    |
+| `-s <separador>`   | Establece el separador entre número y línea (por defecto: tabulación).                                                                                | `nl -s ". " archivo.txt` |
+| `-v <número>`      | Número inicial para la numeración (por defecto: 1).                                                                                                   | `nl -v 10 archivo.txt`   |
+| `-w <ancho>`       | Ancho de la columna de números (por defecto: 6).                                                                                                      | `nl -w 3 archivo.txt`    |
+| `-n <formato>`     | Formato de numeración: `ln` (izquierda), `rn` (derecha), `rz` (derecha con ceros a la izquierda).                                                     | `nl -n rz archivo.txt`   |
+| `-d <delimitador>` | Delimitador para secciones (por defecto: `\:`).                                                                                                       | `nl -d "%%" archivo.txt` |
+| `-l <número>`      | Agrupa `<número>` de líneas como una sola para numeración.                                                                                            | `nl -l 2 archivo.txt`    |
+| `-h`               | Muestra la ayuda.                                                                                                                                     | `nl -h`                  |

@@ -1,0 +1,6 @@
+{
+	"nodes":[
+		{"id":"7df3fddf311701f0","type":"text","text":"# TODO\n- goNmap()\n\t- Parse report\n- goNikto()\n- goDNSrecon()\n\t- Debug\n- goWafw00f()\n\t- Debug\n- goWhatWeb()\n\t- Debug\n- goFFUF()\n\n\n# BACKLOG\n- [ ]  Analizar Listas de IPs","x":-1040,"y":-960,"width":660,"height":880}
+	],
+	"edges":[]
+}

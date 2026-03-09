@@ -1,30 +1,30 @@
  
 
-|**Operador**|**Función**|**Sintaxis de Ejemplo**|
-|---|---|---|
-|`>`|Redirige el stdout del comando al archivo escogido (sobreescribe)|`ls -la > archivos.txt`|
-|`>>`|Redirige el stdout del comando al archivo escogido (añade al final)|`echo "nuevo" >> log.txt`|
-|`\|` (pipe)|Envía el stdout del comando 1 al stdin del comando 2 (stackeable)|`cat file.txt \| grep "error"`|
-|`2>`|Redirige el stderror al archivo escogido|`cmd > salida.txt 2> errores.txt`|
-|`2>&1`|Redirige el stderror al mismo lugar que el stdout|`cmd > todo.log 2>&1`|
-|`&>`|Redirige tanto stdout como stderr (bash)|`cmd &> salida_completa.log`|
-|`1>&2`|Redirige stdout a stderr|`echo "Error" 1>&2`|
-|`<`|Redirige stdin desde un archivo|`sort < datos.txt`|
-|`<<` (here-document)|Redirige stdin desde texto en línea|`cat << EOF\nTexto\nEOF`|
-|`<<<` (here-string)|Redirige stdin desde una cadena|`grep "patron" <<< "$variable"`|
-|`&`|Ejecuta el comando en background|`sleep 60 &`|
-|`&&`|Operador AND lógico - ejecuta cmd2 solo si cmd1 tiene éxito|`make && make install`|
-|`\|`|Operador OR lógico - ejecuta cmd2 solo si cmd1 falla|`cd /directorio \| mkdir /directorio`|
-|`;`|Separa comandos - ejecuta secuencialmente|`echo Hola; echo Mundo`|
-|`&>` y `>&`|Redirige stdout y stderr (formas equivalentes)|`cmd &> archivo` o `cmd > archivo 2>&1`|
-|`\|&`|Pipe que incluye stderr (equivalente a `2>&1 \|`)|`cmd1 \|& cmd2`|
-|`<(...)`|Process substitution (input) - trata output como archivo|`diff <(ls dir1) <(ls dir2)`|
-|`>(...)`|Process substitution (output) - trata input como archivo|`tar czf >(ssh host "cat > backup.tar.gz") directorio/`|
-|`()`|Agrupa comandos en un subshell|`(cd /tmp && ls) > salida.txt`|
-|`{}`|Agrupa comandos en el shell actual|`{ echo Inicio; ls; echo Fin; } > log.txt`|
-|`!`|Niega el código de salida|`! grep -q "texto" archivo && echo "No encontrado"`|
-|`$()` o `` ` ` ``|Command substitution - sustituye por la salida del comando|`echo "Hoy es $(date)"`|
-|`$(<archivo)`|Sustituye por el contenido del archivo (más eficiente que cat)|`contenido=$(<archivo.txt)`|
+| **Operador**         | **Función**                                                         | **Sintaxis de Ejemplo**                                 |
+| -------------------- | ------------------------------------------------------------------- | ------------------------------------------------------- |
+| `>`                  | Redirige el stdout del comando al archivo escogido (sobreescribe)   | `ls -la > archivos.txt`                                 |
+| `>>`                 | Redirige el stdout del comando al archivo escogido (añade al final) | `echo "nuevo" >> log.txt`                               |
+| `\|` (pipe)          | Envía el stdout del comando 1 al stdin del comando 2 (stackeable)   | `cat file.txt \| grep "error"`                          |
+| `2>`                 | Redirige el stderror al archivo escogido                            | `cmd > salida.txt 2> errores.txt`                       |
+| `2>&1`               | Redirige el stderror al mismo lugar que el stdout                   | `cmd > todo.log 2>&1`                                   |
+| `&>`                 | Redirige tanto stdout como stderr (bash)                            | `cmd &> salida_completa.log`                            |
+| `1>&2`               | Redirige stdout a stderr                                            | `echo "Error" 1>&2`                                     |
+| `<`                  | Redirige stdin desde un archivo                                     | `sort < datos.txt`                                      |
+| `<<` (here-document) | Redirige stdin desde texto en línea                                 | `cat << EOF\nTexto\nEOF`                                |
+| `<<<` (here-string)  | Redirige stdin desde una cadena                                     | `grep "patron" <<< "$variable"`                         |
+| `&`                  | Ejecuta el comando en background                                    | `sleep 60 &`                                            |
+| `&&`                 | Operador AND lógico - ejecuta cmd2 solo si cmd1 tiene éxito         | `make && make install`                                  |
+| `\|\|`               | Operador OR lógico - ejecuta cmd2 solo si cmd1 falla                | `cd /directorio \|\| mkdir /directorio`                 |
+| `;`                  | Separa comandos - ejecuta secuencialmente                           | `echo Hola; echo Mundo`                                 |
+| `&>` y `>&`          | Redirige stdout y stderr (formas equivalentes)                      | `cmd &> archivo` o `cmd > archivo 2>&1`                 |
+| `\|&`                | Pipe que incluye stderr (equivalente a `2>&1 \|`)                   | `cmd1 \|& cmd2`                                         |
+| `<(...)`             | Process substitution (input) - trata output como archivo            | `diff <(ls dir1) <(ls dir2)`                            |
+| `>(...)`             | Process substitution (output) - trata input como archivo            | `tar czf >(ssh host "cat > backup.tar.gz") directorio/` |
+| `()`                 | Agrupa comandos en un subshell                                      | `(cd /tmp && ls) > salida.txt`                          |
+| `{}`                 | Agrupa comandos en el shell actual                                  | `{ echo Inicio; ls; echo Fin; } > log.txt`              |
+| `!`                  | Niega el código de salida                                           | `! grep -q "texto" archivo && echo "No encontrado"`     |
+| `$()` o `` ` ` ``    | Command substitution - sustituye por la salida del comando          | `echo "Hoy es $(date)"`                                 |
+| `$(<archivo)`        | Sustituye por el contenido del archivo (más eficiente que cat)      | `contenido=$(<archivo.txt)`                             |
 
 
 # Wildcards

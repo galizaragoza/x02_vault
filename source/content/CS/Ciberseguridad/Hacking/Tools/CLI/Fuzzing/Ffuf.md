@@ -4,6 +4,8 @@ FFUF es una herramienta de fuzzing web escrita en Go para llevar a cabo tareas d
 ffuf -u <URL> -w <lista_palabras> [opciones]
 ```
 
+# Params
+
 |                         |                                                                                                                                                                       |                                                                                                      |
 | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
 | -u                      | indica la URL víctima del fuzzing, la palabra clave FUZZ se sitúa en la parte de la URL donde queremos inyectar                                                       | ffuf -u https://target.com/FUZZ -w lista.txt                                                         |

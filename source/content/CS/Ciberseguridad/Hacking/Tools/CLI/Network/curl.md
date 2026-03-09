@@ -19,3 +19,8 @@ curl [opciones] <URL>
 | `-o`                | Guarda la respuesta en un archivo       | curl -o output.html https://target.com                  |
 | `-O`                | Descarga un archivo con nombre original | curl -O http://target.com/file.zip                      |
 |                     |                                         |                                                         |
+# Protips
+
+|                    |                |
+| ------------------ | -------------- |
+| `curl ifconfig.me` | Ver IP pública |

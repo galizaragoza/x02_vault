@@ -22,7 +22,7 @@ También obsoleto, usa el protocolo de encriptado TKIP (Temporal Key Integrity P
 ### WPA2
 Cayendo en desuso pero aún compatible en la mayoría de APs debido a dispositivos que no soportan WPA3, usa el algoritmo [[AES]], que es un estándar de cifrado simétrico.
 ### WPA3
-Incorpora [[!SAE]] (Simultaneous Authentication of Equals), reforzando contra ataques de diccionario y fuerza bruta respecto al handshake PSK de WPA2, mejora los métodos de encriptado, cifra por dispositivo, protege contra [[!KRACK]]
+Incorpora [[SAE]] (Simultaneous Authentication of Equals), reforzando contra ataques de diccionario y fuerza bruta respecto al handshake PSK de WPA2, mejora los métodos de encriptado, cifra por dispositivo, protege contra [[KRACK]]
 
 ![[WPA1-3.png]]
 
