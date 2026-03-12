@@ -21,6 +21,7 @@ curl [opciones] <URL>
 |                     |                                         |                                                         |
 # Protips
 
-|                    |                |
-| ------------------ | -------------- |
-| `curl ifconfig.me` | Ver IP pública |
+### Checkear IP pública
+```
+curl ifconfig.me
+```

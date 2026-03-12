@@ -6,11 +6,11 @@ tr [OPCIONES] CONJUNTO1 [CONJUNTO2]
 
 Lee de stdin y escribe a stdout
 
-| **Flag**                | **Función**                                                  | **Ejemplo de sintaxis**        |
+| **Flag**            | **Función**                                              | **Ejemplo de sintaxis**    |
 | ------------------- | -------------------------------------------------------- | -------------------------- |
 | `-d`                | Elimina caracteres de CONJUNTO1                          | `tr -d '\n'`               |
 | `-s`                | Comprime secuencias repetidas de CONJUNTO1               | `tr -s ' '`                |
 | `-c`                | Usa complemento de CONJUNTO1 (todo lo que no está en él) | `tr -cd '[:alnum:]'`       |
-| `-C`                | Complemento en bytes (útil con UTF-8)                    | `tr -C '\n' ' '`           |
+| `-C`                | Sustituye newline por espacio                            | `tr -C '\n' ' '`           |
 | `--delete`          | Igual que `-d`                                           | `tr --delete '[:space:]'`  |
 | `--squeeze-repeats` | Igual que `-s`                                           | `tr --squeeze-repeats ' '` |

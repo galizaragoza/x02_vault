@@ -3,28 +3,59 @@ nmap -sV -p 1-65535 192.168.1.1
 ```
 # Parámetros
 
-|                                        |                                                                                                           |                                   |
-| -------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------- |
-| ``-p-``                                | escanea todos los 65535 puertos, mejor usar `-p 0-65535`                                                  | nmap -p- <IP víctima>             |
-| ``--open``                             | muestra solo los puertos abiertos                                                                         | nmap --open <IP víctima>          |
-| ``-T0  a -T5``                         | controla la agresividad del escaneo, siendo 0 discreto y lento y 5 agresivo e intrusivo                   | nmap -T3 <IP víctima>             |
-| ``--min-rate=<número>``                | establece los paquetes por segundo                                                                        | nmap --min-rate=5000 <IP víctima> |
-| ``-sC``                                | lanza comprobaciones adicionales en los puertos abiertos para identificar los servicios siendo ejecutados | nmap -sC <IP víctima>             |
-| ``-sV``                                | detecta las versiones de los servicios                                                                    | nmap -sV <IP víctima>             |
-| ``-O``                                 | detecta el sistema operativo                                                                              | nmap -O <IP víctima>              |
-| ``--traceroute``                       | realiza un seguimiento de la ruta que toma un paquete de datos desde el host                              | nmap --traceroute <IP víctima>    |
-| ``-A``                                 | junta en un solo parámetro -sV, -sC, -O y --traceroute                                                    | nmap -A <IP víctima>              |
-| ``-sT``                                | realiza un escaneo TCP completo con 3-way handshake                                                       | nmap -sT <IP víctima>             |
-| ``-sS``                                | realiza un escaneo TCP completo sin 3-way handshake                                                       | nmap -sS <IP víctima>             |
-| `-sA`                                  | ACK scan                                                                                                  |                                   |
-| ``-sU``                                | realiza un escaneo UDP completo                                                                           | nmap -sU <IP víctima>             |
-| ``-sY``                                | realiza un escaneo SCTP                                                                                   | nmap -sY<IP víctima>              |
-| ``-Pn``                                | asume que el host está activo y omite el ping                                                             | nmap -Pn <IP víctima>             |
-| ``-n``                                 | deshabilita la traducción DNS                                                                             | nmap -n <IP víctima>              |
-| ``-v``                                 | (verbose) muestra detalles del escaneo                                                                    | nmap -v <IP víctima>              |
-| ``--stats-every=<número de segundos>`` | muestra stats del escaneo cada X segundos                                                                 | nmap --stats-every=5 <IP víctima> |
-| ``--script=< script>``                 |                                                                                                           |                                   |
-|                                        |                                                                                                           |                                   |
+## Objetivos
+|**Parámetro**|**Descripción**|**Ejemplo de uso**|
+|---|---|---|
+|**`-iL`**|Lee los objetivos desde un archivo de texto.|`nmap -iL hosts.txt`|
+|**`-iR`**|Elige objetivos al azar (útil para estudios estadísticos).|`nmap -iR 100`|
+|**`--exclude`**|Excluye hosts o redes específicas del escaneo.|`nmap 192.168.1.0/24 --exclude 192.168.1.1`|
+|**`-sn`**|**Ping Scan**: Desactiva el escaneo de puertos (solo detecta si el host vive).|`nmap -sn <IP>`|
+|**`-Pn`**|Asume que el host está activo (omite el ping). Útil contra firewalls.|`nmap -Pn <IP>`|
+|**`-n`**|**No DNS**: Deshabilita la resolución inversa de nombres (más rápido).|`nmap -n <IP>`|
+|**`-R`**|Fuerza la resolución DNS de todos los objetivos.|`nmap -R <IP>`|
+## Scan techniques
+|**Parámetro**|**Descripción**|**Ejemplo de uso**|
+|---|---|---|
+|**`-sS`**|**TCP SYN (Stealth)**: Rápido y discreto, no completa el 3-way handshake.|`nmap -sS <IP>`|
+|**`-sT`**|**TCP Connect**: Realiza el handshake completo (más ruidoso).|`nmap -sT <IP>`|
+|**`-sU`**|**UDP Scan**: Escanea puertos UDP (DNS, DHCP, SNMP, etc.).|`nmap -sU <IP>`|
+|**`-sA`**|**ACK Scan**: Se usa para mapear reglas de firewall.|`nmap -sA <IP>`|
+|**`-sN / -sF / -sX`**|Scans Null, FIN y Xmas (usados para burlar ciertos firewalls).|`nmap -sX <IP>`|
+|**`-sY`**|Escaneo de protocolos SCTP INIT.|`nmap -sY <IP>`|
+|**`-sO`**|Escaneo de protocolos IP (determina qué protocolos (TCP, ICMP, etc) soporta).|`nmap -sO <IP>`|
+## Detección
+
+| **Parámetro**       | **Descripción**                                                | **Ejemplo de uso**   |
+| ------------------- | -------------------------------------------------------------- | -------------------- |
+| **`-p-`**           | Escanea **todos** los 65535 puertos.                           | `nmap -p- <IP>`      |
+| **`-p <rango>`**    | Escanea puertos específicos (ej: 80,443 o 1-100).              | `nmap -p 22,80 <IP>` |
+| **`--open`**        | Muestra **únicamente** los puertos que están abiertos.         | `nmap --open <IP>`   |
+| **`-F`**            | **Fast Mode**: Escanea menos puertos que el modo por defecto.  | `nmap -F <IP>`       |
+| **`-sV`**           | **Versión**: Detecta versiones de servicios y software.        | `nmap -sV <IP>`      |
+| **`-O`**            | **OS Detection**: Intenta determinar el sistema operativo.     | `nmap -O <IP>`       |
+| **`-A`**            | **Modo Agresivo**: Activa `-sV`, `-sC`, `-O` y `--traceroute`. | `nmap -A <IP>`       |
+| `--top-ports <num>` | Escanea los X puertos más comunes                              |                      |
+## Scripts y velocidad
+| **Parámetro**         | **Descripción**                                                 | **Ejemplo de uso**             |
+| --------------------- | --------------------------------------------------------------- | ------------------------------ |
+| **`-sC`**             | Ejecuta los scripts por defecto de Nmap (NSE).                  | `nmap -sC <IP>`                |
+| **`--script=<name>`** | Ejecuta un script o categoría específica (auth, vuln, exploit). | `nmap --script=vuln <IP>`      |
+| **`-T<0-5>`**         | Ajusta la agresividad temporal (0: Paranoid, 5: Insane).        | `nmap -T4 <IP>`                |
+| **`--min-rate`**      | Establece el mínimo de paquetes enviados por segundo.           | `nmap --min-rate 5000 <IP>`    |
+| **`--host-timeout`**  | Abandona un host si no responde en el tiempo indicado.          | `nmap --host-timeout 30m <IP>` |
+
+## Firewall / IDS
+|**Parámetro**|**Descripción**|**Ejemplo de uso**|
+|---|---|---|
+|**`-f`**|Fragmenta los paquetes para dificultar la detección del IDS/Firewall.|`nmap -f <IP>`|
+|**`-D <D1,D2>`**|**Decoys**: Enmascara tu IP usando señuelos.|`nmap -D RND:10 <IP>`|
+|**`-S <IP>`**|Spoofing: Falsea tu dirección IP de origen.|`nmap -S 1.1.1.1 <IP>`|
+|**`-v / -vv`**|Aumenta el nivel de detalle (verbose) en la pantalla.|`nmap -vv <IP>`|
+|**`-oA <name>`**|Guarda el resultado en los 3 formatos principales (Normal, XML, Grep).|`nmap -oA scan_result <IP>`|
+|**`--stats-every`**|Muestra el progreso del escaneo cada X tiempo.|`nmap --stats-every 10s <IP>`|
+|**`--reason`**|Explica por qué Nmap determinó que un puerto está abierto/cerrado.|`nmap --reason <IP>`|
+
+
 # NS engine
 | `--script-help=<keyword>` | Filtra por keyword (CVE, versión X de servicio...)        |
 | ------------------------- | --------------------------------------------------------- |
@@ -37,18 +68,18 @@ https://nmap.org/book/nse-usage.html
 
 ## Recon
 
-|**Categoría / Script**|**Función**|**Ejemplo de Sintaxis**|
-|---|---|---|
-|**HTTP Methods**|Identifica qué métodos HTTP están permitidos (GET, POST, PUT, DELETE, etc.).|`nmap --script http-methods <target>`|
-|**DNS Brute**|Intenta descubrir subdominios mediante fuerza bruta usando un diccionario.|`nmap --script dns-brute <target>`|
-|**Whois**|Realiza una consulta Whois para obtener datos del registro del dominio/IP.|`nmap --script whois-domain <target>`|
-|**Banner**|Conecta a los puertos abiertos para capturar el banner de bienvenida del servicio.|`nmap --script banner <target>`|
-|**SMB OS Discovery**|Determina el sistema operativo, nombre de equipo y grupo de trabajo vía SMB.|`nmap --script smb-os-discovery <target>`|
-|**SSL Cert**|Recupera y analiza el certificado SSL/TLS de un servidor (emisor, fechas, etc.).|`nmap --script ssl-cert <target>`|
-|**VULNERS**|Cruza las versiones de servicios detectadas con bases de datos de vulnerabilidades (CVE).|`nmap -sV --script vulners <target>`|
-|**HTTP Enum**|Enumera directorios y archivos comunes en servidores web (similar a un fuzzing ligero).|`nmap --script http-enum <target>`|
-|**FTP Anon**|Comprueba si el servidor FTP permite el acceso con el usuario "anonymous".|`nmap --script ftp-anon <target>`|
-|**SSH Hostkey**|Recupera las claves públicas del host SSH para identificación y huella digital.|`nmap --script ssh-hostkey <target>`|
+| **Categoría / Script** | **Función**                                                                               | **Ejemplo de Sintaxis**                   |
+| ---------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------- |
+| **HTTP Methods**       | Identifica qué métodos HTTP están permitidos (GET, POST, PUT, DELETE, etc.).              | `nmap --script http-methods <target>`     |
+| **DNS Brute**          | Intenta descubrir subdominios mediante fuerza bruta usando un diccionario.                | `nmap --script dns-brute <target>`        |
+| **Whois**              | Realiza una consulta Whois para obtener datos del registro del dominio/IP.                | `nmap --script whois-domain <target>`     |
+| **Banner**             | Conecta a los puertos abiertos para capturar el banner de bienvenida del servicio.        | `nmap --script banner <target>`           |
+| **SMB OS Discovery**   | Determina el sistema operativo, nombre de equipo y grupo de trabajo vía SMB.              | `nmap --script smb-os-discovery <target>` |
+| **SSL Cert**           | Recupera y analiza el certificado SSL/TLS de un servidor (emisor, fechas, etc.).          | `nmap --script ssl-cert <target>`         |
+| **VULNERS**            | Cruza las versiones de servicios detectadas con bases de datos de vulnerabilidades (CVE). | `nmap -sV --script vulners <target>`      |
+| **HTTP Enum**          | Enumera directorios y archivos comunes en servidores web (similar a un fuzzing ligero).   | `nmap --script http-enum <target>`        |
+| **FTP Anon**           | Comprueba si el servidor FTP permite el acceso con el usuario "anonymous".                | `nmap --script ftp-anon <target>`         |
+| **SSH Hostkey**        | Recupera las claves públicas del host SSH para identificación y huella digital.           | `nmap --script ssh-hostkey <target>`      |
 
 
 

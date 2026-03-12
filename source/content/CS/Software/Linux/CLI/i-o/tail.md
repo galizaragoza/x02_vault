@@ -1,4 +1,4 @@
-| **Parámetro**       | **Función**                                                                    | **Ejemplo de Sintaxis**                 |
+| **Parámetro**   | **Función**                                                                | **Ejemplo de Sintaxis**             |
 | --------------- | -------------------------------------------------------------------------- | ----------------------------------- |
 | `-n <número>`   | Muestra las últimas `<número>` líneas (por defecto: 10)                    | `tail -n 20 archivo.log`            |
 | `-f`            | Sigue el archivo en tiempo real (follow)                                   | `tail -f /var/log/syslog`           |

@@ -11,6 +11,7 @@
 	- [ExploitDB google hacking](https://www.exploit-db.com/google-hacking-database)
 	- Interesante mirar con `site`: pastebin, justpaste, codepen
 	- [Google Webmaster Tools](https://search.google.com/search-console/welcome?hl=en)
+	- [Google Advanced Search](https://www.google.com/advanced_search)
 - **Wayback Machine**
 - **Startpage**
 - **Shodan**
@@ -25,11 +26,17 @@
 	- [ShhGit](https://github.com/eth0izzle/shhgit/)
 
 # OSINT
+- [Taranis AI](https://taranis.ai/)
 - [Social Searcher](https://www.social-searcher.com/)
 - [Social Catfish](https://socialcatfish.com/)
 - [Open buckets](https://buckets.grayhatwarfare.com/)
-
+- [info-perso](https://info-perso.com/es/)
+- [OSINT framework](https://osintframework.com/)
+- [FOCA](https://github.com/ElevenPaths/FOCA)
+- [NAPALM FTP Indexer](https://www.searchftps.net/)
+- [Open Source Software Insight](https://ossinsight.io/)
 # Fingerprint web server
+- [Webhook.site](https://webhook.site/#!/view/e5737cb0-c7e4-454f-bec4-2ec878ec7529/f539f18d-e97c-4f86-bd4f-3869052733db/1)
 - [Pentest Tools](https://pentest-tools.com/alltools)
 - [NetCraft](https://www.netcraft.com/resources/research-tools)
 - [IP2Location](https://www.ip2location.com/)
@@ -39,8 +46,10 @@
 - **DNS**
 	- [Censys](https://search.censys.io/)
 	- [[dnsrecon]]
+	- [FOFA](https://en.fofa.info/)
 	- [[dig]]
 	- [DNSDumpster](https://dnsdumpster.com/)
+	- [Subdomain finder](https://subdomainfinder.c99.nl/index.php)
 - **gobuster**
 - **WAF bypass**
 	- [ViewDNS](https://viewdns.info/)
@@ -48,6 +57,9 @@
 	- [MxToolbox](https://mxtoolbox.com/SuperTool.aspx?action=mx%3aayudapyme.es&run=toolpage)
 	- Shodan
 		- [[Dorks_CS]]
+		- [Shodan Dorks](https://github.com/nullfuzz-pentest/shodan-dorks)
+- [TTL fingerprint](https://subinsb.com/default-device-ttl-values/) 
+- **traceroute**
 
 
 # Webserver Metafiles
