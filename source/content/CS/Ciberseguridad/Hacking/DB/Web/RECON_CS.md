@@ -35,6 +35,8 @@
 - [FOCA](https://github.com/ElevenPaths/FOCA)
 - [NAPALM FTP Indexer](https://www.searchftps.net/)
 - [Open Source Software Insight](https://ossinsight.io/)
+- [Maltego](https://www.maltego.com/)
+- [HaveIBeenPwned](https://haveibeenpwned.com/)
 # Fingerprint web server
 - [Webhook.site](https://webhook.site/#!/view/e5737cb0-c7e4-454f-bec4-2ec878ec7529/f539f18d-e97c-4f86-bd4f-3869052733db/1)
 - [Pentest Tools](https://pentest-tools.com/alltools)

@@ -1,16 +1,16 @@
 # ssh
-
-| Binario / Parámetro                         | Función                                   | Ejemplo de sintaxis                                                   |
-| ------------------------------------------- | ----------------------------------------- | --------------------------------------------------------------------- |
-| `-X`                                        | Muestra GUI remoto en el host             | `ssh -X user@192.168.1.100`                                           |
-| `-fN`                                       | Tunneling en background                   | `ssh -fN -L 3389:192.168.1.10:3389 user@attacker`                     |
-| `-D` 1080                                   | SOCKS5 proxy dinámico                     | `ssh -D 1080 user@vps` → `proxychains -q nmap ...`                    |
-| `-R` 2222:localhost:22                      | Reverse tunnel (persistente)              | `ssh -R 2222:localhost:22 user@vps`                                   |
-| `-L` (port-local):(ip_remota):(port-remoto) | Port forwarding                           | `ssh -L 8080:10.10.10.10:80 user@gateway`                             |
-| `-J` user@jump                              | Jump host / ProxyJump                     | `ssh -J user@bastion user@internal`                                   |
-| `-o` ProxyCommand                           | ProxyCommand + netcat (sin ssh en target) | `ssh -o ProxyCommand="nc -X connect -x proxy:8080 %h %p" user@target` |
-| `-i` key `-o` PasswordAuthentication=no     | Solo clave, sin pass                      | `ssh -i id_rsa root@target`                                           |
-| `ssh` user@host command                     | Ejecución remota one-liner                | `ssh user@10.10.10.10 whoami`                                         |
+| **Parámetro**     | **Función**                                                                        | **Ejemplo de Sintaxis**                           |
+| ----------------- | ---------------------------------------------------------------------------------- | ------------------------------------------------- |
+| `-p`              | Especifica el puerto de conexión (por defecto es el 22).                           | `ssh -p 2222 user@host`                           |
+| `-i`              | Selecciona el archivo de identidad (clave privada) para autenticación.             | `ssh -i ~/.ssh/id_rsa user@host`                  |
+| `-L`              | **Local Port Forwarding**: Redirige un puerto local al host remoto.                | `ssh -L 8080:localhost:80 user@host`              |
+| `-R`              | **Remote Port Forwarding**: Redirige un puerto remoto a la máquina local.          | `ssh -R 9090:localhost:3000 user@host`            |
+| `-D`              | **Dynamic Port Forwarding**: Crea un túnel SOCKS (Proxy).                          | `ssh -D 1080 user@host`                           |
+| `-C`              | Comprime todos los datos enviados (útil en conexiones lentas).                     | `ssh -C user@host`                                |
+| `-X`              | Habilita el reenvío de la interfaz gráfica (X11 Forwarding).                       | `ssh -X user@host`                                |
+| `-v / -vv / -vvv` | Modo verbose para depuración (más "v" aumentan el detalle).                        | `ssh -vvv user@host`                              |
+| `-N`              | No ejecuta comandos remotos (útil solo para túneles).                              | `ssh -N -L 8080:localhost:80 user@host`           |
+| `-o`              | Permite pasar opciones de configuración específicas (ej. `StrictHostKeyChecking`). | `ssh -o "UserKnownHostsFile=/dev/null" user@host` |
 
 # scp
 

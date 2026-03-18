@@ -28,7 +28,6 @@
 |                                 | `*`                     | Comodín para una palabra completa.                            | `"config * password = *"`                   |
 |                                 | `..`                    | Rango numérico (útil para años o puertos).                    | `site:target.com 2022..2026`                |
 |                                 | `AROUND(n)`             | Proximidad: palabras separadas por max (n) términos.          | `"admin" AROUND(2) "password"`              |
-|                                 | `+`                     | Fuerza la inclusión de una palabra (obsoleto pero útil).      | `+internal +confidential`                   |
 |                                 | `&`                     | Funciona como AND (por defecto en Google).                    | `target & secret`                           |
 
 # Bing

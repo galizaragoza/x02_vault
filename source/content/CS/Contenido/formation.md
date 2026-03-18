@@ -19,7 +19,7 @@
 | [MatthyGD](https://matthygd.mentesinquietas.net/index.html)                              |     | [Linux Journey](https://linuxjourney.com/)                            |     |     |
 | [Cyberflow Academy](https://cyberflow-academy.github.io/#features)                       |     | [A tour of Go](https://go.dev/tour/list)                              |     |     |
 | [El Rincón del Hacker](https://www.elrincondelhacker.es/formaciones)                     |     | [AWS Skill](https://skillbuilder.aws/learn)                           |     |     |
-|                                                                                          |     |                                                                       |     |     |
+| [HackBySecurity](https://academy.hackbysecurity.com/)                                    |     |                                                                       |     |     |
 |                                                                                          |     |                                                                       |     |     |
 
 ## Certificados Top

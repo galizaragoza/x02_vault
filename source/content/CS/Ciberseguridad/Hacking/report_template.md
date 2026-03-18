@@ -8,6 +8,18 @@
 # Índice
 
 
+# Resumen ejecutivo
+- Que se pretendía
+- Que se ha encontrado
+- Como se ha encontrado
+- Como se arregla
+- Que significa eso a nivel operacional
+- Valoración general del riesgo
+- Diagnóstico general del ejercicio (¿Acciones urgentes?)
+- Roadmap y puntos a mejorar
+- Cumplimiento (normativas, certificados...)
+
+
 # Contexto y metodología
 - Cómo se ha llegado al momento del ejercicio
 - De que información se parte
@@ -15,6 +27,7 @@
 - Cómo se pretende lograr esos objetivos
 	- Lo que se va a intentar y lo que no
 	- Cuál es la metodología
+	- Herramientas utilizadas
 	- Cuáles son los pasos previstos
 		- OSINT
 		- Reconocimiento
@@ -28,21 +41,14 @@
 - Estructura y explicación de las distintas secciones del reporte
 
 
-# Resumen ejecutivo
-- Que se pretendía
-- Que se ha encontrado
-- Que significa eso a nivel operacional
-- Valoración general del riesgo
-- Diagnóstico general del ejercicio (¿Acciones urgentes?)
-- Roadmap y puntos a mejorar
-
 # Resumen técnico
 - Tecnologías utilizadas
 - Referencias
 - Tabla de todas las vulnerabilidades/CWEs encontrados 
 
-| Enlace | Gravedad | Síntesis | CVE/CWE |
-| ------ | -------- | -------- | ------- |
+| Enlace | Gravedad                                                    | Síntesis | Codes                     | CVSS | Riesgo                                                                                       |
+| ------ | ----------------------------------------------------------- | -------- | ------------------------- | ---- | -------------------------------------------------------------------------------------------- |
+|        | Informativo<br>Leve<br>Medio<br>Grave<br>Urgente<br>Crítico |          | CVE<br>EUVD<br>CWE<br>KEV | 0-10 | Reducido(0-20%)<br>Moderado(20-40%)<br>Alto(40-60%)<br>Inminente(60-80%)<br>Crítico(80-100%) |
 
 
 # Informe
@@ -69,15 +75,25 @@
 ### Máquina x (IP, dominio)
 Resumen de como se llega a la máquina, que se identifica de ella y análisis a rasgos generales
 #### Problema x
+
+| Codes | Síntesis | CVSS |
+| ----- | -------- | ---- |
+
+
 - Evaluación de riesgo
 - Gravedad
+- Síntesis
 - CWE/CVE asociado
 - PoC
 - Mitigación / prevención
 
 
 # Conclusión
+- Roadmap y cronograma
+- Siguientes acciones
 
 
-# Referencias / fuentes
+# Referencias y apéndice
 
+
+# Glosario

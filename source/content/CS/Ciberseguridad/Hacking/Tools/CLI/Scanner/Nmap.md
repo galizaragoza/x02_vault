@@ -57,12 +57,14 @@ nmap -sV -p 1-65535 192.168.1.1
 
 
 # NS engine
-| `--script-help=<keyword>` | Filtra por keyword (CVE, versión X de servicio...)        |
-| ------------------------- | --------------------------------------------------------- |
-| `--script-updatedb`       | Actualizar db de scripts                                  |
-| `--script vuln`           | Escáner general de vulnerabilidades                       |
-| `--script "http-*"`       | Se pueden usar wildcards para escanear con varios scripts |
-| `--script "discovery"`    | También se puede escanear con categorías enteras          |
+
+| `ls /usr/share/nmap/scripts` | Lista todos los scripts instalados                        |
+| ---------------------------- | --------------------------------------------------------- |
+| `--script-help=<keyword>`    | Filtra por keyword (CVE, versión X de servicio...)        |
+| `--script-updatedb`          | Actualizar db de scripts                                  |
+| `--script vuln`              | Escáner general de vulnerabilidades                       |
+| `--script "http-*"`          | Se pueden usar wildcards para escanear con varios scripts |
+| `--script "discovery"`       | También se puede escanear con categorías enteras          |
 https://nmap.org/book/nse-usage.html
 [NSE categories](https://nmap.org/book/nse-usage.html#nse-categories)
 

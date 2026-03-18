@@ -2,52 +2,46 @@
 
 ## Registros de Propósito General (32-bit)
 
-|Registro|Descripción|
-|---|---|
-|**EAX**|Contiene el valor de retorno de una llamada a función|
-|**ECX**|Usado como contador de bucles. Puntero "this" en C++|
-|**EBX**|Propósito general|
-|**EDX**|Propósito general|
-|**ESI**|Puntero de índice de origen (Source Index)|
-|**EDI**|Puntero de índice de destino (Destination Index)|
-|**ESP**|Puntero de pila (Stack Pointer)|
-|**EBP**|Puntero base de pila (Stack Base Pointer)|
+| **Registro** | **Nombre**        | **Descripción Extendida**                                                                                                     |
+| ------------ | ----------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| **EAX**      | Accumulator       | El registro principal para operaciones aritméticas y el lugar estándar donde las funciones depositan su **valor de retorno**. |
+| **ECX**      | Counter           | Utilizado automáticamente como contador en bucles (`LOOP`) y operaciones de cadenas. En C++, suele pasar el puntero `this`.   |
+| **EBX**      | Base              | Históricamente usado como puntero a datos en el segmento DS. Hoy es un registro de propósito general "preservado".            |
+| **EDX**      | Data              | Extensión del acumulador. Se usa en multiplicaciones/divisiones complejas y para definir puertos de entrada/salida (I/O).     |
+| **ESI**      | Source Index      | Puntero de origen para operaciones de copia de memoria o strings (ej. `MOVSB`).                                               |
+| **EDI**      | Destination Index | Puntero de destino para operaciones de copia de memoria o strings.                                                            |
+| **ESP**      | Stack Pointer     | **Puntero dinámico**: Apunta siempre al "tope" actual de la pila (la dirección más baja ocupada).                             |
+| **EBP**      | Base Pointer      | **Puntero estático**: Apunta a la base del "stack frame" de la función actual para localizar variables locales y parámetros.  |
 
-## Registros de Segmento
 
-|Registro|Descripción|
-|---|---|
-|**CS**|Segmento de código (Code Segment)|
-|**SS**|Segmento de pila (Stack Segment)|
-|**DS**|Segmento de datos (Data Segment)|
-|**ES**|Segmento de datos extra|
-|**FS**|Apunta al Thread Information Block (TIB)|
-|**GS**|Segmento de datos extra|
+## Registros de segmento
 
-## Registros Misceláneos
-
-|Registro|Descripción|
-|---|---|
-|**EIP**|Puntero de instrucción (Instruction Pointer)|
-|**EFLAGS**|Banderas de estado del procesador|
+| **Registro** | **Categoría** | **Descripción**                                                                 |
+| ------------ | ------------- | ------------------------------------------------------------------------------- |
+| **CS**       | Segmento      | **Code Segment**: Ubicación del código que se está ejecutando.                  |
+| **DS / ES**  | Segmento      | **Data / Extra Segment**: Ubicación de las variables y datos globales.          |
+| **SS**       | Segmento      | **Stack Segment**: Ubicación de la pila en memoria.                             |
+| **FS / GS**  | Segmento      | Segmentos extra. En Windows, **FS** apunta al Thread Information Block (TIB).   |
+| **EIP**      | Control       | **Instruction Pointer**: Contiene la dirección de la **siguiente instrucción**. |
+| **EFLAGS**   | Control       | Registro de 32 bits donde cada bit es una "bandera" de estado.                  |
 
 ## Banderas de Estado (EFLAGS)
 
-|Bandera|Descripción|
-|---|---|
-|**ZF** (Zero Flag)|Operación resultó en cero|
-|**CF** (Carry Flag)|Origen > destino en sustracción|
-|**SF** (Sign Flag)|Operación resultó en número negativo|
-|**OF** (Overflow Flag)|Resultado muy grande para el destino|
+| **Bandera** | **Nombre**    | **Se activa (1) cuando...**                                            |
+| ----------- | ------------- | ---------------------------------------------------------------------- |
+| **ZF**      | Zero Flag     | El resultado de la operación fue exactamente **cero**.                 |
+| **CF**      | Carry Flag    | Hubo un acarreo o préstamo (útil para aritmética sin signo).           |
+| **SF**      | Sign Flag     | El resultado es negativo (el bit más significativo es 1).              |
+| **OF**      | Overflow Flag | El resultado excedió la capacidad del registro (aritmética con signo). |
 
 ## Registros de 16-bit y 8-bit
 
-|Registro 32-bit|Registro 16-bit|Registro 8-bit (High)|Registro 8-bit (Low)|
-|---|---|---|---|
-|**EAX**|AX|AH|AL|
-|**EBX**|BX|BH|BL|
-|**ECX**|CX|CH|CL|
-|**EDX**|DX|DH|DL|
+| **32-bit (Extendido)** | **16-bit (Bajo)** | **8-bit (High)** | **8-bit (Low)** |
+| ---------------------- | ----------------- | ---------------- | --------------- |
+| **EAX**                | AX                | AH               | AL              |
+| **EBX**                | BX                | BH               | BL              |
+| **ECX**                | CX                | CH               | CL              |
+| **EDX**                | DX                | DH               | DL              |
 
 # Instrucciones
 ```c
@@ -56,64 +50,41 @@ INS OP1, OP2, OP3 // instruction [operand1, operand2, operand3]
 // Pueden tomar "immediate values" (1,2,3...) o posiciones relativas como “[%eax + 4]” (EAX +4 bytes)
 ```
 
-## Instrucciones Aritméticas
+## Instrucciones aritméticas y de transferencia
 
-|Instrucción|Sintaxis|Descripción|
+| **Instrucción** | **Sintaxis**           | **Descripción**                                                        |
+| --------------- | ---------------------- | ---------------------------------------------------------------------- |
+| **MOV**         | `MOV dest, src`        | Copia el valor de `src` a `dest`. No afecta las banderas.              |
+| **LEA**         | `LEA dest, src`        | **Load Effective Address**: Calcula la dirección de `src` y la guarda. |
+| **PUSH / POP**  | `PUSH val` / `POP reg` | Mete o saca valores de la pila (modifica automáticamente `ESP`).       |
+| **ADD / SUB**   | `ADD dest, src`        | Suma o resta. El resultado se guarda en `dest`.                        |
+| **INC / DEC**   | `INC dest`             | Suma o resta **1** al operando de forma eficiente.                     |
+| **MUL / DIV**   | `MUL src`              | Multiplicación/División implícita usando EAX y EDX.                    |
+
+## Instrucciones de control de flujo
+
+| **Instrucción** | **Sintaxis**    | **Descripción**                                                                    |
+| --------------- | --------------- | ---------------------------------------------------------------------------------- |
+| **CMP**         | `CMP op1, op2`  | Resta `op2` de `op1` solo para actualizar banderas (no guarda el resultado).       |
+| **TEST**        | `TEST op1, op2` | Realiza un `AND` lógico para actualizar banderas (ideal para ver si algo es cero). |
+| **JMP**         | `JMP loc`       | Salto incondicional a una dirección de memoria.                                    |
+| **JE / JNE**    | `JE loc`        | Salta si es igual (ZF=1) o si no es igual (ZF=0).                                  |
+| **JG / JL**     | `JG loc`        | Salta si es Mayor (Greater) o Menor (Less).                                        |
+| **CALL / RET**  | `CALL func`     | Llama a una función (guarda retorno en pila) o regresa de ella.                    |
+
+## Instrucciones lógicas y de desplazamiento
+
+|**Instrucción**|**Sintaxis**|**Descripción**|
 |---|---|---|
-|**ADD**|`ADD <dest>, <source>`|Suma `<source>` a `<dest>`|
-|**SUB**|`SUB <dest>, <source>`|Resta `<source>` de `<dest>`|
-|**MUL**|`MUL <source>`|Multiplica EDX:EAX por `<source>`|
-|**DIV**|`DIV <divisor>`|Divide EDX:EAX por `<divisor>`|
-|**INC**|`INC <dest>`|Suma 1 a `<dest>`|
-|**DEC**|`DEC <dest>`|Resta 1 de `<dest>`|
-
-## Instrucciones de Transferencia de Datos
-
-| Instrucción | Sintaxis                | Descripción                                     |
-| ----------- | ----------------------- | ----------------------------------------------- |
-| **MOV**     | `MOV <dest>, <source>`  | Mueve datos de `<source>` a `<dest>`            |
-| **LEA**     | `LEA <dest>, <source>`  | Carga dirección efectiva en `<dest>`            |
-| **XCHG**    | `XCHG <dest>, <source>` | Intercambia contenidos de `<source>` y `<dest>` |
-| **PUSH**    | `PUSH <value>`          | Empuja valor de 32-bit a la pila                |
-| **POP**     | `POP <dest>`            | Saca valor de 32-bit de la pila                 |
-
-## Instrucciones de Comparación y Saltos
-
-|Instrucción|Sintaxis|Descripción|
-|---|---|---|
-|**CMP**|`CMP <dest>, <source>`|Compara `<source>` con `<dest>`|
-|**TEST**|`TEST <dest>, <source>`|Realiza OR lógico sin modificar `<dest>`|
-|**JMP**|`JMP <loc>`|Salto incondicional|
-|**JE**|`JE <loc>`|Salta si igual (ZF=1)|
-|**JNE**|`JNE <loc>`|Salta si no igual (ZF=0)|
-|**JZ**|`JZ <loc>`|Salta si cero (ZF=1)|
-|**JNZ**|`JNZ <loc>`|Salta si no cero (ZF=0)|
-|**JG**|`JG <loc>`|Salta si mayor (ZF=0 y SF=OF)|
-|**JGE**|`JGE <loc>`|Salta si mayor o igual (SF=OF)|
-|**JLE**|`JLE <loc>`|Salta si menor o igual (SF<>OF)|
-
-## Instrucciones de Desplazamiento y Rotación
-
-|Instrucción|Sintaxis|Descripción|
-|---|---|---|
-|**SHL**|`SHL <dest>, <count>`|Desplazamiento lógico a izquierda|
-|**SHR**|`SHR <dest>, <count>`|Desplazamiento lógico a derecha|
-|**ROL**|`ROL <dest>, <count>`|Rotación a izquierda|
-|**ROR**|`ROR <dest>, <count>`|Rotación a derecha|
-
-## Instrucciones Lógicas
-
-|Instrucción|Sintaxis|Descripción|
-|---|---|---|
-|**XOR**|`XOR <dest>, <source>`|XOR bit a bit|
-|**CALL**|`CALL <loc>`|Llama a función|
-|**RET**|`RET`|Retorna de función|
+|**XOR**|`XOR reg, reg`|Muy usado para poner un registro a cero de forma rápida (`XOR EAX, EAX`).|
+|**SHL / SHR**|`SHL dest, count`|Desplaza bits a la izq/der. Equivale a multiplicar/dividir por $2^n$.|
+|**ROL / ROR**|`ROL dest, count`|Rotación de bits: los que salen por un lado entran por el otro.|
 
 # La Pila (Stack)
 
 ## Estructura de la Pila
 
-![[stack_asm.png]]
+![[stack-vs-heap.png|875|1217x644]]![[stack_asm.png|415x301]]
 
 # Terminología del Lenguaje Ensamblador
 
