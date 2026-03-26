@@ -1,4 +1,4 @@
-(EL RÁPIDO)
+ (EL RÁPIDO)
 ```
 stegseek -sf archivo [opciones] wordlist
 ```

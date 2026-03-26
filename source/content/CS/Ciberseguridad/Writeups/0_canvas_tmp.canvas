@@ -1,0 +1,33 @@
+{
+	"nodes":[
+		{"id":"b44fb25671cb0316","type":"text","text":"# [Root](http://192.168.1.153:8080/)","x":-200,"y":-480,"width":396,"height":80},
+		{"id":"b1e5cf6d2ef3882d","type":"text","text":"## /search.php\n- XSS","x":-621,"y":-271,"width":261,"height":151},
+		{"id":"8ec1718f24a855d7","type":"text","text":"## /index.php\nRoot doc","x":-330,"y":-271,"width":250,"height":151},
+		{"id":"e3d2b31930b89c70","type":"text","text":"## /ip.php\n- Command injection?","x":-54,"y":-271,"width":250,"height":151},
+		{"id":"12d7131c1a4fa182","type":"text","text":"## /admin\n","x":220,"y":-271,"width":250,"height":151},
+		{"id":"3c9d9f57903053fe","type":"text","text":"### /index.old\n","x":-54,"y":-40,"width":250,"height":60},
+		{"id":"28f06f09e3868733","type":"text","text":"## /api\n- Siempre devuelve un 404 pero se referencia múltiples veces","x":-900,"y":-271,"width":250,"height":151},
+		{"id":"1cedbcc69f0bb14a","type":"text","text":"### [/index.php](http://192.168.1.153:8080/admin/index.php)","x":231,"y":-40,"width":250,"height":60},
+		{"id":"43dacee0cf5384ed","type":"text","text":"## [/inc_gate.php](http://192.168.1.153:8080/../inc_gate.php)\n- ???","x":520,"y":-271,"width":279,"height":151},
+		{"id":"f18246b3a915276f","x":266,"y":100,"width":180,"height":100,"type":"text","text":"```\n426-LVX\n```"},
+		{"id":"1a707e9f396d65d0","x":345,"y":-1020,"width":654,"height":320,"type":"text","text":"```\n Cookie: sulaco_nonce=e39a169d1b344e5c7187a3c7a24b21cd\n```\n\n```\ne39a169d1b344e5c7187a3c7a24b21cd\n```"},
+		{"id":"df4c0f1bdf2be282","x":-205,"y":-1280,"width":465,"height":580,"type":"text","text":"```\n79a9046bfe9d949068a42a5d8472a11f\n```\n\n```\nb81cf1ad3014e63f04d87610dacf55c6\n```\n\n```\ndc60a1d421276ab75b3d30c70075dfc9\n```\n\n```\n88c3c7c902090d87d9b25cf57006bbf1\n```\n\n```\nce9988fe97f09743277a5ff2559fc9b2\n```\n\n```\n9cf684e22abc90f66fe6bf6f251cbcbf\n```\n\n```\nb591f29fa488ae1e2a15652f8434f83c\n```\n\n```\n1adf69bc540e6f87bc4204833a59eb09\n```"},
+		{"id":"77fff779f51e4bb4","x":-1380,"y":-1280,"width":490,"height":580,"type":"text","text":"```\n3b4a3dc74735afc3685cd0b0c8c9d984\n```\n\n```\n8dec22504cf6f6fa6ba8ddd210502909\n```\n\n```\n4d009597e8a901b2b1997cd9ef304a94\n```\n\n```\n86b6ff8bfe18d1970a583f02c3d138b7\n```\n\n```\n8a503439b4e9330c33adec569d820424\n```\n\n```\n750ed3149f789e907420d55f5c9cfc48\n```\n\n```\nb591f29fa488ae1e2a15652f8434f83c\n```\n\n```\n9fd088877087876e3af4fc7e8947817f\n```"},
+		{"id":"ce3a9eac771b6904","x":-740,"y":-1280,"width":446,"height":580,"type":"text","text":"```\nELD-203\n```\n\n```\nLVX-426\n```\n\n```\nPRM-017\n```\n\n```\nLV-426\n```\n\n```\n203-ELD\n```\n\n```\n426-LVX\n```\n\n```\n017-PRM\n```\n\n```\n426-LV\n```"}
+	],
+	"edges":[
+		{"id":"d745f8f13e914498","fromNode":"b44fb25671cb0316","fromSide":"bottom","toNode":"b1e5cf6d2ef3882d","toSide":"top"},
+		{"id":"9bb4927b70f07201","fromNode":"b44fb25671cb0316","fromSide":"bottom","toNode":"8ec1718f24a855d7","toSide":"top"},
+		{"id":"33a821b8948c5eee","fromNode":"b44fb25671cb0316","fromSide":"bottom","toNode":"e3d2b31930b89c70","toSide":"top"},
+		{"id":"be2bbda0d287806e","fromNode":"b44fb25671cb0316","fromSide":"bottom","toNode":"12d7131c1a4fa182","toSide":"top"},
+		{"id":"86158c329a1bc1d7","fromNode":"12d7131c1a4fa182","fromSide":"bottom","toNode":"3c9d9f57903053fe","toSide":"top"},
+		{"id":"80e457b287984afe","fromNode":"b44fb25671cb0316","fromSide":"bottom","toNode":"43dacee0cf5384ed","toSide":"top"},
+		{"id":"cffa514230a7686e","fromNode":"b44fb25671cb0316","fromSide":"bottom","toNode":"28f06f09e3868733","toSide":"top"},
+		{"id":"7f8b80a75cc4f4cb","fromNode":"12d7131c1a4fa182","fromSide":"bottom","toNode":"1cedbcc69f0bb14a","toSide":"top"},
+		{"id":"d25957ccfa0eff97","fromNode":"b44fb25671cb0316","fromSide":"top","toNode":"ce3a9eac771b6904","toSide":"bottom"},
+		{"id":"d30467f077610222","fromNode":"1cedbcc69f0bb14a","fromSide":"bottom","toNode":"f18246b3a915276f","toSide":"top"},
+		{"id":"26b5e6fa6161b2a7","fromNode":"b44fb25671cb0316","fromSide":"top","toNode":"1a707e9f396d65d0","toSide":"bottom"},
+		{"id":"1e15205a5403c844","fromNode":"ce3a9eac771b6904","fromSide":"right","toNode":"df4c0f1bdf2be282","toSide":"left"},
+		{"id":"2071e7873058269c","fromNode":"ce3a9eac771b6904","fromSide":"left","toNode":"77fff779f51e4bb4","toSide":"right"}
+	]
+}

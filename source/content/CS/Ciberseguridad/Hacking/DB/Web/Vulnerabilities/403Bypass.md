@@ -35,6 +35,19 @@ URL encodear el último caracter de la ruta puede resultar exitoso a menudo. `ht
 
 > Es recomendable escanear en busca de versiones antiguas o buscar por repositorios/legacy (waybackURL...) viejos endpoints o versiones descontinuadas de API que puedan ser accesibles.
 
+
+## Lista Headers
+
+```
+X-ProxyUser-Ip
+Client-IP
+Host
+X-Originating-IP
+X-Forwarded-For
+X-Remote-IP
+X-Remote-Addr
+X-Real-IP
+```
 ## Fuentes
 https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-web/403-and-401-bypasses.html
 [Explicación + ejemplos explotación](https://youtu.be/PvpXRBor-Jw?list=PL65_wYSEg5HdSq1pSZxQmz7SoNE48vOgR)

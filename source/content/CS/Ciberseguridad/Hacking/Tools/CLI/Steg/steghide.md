@@ -1,4 +1,3 @@
-o
 ```
 steghide [comando] [opciones] [archivos]
 ```

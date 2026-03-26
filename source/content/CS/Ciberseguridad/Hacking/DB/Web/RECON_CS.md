@@ -27,6 +27,7 @@
 
 # OSINT
 - [Taranis AI](https://taranis.ai/)
+- Bizum
 - [Social Searcher](https://www.social-searcher.com/)
 - [Social Catfish](https://socialcatfish.com/)
 - [Open buckets](https://buckets.grayhatwarfare.com/)

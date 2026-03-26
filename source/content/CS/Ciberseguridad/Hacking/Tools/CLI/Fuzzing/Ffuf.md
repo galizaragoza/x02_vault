@@ -1,4 +1,4 @@
-FFUF es una herramienta de fuzzing web escrita en Go para llevar a cabo tareas de reconocimiento como el descubrimiento de recursos, subdominios y directorios ocultos, así como ataques de diccionario.
+oxFFUF es una herramienta de fuzzing web escrita en Go para llevar a cabo tareas de reconocimiento como el descubrimiento de recursos, subdominios y directorios ocultos, así como ataques de diccionario.
 
 ```
 ffuf -u <URL> -w <lista_palabras> [opciones]
@@ -47,7 +47,7 @@ ffuf -u "url/function.php/FUZZ?=FUZZ2" -w dict1.txt:FUZZ -w dict2.txt:FUZZ2
 
 ### Extensiones fuzzing
 ```
--e .php,.html,.db,.conf,.config,.txt,.js,.py,.bak,.conf,.env,.jar,.csv,.xml,.md,.pdf,.zip,.rar,.jpg,.jpeg,.png,.db,.sql,.log,.json,.aspx
+-e .php,.html,.db,.conf,.config,.txt,.js,.py,.bak,.conf,.env,.jar,.csv,.xml,.md,.pdf,.zip,.rar,.jpg,.jpeg,.png,.db,.sql,.log,.json,.aspx,.cfg,.old,.phps
 ```
 
 ### Lista chill labs
@@ -62,9 +62,11 @@ Lista chill para labs
 ```
 **Requiere descargar** el [script](https://github.com/ffuf/ffuf-scripts/blob/master/README.md).
 
-### URLs vulnerables a LFI
+ ### URLs vulnerables a LFI
 ```shell
 ffuf -u "http://vulnerable/index.php?page=FUZZ" -w <ruta al diccionario> -c -recursion -recursion-depth 2 -t 64
+
+ffuf -u "http://vulnerable/index.php?FUZZ=FUZZ2" -w /usr/share/wordlists/seclists/Discovery/Web-Content/burp-parameter-names.txt:FUZZ -w /usr/share/wordlists/seclists/Fuzzing/LFI/LFI-Jhaddix.txt:FUZZ2  -ac -t 100 -c -r
 ```
 
 ### Ejemplo de para hacer bruteforce a un login

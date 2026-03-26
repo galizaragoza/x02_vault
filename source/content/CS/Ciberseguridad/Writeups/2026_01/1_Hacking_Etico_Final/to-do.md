@@ -1,0 +1,19 @@
+- [x] Primera parte
+	- [x] Correr nmapper.sh con -T4 en nmap
+		- [x] Añadir funcionalidad que borre todos los archivos xml, luego genere un archivo tar + comprimido de todos los archivos html 
+	- [x] Revisar todos los resultados del round 1 de scans
+		- [x] Tomar notas de los servicios y versiones (si hay) de cada IP
+		- [x] Comprobar los resultados del round 1 con round 2 (-T4) y ver si da más versiones/info
+			- [x] Comprobar los resultados del round 1 y 2 con el round 3 y descartar 1 de ellos.
+	- [x] Apartado empleados
+- [x] Segunda parte
+	- [x] Escaneo semiautomático de vulnerabilidades
+		- [x] Comprobar falsos positivos
+	- [x] Explotación
+	- [x] Escalada
+	- [x] Análisis del resto de servicios
+- [ ] Revisión final
+	- [ ] Saltos de página
+	- [ ] Saltos de línea
+	- [ ] Redacción/faltas
+	- [ ] Índice
