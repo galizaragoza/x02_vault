@@ -14,11 +14,12 @@ source /etc/skel/.bashrc
 # Reconocimiento
 ## Información del sistema y kernel
 ```bash
-uname -a ## Información disponible acerca del sistema y el kernel
 
 cat /etc/issue ## Identificador de la distribución del sistema operativo
 
-cat /proc/version ## Información detallada de la versión del kernel de Linux
+(cat /proc/version || uname -a ) 2>/dev/null
+
+cat /etc/os-release 2>/dev/null
 
 sudo -V | grep "Sudo ver" | grep "1\.[01234567]\.[0-9]\+\|1\.8\.1[0-9]\*\|1\.8\.2[01234567]" ## Comprueba si la versión de `sudo` es vulnerable.
 ```
@@ -95,22 +96,25 @@ find / -perm -g=s -type f 2>/dev/null
 getcap -r / 2>/dev/null
 ## Capabilities
 
+capsh --print
+## Más capabilities
+
 cat /dir/dir/file | grep Cap
 ## Capabilites de un archivo concreto
 
 grep Cap /proc/$PID/status
 ## Capabilites de un proceso por PID
 
-
+find / -writable -type f 2>/dev/null
 ## Archivos editables por el usuario actual
 
 find / -writable -type d 2>/dev/null
 ## Dirs editables
 
-find / -type f -writable 2>/dev/null 2>/dev/null
+find / -type f -writable 2>/dev/null 
 ## Archivos editables
 
-find / -type f -executable
+find / -type f -executable 2>/dev/null
 ## Archivos ejecutables
 
 find / -group group
@@ -118,12 +122,41 @@ find / -group group
 
 ```
 
+# Locations
+## Folders
+```
+ls -a /tmp /var/tmp /var/backups /var/mail/ /var/spool/mail/ /root
+```
+## Weird
+```sh
+find /home -user root 2>/dev/null
+#root owned files in /home folders
 
+for d in `find /var /etc /home /root /tmp /usr /opt /boot /sys -type d -user $(whoami) 2>/dev/null`; do find $d ! -user `whoami` -exec ls -l {} \; 2>/dev/null; done
+#Files owned by other users in folders owned by me
+
+find / -type f -user root ! -perm -o=r 2>/dev/null
+#Files owned by root, readable by me but not world readable
+
+find / '(' -type f -or -type d ')' '(' '(' -user $USER ')' -or '(' -perm -o=w ')' ')' ! -path "/proc/*" ! -path "/sys/*" ! -path "$HOME/*" 2>/dev/null
+#Files owned by me or world writable<div class="page-break" style="page-break-before: always;"></div>
+
+for g in `groups`;
+      do printf "  Group $g:\n";
+      find / '(' -type f -or -type d ')' -group $g -perm -g=w ! -path "/proc/*" ! -path "/sys/*" ! -path "$HOME/*" 2>/dev/null
+      done
+done
+#Writable files by each group I belong to
+```
 # Variables de entorno
-```
-env 
+```sh
+(env || set) 2>/dev/null 
 ```
 
+# Path
+```sh
+echo $PATH
+```
 
 # Scripts
 ### Suid3num
@@ -150,7 +183,7 @@ chmod u+s /bin/bash
 ## MySQL
 ### MySQL oneliner DB connection
 ```bash
-mysql -u USERNAME -pPASSWORD -h HOSTNAMEORIP DATABASENAME 
+mysql -u USERNAME -pPASSWORD -h HOSTNAME DATABASENAME 
 ```
 
 ## Groups

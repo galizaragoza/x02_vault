@@ -1,0 +1,1 @@
+https://www.elastic.co/security-labs/linux-rootkits-1-hooked-on-linux#rootkit-internals-and-hooking-techniques

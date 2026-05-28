@@ -1,4 +1,4 @@
-1
+
 # Parámetros
 
 | **Parámetro**           | **Función**                               | **Sintaxis de Ejemplo** |

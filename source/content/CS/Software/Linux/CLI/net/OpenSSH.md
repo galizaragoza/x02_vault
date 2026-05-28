@@ -10,8 +10,11 @@
 | `-X`              | Habilita el reenvío de la interfaz gráfica (X11 Forwarding).                       | `ssh -X user@host`                                |
 | `-v / -vv / -vvv` | Modo verbose para depuración (más "v" aumentan el detalle).                        | `ssh -vvv user@host`                              |
 | `-N`              | No ejecuta comandos remotos (útil solo para túneles).                              | `ssh -N -L 8080:localhost:80 user@host`           |
+| `-f`              | Envía el proceso al background                                                     |                                                   |
+| `-T`              | Deshabilita la asignación de una pseudo-terminal                                   |                                                   |
 | `-o`              | Permite pasar opciones de configuración específicas (ej. `StrictHostKeyChecking`). | `ssh -o "UserKnownHostsFile=/dev/null" user@host` |
-
+> [!important] Port forwarding
+> Correr `-L` o -`R` siempre con `-f -N -T` si solo se quiere forwardear el puerto de fondo
 # scp
 
 | Parámetro | Función               | Ejemplo                                      |

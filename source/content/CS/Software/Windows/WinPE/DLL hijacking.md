@@ -1,0 +1,1 @@
+https://book.hacktricks.wiki/en/windows-hardening/windows-local-privilege-escalation/dll-hijacking/writable-sys-path-dll-hijacking-privesc.html

@@ -26,21 +26,25 @@
 https://www.linkedin.com/posts/kendry-montes-0340a0228_cybersecurity-ciberseguridad-ethicalhacking-share-7432162394371641344-4xzL?utm_source=share&utm_medium=member_desktop&rcm=ACoAAExVGZQBgbPjdpP6Hwg2mKF7rAaeH5Vhgs0
 https://certifications.tcm-sec.com/
 
-| **Cert**      | **Level** | **Price** | **Corp**   | **Area**         | **Link**                                                                                           |
-| ------------- | --------- | --------- | ---------- | ---------------- | -------------------------------------------------------------------------------------------------- |
-| eJPPT         | Entry     | 249$      | INE        | Pentesting       | https://checkout.ine.com/#certification-prep-bundles                                               |
-| **Network+**  | Entry     | 287€      | CompTIA    | Network          | https://www.comptia.org/en-eu/certifications/network/                                              |
-| **Security+** | Entry     | 313€      | CompTIA    | Essential        | https://www.comptia.org/en-eu/certifications/security/#overview                                    |
-| SAL1          | Entry     | 349€      | THM        | SOC              | https://tryhackme.com/certification/security-analyst-level-1/details                               |
-| **CEH**       | Beginner  |           | EC-Council | Hacking          | https://www.eccouncil.org/train-certify/certified-ethical-hacker-ceh/                              |
-| **CCNA**      |           |           | Cisco      | Networking       |                                                                                                    |
-| CDSA          | Mid       |           | HTB        | SOC              | https://academy.hackthebox.com/preview/certifications/htb-certified-defensive-security-analyst     |
-| CWES          | Mid       |           | HTB        | Web Pentest      | https://academy.hackthebox.com/preview/certifications/htb-certified-web-exploitation-specialist    |
-| CCNP          | Advanced  |           | Cisco      | Networking       |                                                                                                    |
-| CPTS          | Advanced  |           | HTB        | Pentest          | https://academy.hackthebox.com/preview/certifications/htb-certified-penetration-testing-specialist |
-| **OSCP**      | Advanced  | 1,699$    | OffSec     | Pentest          | https://www.offsec.com/courses/pen-200/                                                            |
-| OSWA          |           |           |            | Wireless pentest |                                                                                                    |
-| **OSEP**      | Hardcore  |           |            |                  |                                                                                                    |
-| **OSWE**      | Hardcore  |           |            |                  |                                                                                                    |
-| **OSED**      | Hardcore  |           |            |                  |                                                                                                    |
-CEH > (eJPT) > OSCP > OSWA > OSCE³ > OSEE
+| Certificación       | Nivel        | Área             | Entidad          | Precio (Est.) | Enlace                                                                                                                      |
+| :------------------ | :----------- | :--------------- | :--------------- | :------------ | :-------------------------------------------------------------------------------------------------------------------------- |
+| eJPTv2              | Entry        | Pentesting       | INE              | 249$          | [Link](https://checkout.ine.com/)                                                                                           |
+| Network+            | Entry        | Networking       | CompTIA          | 287€          | [Link](https://www.comptia.org/certifications/network)                                                                      |
+| Security+           | Entry        | General          | CompTIA          | 313€          | [Link](https://www.comptia.org/certifications/security)                                                                     |
+| THM SAL1            | Entry        | SOC/Defensa      | TryHackMe        | 349€          | [Link](https://tryhackme.com/path/outline/itsac)                                                                            |
+| Cloud Practitioner  | Entry        | Cloud            | AWS              | 100$          | [Link](https://aws.amazon.com/certification/certified-cloud-practitioner/)                                                  |
+| **CEH**             | Beginner     | Hacking          | EC-Council       | 1,199$        | [Link](https://www.eccouncil.org/programs/certified-ethical-hacker-ceh/)                                                    |
+| **CCNA**            | Associate    | Networking       | Cisco            | 300$          | [Link](https://www.cisco.com/c/en/us/training-events/training-certifications/certifications/associate/ccna.html)            |
+| CDSA                | Intermediate | SOC/Defensa      | HTB Academy      | 210$          | [Link](https://academy.hackthebox.com/preview/certifications/htb-certified-defensive-security-analyst)                      |
+| **CWES**            | Intermediate | Web Pentest      | HTB Academy      | 210$          | [Link](https://academy.hackthebox.com/preview/certifications/htb-certified-web-exploitation-specialist)                     |
+| **CCNP Enterprise** | Professional | Networking       | Cisco            | 400-800$      | [Link](https://www.cisco.com/site/us/en/learn/training-certifications/certifications/enterprise/ccnp-enterprise/index.html) |
+| CPTS                | Advanced     | Pentesting       | HTB Academy      | 210$          | [Link](https://academy.hackthebox.com/preview/certifications/htb-certified-penetration-testing-specialist)                  |
+| **OSCP**            | Advanced     | Pentesting       | OffSec           | 1,649$        | [Link](https://www.offsec.com/courses/pen-200/)                                                                             |
+| CRTP                | Advanced     | Active Directory | Altered Security | 249$          | [Link](https://www.alteredsecurity.com/adlab)                                                                               |
+| CISSP               | Expert       | Gestión          | ISC2             | 749$          | [Link](https://www.isc2.org/Certifications/CISSP)                                                                           |
+| **OSEP**            | Hardcore     | Red Teaming      | OffSec           | 1,649$        | [Link](https://www.offsec.com/courses/pen-300/)                                                                             |
+| **OSWE**            | Hardcore     | Web Exploit      | OffSec           | 1,649$        | [Link](https://www.offsec.com/courses/web-300/)                                                                             |
+| **OSED**            | Hardcore     | Exploit Dev      | OffSec           | 1,649$        | [Link](https://www.offsec.com/courses/exp-301/)                                                                             |
+| **OSAI**            | Hardcore     |                  |                  |               |                                                                                                                             |
+| **OSEE**            | Expert       |                  |                  |               |                                                                                                                             |
+

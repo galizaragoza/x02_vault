@@ -1,0 +1,1 @@
+Credential stuffing es una táctica utilizada por los atacantes que consiste en un ataque automatizado a paneles de login utilizando contraseñas filtradas obtenidas en la darknet. Explota la tendencia de los usuarios a reusar contraseñas.

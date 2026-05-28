@@ -7,6 +7,8 @@ Se llega a hacer bastante tedioso, no recomendaría su lectura.
 Brillante guía de principios de OpSec y como montar una infraestructura de ataque en torno a ello. Una especie de write-up de un par de cientos de páginas realista sobre un ataque totalmente black-box, empezando desde el reconocimiento, hasta la explotación, escalada de privilegios de una empresa, para luego pivotar a una empresa socia de esta primera y escalar de nuevo hasta infiltrarse del todo. 
 Didáctico, explicaciones buenísimas de tecnologías como Docker y Kubernetes y mucho contenido sobre el funcionamiento interno de AWS. Quizá algo avanzado para principiantes (yo mismo a la hora de leerlo). Sin embargo, recomendaría leerlo a cualquiera, sin romperse la cabeza intentando entender todo en caso de ser novato, para ver como funciona la lógica de un experto en pentesting y aprender de pensamiento lateral.
 
+## Ethical Hacking - Daniel G. Graham
+
 # Linux
 ## How Linux Works: What every superuser should know
 Excelente, profundiza lo justo en una amplia variedad de temas y es vital para aprender tanto las posibilidades de Linux como herramientas básicas, conocimiento fundamental sobre el funcionamiento del OS y el kernel, como se estructura todo, da también información muy útil sobre temas generales como red, filesystems, seguridad... Es una lectura vital para IT. El equilibrio entre conceptos complejos sin dejar de ser asequible para cualquiera con una mínima base de informática es brillante y hace sentir Linux como algo mucho más poderoso, además de ganar mucha confianza a la hora de diagnosticar y resolver, yo mismo cambié de OS principal al terminar de leerlo.

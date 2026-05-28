@@ -1,0 +1,2 @@
+# Que es DNS Cache Poisoning
+En el contexto de una organización que usa un Open Resolver, un atacante puede informar al DNS Resolver de forma maliciosa para redirigir el tráfico de una organización hacia un sitio malicioso

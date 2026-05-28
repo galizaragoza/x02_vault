@@ -1,24 +1,24 @@
 # apt
 
-| Comando/Parámetro         | Función                                                                                             | Ejemplo de Sintaxis                                       |
-| ------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------- |
-| `update`                  | Actualiza la lista de paquetes disponibles desde los repositorios                                   | `sudo apt update`                                         |
-| `upgrade`                 | Actualiza todos los paquetes instalados a sus versiones más recientes                               | `sudo apt upgrade`                                        |
-| `full-upgrade`            | Actualiza paquetes, manejando cambios en dependencias que puedan requerir eliminar algunos paquetes | `sudo apt full-upgrade`                                   |
-| `install`                 | Instala uno o más paquetes                                                                          | `sudo apt install nombre-paquete`                         |
-| `install --reinstall`     | Reinstala un paquete ya instalado                                                                   | `sudo apt install --reinstall nombre-paquete`             |
-| `remove`                  | Elimina uno o más paquetes (mantiene archivos de configuración)                                     | `sudo apt remove nombre-paquete`                          |
-| `purge`                   | Elimina completamente uno o más paquetes, incluyendo archivos de configuración                      | `sudo apt purge nombre-paquete`                           |
-| `autoremove`              | Elimina paquetes automáticamente instalados que ya no son necesarios                                | `sudo apt autoremove`                                     |
-| `search`                  | Busca paquetes que coincidan con un patrón                                                          | `apt search "patrón de búsqueda"`                         |
-| `show`                    | Muestra información detallada sobre un paquete                                                      | `apt show nombre-paquete`                                 |
-| `list`                    | Lista paquetes según criterios específicos                                                          | `apt list --installed`                                    |
-| `edit-sources`            | Edita el archivo sources.list con el editor por defecto                                             | `sudo apt edit-sources`                                   |
-| `--help`                  | Muestra ayuda sobre el uso de apt                                                                   | `apt --help`                                              |
-| `--version`               | Muestra la versión de apt                                                                           | `apt --version`                                           |
-| `-y` / `--yes`            | Responde automáticamente "sí" a todas las preguntas                                                 | `sudo apt install -y nombre-paquete`                      |
-| `--no-install-recommends` | No instala paquetes recomendados                                                                    | `sudo apt install --no-install-recommends nombre-paquete` |
-| `--install-suggests`      | Instala también paquetes sugeridos                                                                  | `sudo apt install --install-suggests nombre-paquete`      |
+|Comando/Parámetro|Función|Ejemplo de Sintaxis|
+|---|---|---|
+|`update`|Actualiza la lista de paquetes disponibles desde los repositorios|`sudo apt update`|
+|`upgrade`|Actualiza todos los paquetes instalados a sus versiones más recientes|`sudo apt upgrade`|
+|`full-upgrade`|Actualiza paquetes, manejando cambios en dependencias que puedan requerir eliminar algunos paquetes|`sudo apt full-upgrade`|
+|`install`|Instala uno o más paquetes|`sudo apt install nombre-paquete`|
+|`install --reinstall`|Reinstala un paquete ya instalado|`sudo apt install --reinstall nombre-paquete`|
+|`remove`|Elimina uno o más paquetes (mantiene archivos de configuración)|`sudo apt remove nombre-paquete`|
+|`purge`|Elimina completamente uno o más paquetes, incluyendo archivos de configuración|`sudo apt purge nombre-paquete`|
+|`autoremove`|Elimina paquetes automáticamente instalados que ya no son necesarios|`sudo apt autoremove`|
+|`search`|Busca paquetes que coincidan con un patrón|`apt search "patrón de búsqueda"`|
+|`show`|Muestra información detallada sobre un paquete|`apt show nombre-paquete`|
+|`list`|Lista paquetes según criterios específicos|`apt list --installed`|
+|`edit-sources`|Edita el archivo sources.list con el editor por defecto|`sudo apt edit-sources`|
+|`--help`|Muestra ayuda sobre el uso de apt|`apt --help`|
+|`--version`|Muestra la versión de apt|`apt --version`|
+|`-y` / `--yes`|Responde automáticamente "sí" a todas las preguntas|`sudo apt install -y nombre-paquete`|
+|`--no-install-recommends`|No instala paquetes recomendados|`sudo apt install --no-install-recommends nombre-paquete`|
+|`--install-suggests`|Instala también paquetes sugeridos|`sudo apt install --install-suggests nombre-paquete`|
 
 # apt-get
 
