@@ -144,6 +144,34 @@ s/regex/reemplazo/flags
 
 ---
 
+## Expresiones regulares: BRE vs ERE
+
+Por defecto sed usa **BRE** (Basic Regular Expressions); con `-E`/`-r` usa **ERE** (Extended). La diferencia clave: en BRE los metacaracteres `+ ? { } ( ) |` son literales y hay que escaparlos con `\` para darles significado especial; en ERE funcionan directamente.
+
+| Construcción | BRE (por defecto) | ERE (`-E`) | Significado |
+|--------------|-------------------|------------|-------------|
+| Agrupación | `\( \)` | `( )` | Grupo / captura. |
+| Alternancia | `\|` | `\|` (literal `|`) | "o" lógico. |
+| Una o más | `\+` | `+` | Repetición ≥ 1. |
+| Cero o una | `\?` | `?` | Opcional. |
+| Cantidad exacta | `\{n,m\}` | `{n,m}` | Entre n y m repeticiones. |
+| Backreference | `\1`–`\9` | `\1`–`\9` | Referencia a grupo (en ambos). |
+
+| Metacarácter | Función | Ejemplo |
+|--------------|---------|---------|
+| `.` | Cualquier carácter (no newline). | `s/a.c/X/` |
+| `*` | Cero o más del átomo previo. | `s/ab*/X/` |
+| `^` / `$` | Inicio / fin de línea. | `s/^#//`, `s/ *$//` |
+| `[...]` / `[^...]` | Clase de caracteres / negada. | `s/[0-9]//g` |
+| `[[:class:]]` | Clases POSIX (`alpha`, `digit`, `space`, `alnum`, `punct`...). | `s/[[:space:]]//g` |
+| `\<` / `\>` | Límite de palabra inicio / fin (GNU). | `s/\<foo\>/bar/` |
+| `\b` / `\B` | Límite / no-límite de palabra (GNU). | `s/\bfoo\b/bar/` |
+| `\w` / `\W` | Carácter de palabra / no-palabra (GNU). | `s/\w\+/X/` |
+| `\s` / `\S` | Espacio / no-espacio (GNU). | `s/\s\+/ /g` |
+| `\+` `\?` `\|` | (Solo en BRE) versiones escapadas de los operadores ERE. | `sed 's/colou\?r/X/'` |
+
+---
+
 ## Casos de uso comunes
 
 ```bash

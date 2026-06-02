@@ -11,16 +11,16 @@
 
 # CIDR
 
-|**CIDR**|**Máscara de Red (Decimal)**|**Total de IPs**|**IPs Útiles (Hosts)**|**Explicación Breve**|
-|---|---|---|---|---|
-|`/32`|`255.255.255.255`|1|1|Define una **única IP** (Host específico).|
-|`/30`|`255.255.255.252`|4|2|Ideal para enlaces **Punto a Punto** (Router a Router).|
-|`/29`|`255.255.255.248`|8|6|Redes muy pequeñas (ej. servidores públicos limitados).|
-|`/27`|`255.255.255.224`|32|30|Segmentación de departamentos pequeños.|
-|`/24`|`255.255.255.0`|256|254|El estándar para **LANs domésticas** y pequeñas oficinas.|
-|`/21`|`255.255.248.0`|2.048|2.046|Redes corporativas grandes con muchos dispositivos.|
-|`/16`|`255.255.0.0`|65.536|65.534|Redes de campus o infraestructuras cloud extensas.|
-|`/8`|`255.0.0.0`|16.7M|16.7M|Redes globales o privadas masivas (ej. Red `10.x.x.x`).|
+| **CIDR** | **Máscara de Red (Decimal)** | **Total de IPs** | **IPs Útiles (Hosts)** | **Explicación Breve**                                     |
+| -------- | ---------------------------- | ---------------- | ---------------------- | --------------------------------------------------------- |
+| `/32`    | `255.255.255.255`            | 1                | 1                      | Define una **única IP** (Host específico).                |
+| `/30`    | `255.255.255.252`            | 4                | 2                      | Ideal para enlaces **Punto a Punto** (Router a Router).   |
+| `/29`    | `255.255.255.248`            | 8                | 6                      | Redes muy pequeñas (ej. servidores públicos limitados).   |
+| `/27`    | `255.255.255.224`            | 32               | 30                     | Segmentación de departamentos pequeños.                   |
+| `/24`    | `255.255.255.0`              | 256              | 254                    | El estándar para **LANs domésticas** y pequeñas oficinas. |
+| `/21`    | `255.255.248.0`              | 2.048            | 2.046                  | Redes corporativas grandes con muchos dispositivos.       |
+| `/16`    | `255.255.0.0`                | 65.536           | 65.534                 | Redes de campus o infraestructuras cloud extensas.        |
+| `/8`     | `255.0.0.0`                  | 16.7M            | 16.7M                  | Redes globales o privadas masivas (ej. Red `10.x.x.x`).   |
 
 2^ (32−CIDR) − 2 = Host disponibles
 

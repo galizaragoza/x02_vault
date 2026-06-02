@@ -13,6 +13,7 @@ cut [opciones] [fichero...]
 | `-f <lista>` / `--fields=<lista>` | Selecciona campos (columnas delimitadas). El delimitador por defecto es el tabulador. | `cut -f1,3 /etc/passwd` |
 | `-c <lista>` / `--characters=<lista>` | Selecciona por posición de carácter (basado en 1). | `cut -c1-10 fichero.txt` |
 | `-b <lista>` / `--bytes=<lista>` | Selecciona por posición de byte. Difiere de `-c` en codificaciones multibyte. | `cut -b1-50 binario` |
+| `-n` | Con `-b`, no parte caracteres multibyte. Aceptada por compatibilidad POSIX; sin efecto en coreutils GNU. | `cut -nb1-4 fichero` |
 
 ---
 
@@ -36,6 +37,14 @@ cut [opciones] [fichero...]
 | Opción | Descripción | Ejemplo |
 |--------|-------------|---------|
 | `--complement` | Invierte la selección: extrae todo lo que NO está en la lista. | `cut -d: -f1 --complement /etc/passwd` |
+
+**Separador de registros y metainformación:**
+
+| Opción | Descripción | Ejemplo |
+|--------|-------------|---------|
+| `-z` / `--zero-terminated` | Usa NUL como separador de línea en lugar de newline (útil con `find -print0`). | `find . -print0 \| cut -z -d/ -f2` |
+| `--help` | Muestra la ayuda. | `cut --help` |
+| `--version` | Muestra la versión. | `cut --version` |
 
 ---
 

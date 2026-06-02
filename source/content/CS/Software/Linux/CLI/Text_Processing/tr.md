@@ -14,6 +14,8 @@ tr [opciones] CONJUNTO1 [CONJUNTO2]
 | `-s` / `--squeeze-repeats` | Comprime secuencias de caracteres repetidos de CONJUNTO1 (o de CONJUNTO2 si se proporcionan ambos) a una sola ocurrencia. | `tr -s ' '` |
 | `-c` / `-C` / `--complement` | Usa el complemento de CONJUNTO1 (todos los bytes que NO están en CONJUNTO1). | `tr -cd '[:alnum:]'` |
 | `-t` / `--truncate-set1` | Trunca CONJUNTO1 al tamaño de CONJUNTO2 antes de traducir. Evita que CONJUNTO1 más largo cause comportamiento inesperado. | `tr -t '[:upper:]' '[:lower:]'` |
+| `--help` | Muestra la ayuda. | `tr --help` |
+| `--version` | Muestra la versión. | `tr --version` |
 
 ---
 

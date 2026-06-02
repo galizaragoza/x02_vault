@@ -116,3 +116,8 @@ Material:
 ```
 Revísame tiempos verbales, faltas de ortográfica, imprecisiones temporales y mejores formas de expresar de forma objetiva la información de este texto
 ```
+
+## Miniatura
+```
+Representa esta escena es 16x9 pero stilo retro hacker 3D primitivo / early CGI noventero sobre [TEMA]. La imagen debe construirse como un entorno tecnológico artificial y especulativo, con una composición única y no repetitiva, sin limitarse a fondos oscuros: reflejos brillantes, sombras duras, superficies plásticas y acabado de render 3D antiguo de los años 90. El escenario debe variar en arquitectura visual, profundidad, perspectiva, pudiendo o no aparecer patrones geométricos, suelos en damero o rejilla, wireframes, módulos luminosos, cables, glitches visuales y objetos técnicos no necesariamente identificables. La composición debe evitar cualquier sensación de plantilla o repetición, priorizando un encuadre singular, una atmósfera propia y una distribución irregular de elementos. Prohibido incluir texto, letras, palabras, logotipos, marcas, carteles legibles o tipografía dentro de la imagen.
+```

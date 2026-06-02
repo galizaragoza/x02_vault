@@ -164,6 +164,214 @@
 |`read -a`|Lee palabras en array|`read -a array <<< "a b c d"`|
 
 
+# Expansión de parámetros (Parameter Expansion)
+
+Transformaciones sobre el valor de una variable en el momento de la expansión, sin invocar herramientas externas (`sed`, `cut`...). Son más rápidas y portables dentro de scripts. Asumiendo `VAR="/ruta/al/fichero.tar.gz"` y `PATH_VAR="usr:bin:local"`.
+
+## Valores por defecto y comprobación
+
+| Expansión | Función | Ejemplo |
+|-----------|---------|---------|
+| `${VAR}` | Valor de la variable (forma explícita; permite pegar texto: `${VAR}_suffix`). | `echo "${VAR}.bak"` |
+| `${VAR:-def}` | Usa `def` si `VAR` está vacía o sin definir. No modifica `VAR`. | `echo "${EDITOR:-vi}"` |
+| `${VAR:=def}` | Asigna `def` a `VAR` si está vacía/sin definir, y la expande. | `: "${TMPDIR:=/tmp}"` |
+| `${VAR:?msg}` | Error a stderr con `msg` y sale si `VAR` está vacía/sin definir. | `: "${API_KEY:?falta API_KEY}"` |
+| `${VAR:+alt}` | Usa `alt` solo si `VAR` está definida y no vacía. | `echo "${DEBUG:+--verbose}"` |
+
+> Sin los dos puntos (`${VAR-def}`, etc.), la condición solo distingue *sin definir* de *definida* (una variable vacía cuenta como definida).
+
+## Longitud, subcadena e indirección
+
+| Expansión | Función | Ejemplo |
+|-----------|---------|---------|
+| `${#VAR}` | Longitud (número de caracteres) del valor. | `echo ${#VAR}` |
+| `${VAR:offset}` | Subcadena desde `offset` (basado en 0) hasta el final. | `echo "${VAR:6}"` |
+| `${VAR:offset:len}` | Subcadena de `len` caracteres desde `offset`. | `echo "${VAR:0:5}"` |
+| `${VAR: -N}` | Últimos N caracteres (ojo al espacio antes del `-`). | `echo "${VAR: -7}"` → `.tar.gz` |
+| `${!VAR}` | Indirección: expande a la variable cuyo nombre contiene `VAR`. | `n=HOME; echo "${!n}"` |
+| `${!pre*}` / `${!pre@}` | Nombres de variables que empiezan por `pre`. | `echo ${!BASH*}` |
+
+## Eliminación de prefijos y sufijos (string trimming)
+
+Eliminan la parte del valor que casa un patrón glob. Clave para manipular rutas y nombres sin `basename`/`dirname`.
+
+| Expansión | Función | Ejemplo (`VAR="/ruta/al/fichero.tar.gz"`) |
+|-----------|---------|-------------------------------------------|
+| `${VAR#patrón}` | Elimina el prefijo más **corto** que case `patrón`. | `${VAR#*/}` → `ruta/al/fichero.tar.gz` |
+| `${VAR##patrón}` | Elimina el prefijo más **largo** que case `patrón` (≈ `basename`). | `${VAR##*/}` → `fichero.tar.gz` |
+| `${VAR%patrón}` | Elimina el sufijo más **corto** que case `patrón`. | `${VAR%.*}` → `/ruta/al/fichero.tar` |
+| `${VAR%%patrón}` | Elimina el sufijo más **largo** que case `patrón`. | `${VAR%%.*}` → `/ruta/al/fichero` |
+
+Ejemplos sobre `PATH_VAR="usr:bin:local"`:
+
+| Expansión | Resultado | Equivale a |
+|-----------|-----------|------------|
+| `${PATH_VAR%%:*}` | `usr` | Primer campo (corta desde el primer `:` hasta el final). |
+| `${PATH_VAR##*:}` | `local` | Último campo (corta hasta el último `:`). |
+| `${PATH_VAR#*:}` | `bin:local` | Quita el primer campo. |
+| `${PATH_VAR%:*}` | `usr:bin` | Quita el último campo. |
+
+## Sustitución de patrón
+
+| Expansión | Función | Ejemplo (`s="a.b.c.d"`) |
+|-----------|---------|------------------------|
+| `${VAR/pat/rep}` | Sustituye la **primera** coincidencia de `pat` por `rep`. | `${s/./_}` → `a_b.c.d` |
+| `${VAR//pat/rep}` | Sustituye **todas** las coincidencias (global). | `${s//./_}` → `a_b_c_d` |
+| `${VAR/#pat/rep}` | Sustituye solo si `pat` casa al **inicio**. | `${s/#a/X}` → `X.b.c.d` |
+| `${VAR/%pat/rep}` | Sustituye solo si `pat` casa al **final**. | `${s/%d/X}` → `a.b.c.X` |
+| `${VAR/pat/}` | Elimina la coincidencia (reemplazo vacío). | `${s//./}` → `abcd` |
+
+## Modificación de mayúsculas/minúsculas y transformación (Bash 4+)
+
+| Expansión | Función | Ejemplo (`w="hola MUNDO"`) |
+|-----------|---------|---------------------------|
+| `${VAR^}` | Primera letra a mayúscula. | `${w^}` → `Hola MUNDO` |
+| `${VAR^^}` | Todo a mayúsculas. | `${w^^}` → `HOLA MUNDO` |
+| `${VAR,}` | Primera letra a minúscula. | `${w,}` → `hola MUNDO` |
+| `${VAR,,}` | Todo a minúsculas. | `${w,,}` → `hola mundo` |
+| `${VAR@Q}` | Valor entrecomillado de forma reutilizable por el shell. | `${w@Q}` → `'hola MUNDO'` |
+| `${VAR@U}` / `${VAR@L}` | A mayúsculas / minúsculas (Bash 5+). | `${w@U}` |
+| `${VAR@A}` | Genera una asignación que recrea la variable y atributos. | `declare -p` equivalente |
+
+---
+
+# Expansión de llaves (Brace Expansion)
+
+Genera cadenas arbitrarias **antes** de cualquier otra expansión; no depende de ficheros existentes (a diferencia de los wildcards).
+
+| Patrón | Función | Ejemplo → Resultado |
+|--------|---------|---------------------|
+| `{a,b,c}` | Lista de alternativas. | `echo {rojo,verde,azul}` → `rojo verde azul` |
+| `pre{a,b}post` | Con prefijo/sufijo. | `echo arch_{1,2}.log` → `arch_1.log arch_2.log` |
+| `{N..M}` | Rango numérico (ascendente o descendente). | `echo {1..5}` → `1 2 3 4 5` |
+| `{N..M..S}` | Rango con paso `S`. | `echo {0..10..2}` → `0 2 4 6 8 10` |
+| `{a..z}` | Rango de caracteres. | `echo {a..e}` → `a b c d e` |
+| `{01..03}` | Rango con relleno de ceros. | `echo {01..03}` → `01 02 03` |
+| Anidado | Combinaciones. | `echo {A,B}{1,2}` → `A1 A2 B1 B2` |
+
+```bash
+# Backup rápido de un fichero
+cp config.yml{,.bak}            # → cp config.yml config.yml.bak
+# Crear estructura de directorios
+mkdir -p proyecto/{src,test,docs}
+```
+
+---
+
+# Expansión aritmética
+
+| Construcción | Función | Ejemplo |
+|--------------|---------|---------|
+| `$(( expr ))` | Evalúa y **sustituye** por el resultado entero. | `echo $(( (2+3) * 4 ))` → `20` |
+| `(( expr ))` | Evalúa sin sustituir; fija `$?` (0 si resultado ≠ 0). | `(( i++ ))`, `if (( a > b )); then` |
+| `**` | Potencia. | `echo $(( 2 ** 10 ))` → `1024` |
+| `% / * + -` | Módulo, división entera, etc. | `echo $(( 17 % 5 ))` → `2` |
+| `<< >> & \| ^ ~` | Operadores a nivel de bit. | `echo $(( 1 << 4 ))` → `16` |
+| `b#n` | Número `n` en base `b`. | `echo $(( 16#ff ))` → `255`, `echo $(( 2#1010 ))` → `10` |
+| `c?a:b` | Ternario. | `echo $(( x>0 ? 1 : -1 ))` |
+
+> Dentro de `(( ))` y `$(( ))` no se necesita `$` para leer variables (`(( total = a + b ))`), y la división es entera (usar `bc -l` o `awk` para decimales).
+
+---
+
+# Evaluación condicional extendida `[[ ]]`
+
+Superset de `[ ]` (test) con menos sorpresas de entrecomillado y operadores extra (solo Bash/Zsh, no POSIX `sh`).
+
+| Operador | Función | Ejemplo |
+|----------|---------|---------|
+| `==` / `!=` | Igualdad con **coincidencia de patrón glob** (lado derecho sin comillas). | `[[ $f == *.txt ]]` |
+| `=~` | Coincidencia con **expresión regular** (ERE); grupos en `${BASH_REMATCH[@]}`. | `[[ $ip =~ ^[0-9.]+$ ]]` |
+| `<` / `>` | Orden lexicográfico (sin escapar, a diferencia de `[ ]`). | `[[ "$a" < "$b" ]]` |
+| `-z` / `-n` | Cadena vacía / no vacía. | `[[ -z $var ]]` |
+| `&&` / `\|\|` | AND / OR lógico dentro del propio test. | `[[ -f $f && -r $f ]]` |
+| `-nt` / `-ot` | Fichero más nuevo / más antiguo que otro. | `[[ src.c -nt bin ]]` |
+| `-ef` | Dos rutas refieren al mismo inodo (mismo fichero/hardlink). | `[[ a -ef b ]]` |
+
+```bash
+# Validar formato con regex y capturar grupos
+if [[ "2026-06-02" =~ ^([0-9]{4})-([0-9]{2})-([0-9]{2})$ ]]; then
+  echo "Año: ${BASH_REMATCH[1]}"
+fi
+```
+
+---
+
+# Arrays
+
+## Indexados
+
+| Operación | Sintaxis | Ejemplo |
+|-----------|----------|---------|
+| Declarar | `arr=(a b c)` o `declare -a arr` | `frutas=(manzana pera uva)` |
+| Asignar índice | `arr[i]=valor` | `frutas[3]=kiwi` |
+| Acceder | `${arr[i]}` | `echo "${frutas[0]}"` |
+| Todos los elementos | `"${arr[@]}"` (cada uno como palabra) | `for f in "${frutas[@]}"; do …` |
+| Todos los índices | `"${!arr[@]}"` | `echo "${!frutas[@]}"` |
+| Número de elementos | `${#arr[@]}` | `echo ${#frutas[@]}` |
+| Slice | `${arr[@]:offset:len}` | `echo "${frutas[@]:1:2}"` |
+| Añadir | `arr+=(nuevo)` | `frutas+=(mango)` |
+| Eliminar elemento | `unset 'arr[i]'` | `unset 'frutas[1]'` |
+
+## Asociativos (Bash 4+)
+
+| Operación | Sintaxis | Ejemplo |
+|-----------|----------|---------|
+| Declarar | `declare -A mapa` (**obligatorio**) | `declare -A edad` |
+| Asignar | `mapa[clave]=valor` | `edad[ana]=30` |
+| Acceder | `${mapa[clave]}` | `echo "${edad[ana]}"` |
+| Todas las claves | `"${!mapa[@]}"` | `for k in "${!edad[@]}"; do …` |
+| Todos los valores | `"${mapa[@]}"` | `echo "${edad[@]}"` |
+
+---
+
+# Globbing extendido y opciones de shell
+
+`extglob` (activar con `shopt -s extglob`) añade patrones tipo regex a la expansión de nombres:
+
+| Patrón | Función | Ejemplo |
+|--------|---------|---------|
+| `?(patrón)` | Cero o una ocurrencia. | `ls ?(fichero).txt` |
+| `*(patrón)` | Cero o más. | `rm *(.bak)` |
+| `+(patrón)` | Una o más. | `ls +([0-9]).log` |
+| `@(p1\|p2)` | Exactamente una de las alternativas. | `ls @(jpg\|png\|gif)` |
+| `!(patrón)` | Cualquier cosa **excepto** el patrón (negación). | `rm !(*.keep)` |
+| `**` | Globstar: recursivo en subdirectorios (requiere `shopt -s globstar`). | `ls **/*.md` |
+
+Opciones de shell útiles (`shopt`):
+
+| Opción | Efecto |
+|--------|--------|
+| `nocaseglob` | Globbing insensible a mayúsculas. |
+| `nullglob` | Un patrón sin coincidencias se expande a nada (en vez de quedarse literal). |
+| `dotglob` | Incluye ficheros ocultos (`.*`) en el globbing. |
+| `failglob` | Error si un patrón no casa nada. |
+
+---
+
+# Sourcing vs ejecución
+
+Diferencia clave: ejecutar un script lo corre en un **subproceso** (sus variables/`cd` no afectan al shell actual); *sourcearlo* lo ejecuta en el **shell actual**.
+
+| Forma | Efecto | Ejemplo |
+|-------|--------|---------|
+| `./script.sh` | Nuevo proceso (necesita `+x` y shebang). Cambios de entorno se pierden al terminar. | `./deploy.sh` |
+| `bash script.sh` | Nuevo proceso con `bash` explícito (no requiere `+x`). | `bash deploy.sh` |
+| `. ./script.sh` | **Source** (POSIX): ejecuta en el shell actual; conserva variables, funciones y `cd`. | `. ./entorno.sh` |
+| `source ./script.sh` | Idéntico a `.` (sinónimo de Bash). | `source ~/.bashrc` |
+
+```bash
+# Cargar variables de entorno en la sesión actual
+. ./.env            # las variables definidas quedan disponibles después
+# Frente a:
+./.env              # se exportarían solo dentro del subproceso → se pierden
+```
+
+> Patrón habitual: ficheros de configuración (`.bashrc`, `.env`, `lib/*.sh`) se *sourcean* para que sus definiciones persistan; scripts de tarea se ejecutan.
+
+---
+
 # Recursos
 ### [Bash Man: Process Subsitution](https://www.gnu.org/software/bash/manual/html_node/Process-Substitution.html)
 ### [Process Subs. StackExg](https://stackoverflow.com/questions/2443085/what-does-command-args-mean-in-the-shell)
+### [Bash Man: Shell Parameter Expansion](https://www.gnu.org/software/bash/manual/html_node/Shell-Parameter-Expansion.html)
