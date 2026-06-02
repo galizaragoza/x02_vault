@@ -34,15 +34,6 @@
   # Estas son las herramientas sobre las que debes generar guías
 
   <tool id=1>free</tool>
-  <tool id=2>service</tool>
-  <tool id=3>last</tool>
-  <tool id=4>who</tool>
-  <tool id=5>vmstat</tool>
-  <tool id=6>tr</tool>
-  <tool id=7>awk</tool>
-  <tool id=8>sed</tool>
-  <tool id=9>cut</tool>
-  <tool id=10>sh</tool>
 
   # A la hora de generar la guía, ten en cuenta estas pau
   - Si la guía ya existe, tu trabajo es ampliarla

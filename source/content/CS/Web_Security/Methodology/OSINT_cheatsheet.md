@@ -118,3 +118,68 @@ org:OrganizationName aws_secret_access_key
 
 ## AWS
 ### [Open s3 buckets](https://buckets.grayhatwarfare.com/)
+
+---
+
+# Personas (People OSINT)
+
+| Categoría | Recurso |
+|-----------|---------|
+| Agregadores | [Pipl](https://pipl.com/), [That'sThem](https://thatsthem.com/), [WhitePages](https://www.whitepages.com/) |
+| España | [Páginas Blancas](https://blancas.paginasamarillas.es/), padrón/BOE, [InfoEmpresa](https://www.infoempresa.com/) |
+| Genealogía / registros | [FamilySearch](https://www.familysearch.org/) |
+| Profesional | LinkedIn (+ [Apollo](https://www.apollo.io/), [RocketReach](https://rocketreach.co/)) |
+
+# Email y filtraciones (breaches)
+
+| Recurso | Uso |
+|---------|-----|
+| [HaveIBeenPwned](https://haveibeenpwned.com/) | ¿Aparece el email en brechas? |
+| [Dehashed](https://dehashed.com/) | Búsqueda en bases filtradas (de pago). |
+| [IntelligenceX](https://intelx.io/) | Leaks, pastes, darknet. |
+| [Hunter.io](https://hunter.io/) | Formato de emails corporativos + verificación. |
+| `holehe` | Saber en qué sitios está registrado un email. |
+| `h8mail` | Búsqueda de credenciales filtradas. |
+
+# Usernames
+
+| Recurso | Uso |
+|---------|-----|
+| `sherlock` | Busca un username en cientos de plataformas. |
+| `maigret` | Similar, más fuentes + reporte. |
+| [WhatsMyName](https://whatsmyname.app/) | Enumeración web de usernames. |
+| [Namechk](https://namechk.com/) | Disponibilidad de usernames/dominios. |
+
+# Imágenes y geolocalización
+
+| Recurso | Uso |
+|---------|-----|
+| [Google Lens](https://lens.google/) / [Yandex Images](https://yandex.com/images/) | Búsqueda inversa (Yandex es fuerte en caras). |
+| [TinEye](https://tineye.com/) | Búsqueda inversa + primera aparición. |
+| `exiftool` | Metadatos EXIF (GPS, dispositivo, fecha). |
+| [GeoGuessr / SunCalc](https://www.suncalc.org/) | Geolocalización por sombras/sol. |
+| [Mapillary](https://www.mapillary.com/) / Street View | Verificación de calle. |
+
+# Redes sociales
+
+| Plataforma | Herramienta / técnica |
+|------------|-----------------------|
+| Twitter/X | [TweetDeck](https://pro.twitter.com/), búsqueda avanzada `from: since: until:` |
+| Instagram | [Osintgram](https://github.com/Datalux/Osintgram), `imginn` |
+| Telegram | [tgstat](https://tgstat.com/), búsqueda de canales |
+| General | [Social Searcher](https://www.social-searcher.com/), [Social Catfish](https://socialcatfish.com/) |
+
+# Teléfonos
+
+| Recurso | Uso |
+|---------|-----|
+| `phoneinfoga` | Información y huella de un número. |
+| [Truecaller](https://www.truecaller.com/) | Identificación de llamadas. |
+| Formato internacional | Validar prefijo país/operador (libphonenumber). |
+
+# Recursos
+### [[RECON_CS]] · [[Dorks_CS]]
+### [OSINT Framework](https://osintframework.com/)
+### [Bellingcat's Online Investigation Toolkit](https://bellingcat.gitbook.io/toolkit)
+### [IntelTechniques Tools (Michael Bazzell)](https://inteltechniques.com/tools/)
+### [Awesome OSINT](https://github.com/jivoi/awesome-osint)

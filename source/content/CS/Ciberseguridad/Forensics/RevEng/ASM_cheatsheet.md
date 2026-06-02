@@ -135,6 +135,116 @@ INS OP1, OP2, OP3 // instruction [operand1, operand2, operand3]
 | **VA → RVA**  | `RVA = VA - BaseAddress`                                                   |
 | **RAW → VA**  | `VA = (Raw - SectionStartPtrToRaw) + (SectionStartRVA + ImageBase)`        |
 
-https://www.cs.virginia.edu/~evans/cs216/guides/x86.html#registers
-https://sammwy.com/blog/understanding-asm#registers
+# x86-64 (64-bit)
+
+## Registros de propósito general (64-bit)
+
+| 64-bit | 32-bit | 16-bit | 8-bit | Uso convencional (System V) |
+|--------|--------|--------|-------|------------------------------|
+| **RAX** | EAX | AX | AL | Valor de retorno; nº de syscall |
+| **RBX** | EBX | BX | BL | Preservado (callee-saved) |
+| **RCX** | ECX | CX | CL | 4º argumento |
+| **RDX** | EDX | DX | DL | 3er argumento |
+| **RSI** | ESI | SI | SIL | 2º argumento |
+| **RDI** | EDI | DI | DIL | 1er argumento |
+| **RBP** | EBP | BP | BPL | Base del stack frame (preservado) |
+| **RSP** | ESP | SP | SPL | Stack pointer |
+| **R8–R15** | R8D… | R8W… | R8B… | R8/R9 = 5º/6º argumento; R12–R15 preservados |
+| **RIP** | EIP | — | — | Instruction pointer |
+
+> Escribir en un registro de 32 bits (`mov eax, …`) **pone a cero** la mitad alta del de 64 bits. Escribir en 16/8 bits no.
+
+## Convenciones de llamada (calling conventions)
+
+| ABI | Orden de argumentos | Retorno | Notas |
+|-----|---------------------|---------|-------|
+| **System V (Linux/macOS)** | RDI, RSI, RDX, RCX, R8, R9, luego pila | RAX (RDX:RAX si 128b) | Stack alineado a 16 bytes en `call` |
+| **Microsoft x64 (Windows)** | RCX, RDX, R8, R9, luego pila | RAX | "Shadow space" de 32 bytes en la pila |
+| **cdecl (x86 32-bit)** | Todos por la pila (der→izq) | EAX | El **caller** limpia la pila |
+| **stdcall (x86 Win)** | Pila (der→izq) | EAX | El **callee** limpia (`ret N`) |
+
+| Tipo de registro | System V | Significado |
+|------------------|----------|-------------|
+| Callee-saved (preservados) | RBX, RBP, R12–R15 | La función llamada debe restaurarlos |
+| Caller-saved (volátiles) | RAX, RCX, RDX, RSI, RDI, R8–R11 | El llamador los salva si los necesita |
+
+## Syscalls (Linux x86-64)
+
+```asm
+; write(1, msg, len)  →  syscall nº 1
+mov rax, 1            ; nº de syscall en RAX
+mov rdi, 1            ; fd = stdout
+mov rsi, msg          ; buffer
+mov rdx, len          ; longitud
+syscall               ; en 32-bit era 'int 0x80' con nº en EAX, args en EBX,ECX,...
+```
+
+| Syscall | x86-64 (RAX) | x86 (EAX) |
+|---------|--------------|-----------|
+| `read` | 0 | 3 |
+| `write` | 1 | 4 |
+| `open` | 2 | 5 |
+| `execve` | 59 | 11 |
+| `exit` | 60 | 1 |
+
+# Prólogo y epílogo de función
+
+```asm
+; Prólogo: monta el stack frame
+push rbp
+mov  rbp, rsp
+sub  rsp, 0x20        ; reserva espacio para variables locales
+
+; ... cuerpo: locales en [rbp-X], argumentos en registros ...
+
+; Epílogo: deshace el frame y retorna
+mov  rsp, rbp        ; (o 'leave', que equivale a mov rsp,rbp / pop rbp)
+pop  rbp
+ret
+```
+
+# Patrones idiomáticos comunes (reversing)
+
+| Patrón ASM | Significado en C |
+|------------|------------------|
+| `xor eax, eax` | `eax = 0` (más corto que `mov eax,0`) |
+| `test eax, eax` + `jz` | `if (x == 0)` |
+| `test rax, rax` + `js` | `if (x < 0)` (comprueba signo) |
+| `lea rax, [rbx+rcx*4]` | aritmética de punteros / índices de array |
+| `cmp` + `jcc` | rama condicional `if/else` |
+| `add rsp, N` tras `call` | limpieza de argumentos en pila (cdecl) |
+| `rep movsb` | `memcpy` |
+| `rep stosb` | `memset` |
+| `cdq` / `cqo` | extiende signo de EAX/RAX a EDX:EAX antes de `idiv` |
+
+# Saltos condicionales (según EFLAGS)
+
+| Sin signo | Con signo | Condición |
+|-----------|-----------|-----------|
+| `JE`/`JZ` | `JE`/`JZ` | igual (ZF=1) |
+| `JNE`/`JNZ` | `JNE`/`JNZ` | distinto (ZF=0) |
+| `JA` (above) | `JG` (greater) | mayor |
+| `JAE` | `JGE` | mayor o igual |
+| `JB` (below) | `JL` (less) | menor |
+| `JBE` | `JLE` | menor o igual |
+
+> Sin signo usa CF; con signo usa SF/OF. Confundirlos es bug clásico al parchear binarios.
+
+# Sintaxis Intel vs AT&T
+
+| Aspecto | Intel (nasm, IDA, Ghidra) | AT&T (gas, gdb por defecto) |
+|---------|---------------------------|------------------------------|
+| Orden | `mov dest, src` | `mov src, dest` |
+| Registros | `eax` | `%eax` |
+| Inmediatos | `mov eax, 5` | `mov $5, %eax` |
+| Memoria | `[ebx+ecx*4]` | `(%ebx,%ecx,4)` |
+| Tamaño | implícito / `dword ptr` | sufijo `movl`, `movb`… |
+
+> En GDB: `set disassembly-flavor intel` para usar sintaxis Intel.
+
+# Recursos
+### [x86 Assembly Guide — UVA cs216](https://www.cs.virginia.edu/~evans/cs216/guides/x86.html#registers)
+### [Understanding ASM — sammwy](https://sammwy.com/blog/understanding-asm#registers)
+### [Felix Cloutier — x86/x64 instruction reference](https://www.felixcloutier.com/x86/)
+### [Linux syscall table (x86-64)](https://x64.syscall.sh/)
 

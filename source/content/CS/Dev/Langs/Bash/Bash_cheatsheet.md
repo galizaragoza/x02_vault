@@ -371,6 +371,104 @@ Diferencia clave: ejecutar un script lo corre en un **subproceso** (sus variable
 
 ---
 
+# Estructuras de control
+
+## Condicionales
+
+```bash
+if [[ $edad -ge 18 ]]; then
+  echo "mayor"
+elif [[ $edad -ge 13 ]]; then
+  echo "adolescente"
+else
+  echo "menor"
+fi
+
+# case (patrón glob, no regex)
+case "$opcion" in
+  start|s)  echo "arrancando" ;;
+  stop)     echo "parando"   ;;
+  *)        echo "desconocido" ;;   # default
+esac
+```
+
+## Bucles
+
+| Forma | Sintaxis |
+|-------|----------|
+| `for` sobre lista | `for x in a b c; do echo "$x"; done` |
+| `for` C-style | `for ((i=0; i<10; i++)); do echo $i; done` |
+| `for` sobre ficheros | `for f in *.txt; do …; done` |
+| `while` | `while [[ $i -lt 5 ]]; do ((i++)); done` |
+| `until` (hasta que sea cierto) | `until ping -c1 host; do sleep 1; done` |
+| Leer fichero línea a línea | `while IFS= read -r line; do echo "$line"; done < f.txt` |
+
+> Siempre `IFS= read -r` para no perder espacios ni interpretar `\`. Procesar la salida de un comando: `cmd | while read -r l; do …; done` (ojo: el `while` corre en subshell, las variables no persisten — usar process substitution `while …; done < <(cmd)`).
+
+# Funciones
+
+```bash
+saludar() {
+  local nombre="${1:-mundo}"   # parámetro posicional con default
+  echo "Hola, $nombre"
+  return 0                      # 0-255; el "valor" real se da por stdout/echo
+}
+saludar "Ana"
+resultado=$(saludar "Ana")     # capturar la salida
+```
+
+| Concepto | Detalle |
+|----------|---------|
+| Argumentos | `$1`, `$2`… `$@` (todos como palabras), `$#` (cantidad), `$*` (todos como una cadena) |
+| Retorno | `return N` solo fija `$?` (código 0-255); para devolver datos usar `echo`/`printf` + `$(...)` |
+| Variables locales | `local var=…` evita contaminar el ámbito global |
+| Recursión | Permitida; cuidado con la profundidad |
+
+# Señales y trap
+
+| Señal | Nº | Significado |
+|-------|----|-------------|
+| `SIGINT` | 2 | Ctrl-C (interrupción) |
+| `SIGTERM` | 15 | Terminación ordenada (default de `kill`) |
+| `SIGKILL` | 9 | Mata sin posibilidad de captura (no atrapable) |
+| `SIGHUP` | 1 | Cierre de terminal; usado para recargar daemons |
+| `EXIT` | — | Pseudo-señal Bash: se ejecuta al salir del script |
+
+```bash
+# Limpieza garantizada al salir (éxito o error)
+tmp=$(mktemp)
+trap 'rm -f "$tmp"' EXIT
+trap 'echo "abortado"; exit 130' INT TERM
+```
+
+# Manejo robusto de errores
+
+| Opción | Efecto |
+|--------|--------|
+| `set -e` (`errexit`) | Aborta el script si un comando falla |
+| `set -u` (`nounset`) | Error al usar variable sin definir |
+| `set -o pipefail` | Una tubería falla si **cualquier** etapa falla (no solo la última) |
+| `set -x` (`xtrace`) | Traza cada comando ejecutado (debug) |
+
+```bash
+set -euo pipefail            # cabecera defensiva habitual en scripts serios
+IFS=$'\n\t'                  # IFS seguro: evita split por espacios
+```
+
+> `set -e` tiene trampas: no dispara dentro de `if`, `&&`, `||` ni en funciones llamadas en esos contextos. No sustituye comprobar `$?` en puntos críticos.
+
+# Descriptores de fichero y redirección avanzada
+
+| Construcción | Función |
+|--------------|---------|
+| `exec 3< fichero` | Abre el FD 3 para lectura |
+| `exec 3> salida` | Abre el FD 3 para escritura |
+| `read -u 3 línea` | Lee del FD 3 |
+| `exec 3>&-` | Cierra el FD 3 |
+| `cmd 2>/dev/null` | Descarta stderr |
+| `cmd &>/dev/null` | Descarta stdout y stderr |
+| `cmd > >(tee log)` | Envía stdout a un proceso (tee) por process substitution |
+
 # Recursos
 ### [Bash Man: Process Subsitution](https://www.gnu.org/software/bash/manual/html_node/Process-Substitution.html)
 ### [Process Subs. StackExg](https://stackoverflow.com/questions/2443085/what-does-command-args-mean-in-the-shell)

@@ -136,3 +136,67 @@
 	- `powered by`
 	- `built upon`
 	- `running`
+
+# Subdomain enumeration
+
+| Fase | Herramienta / fuente |
+|------|----------------------|
+| Pasiva | `subfinder`, `amass enum -passive`, crt.sh, Censys, VirusTotal |
+| Bruteforce | `puredns bruteforce wordlist root.com` |
+| Permutaciones | `alterx`, `dnsgen` + `puredns resolve` |
+| Resolución | `puredns resolve` / `dnsx` (con resolvers fiables) |
+
+```sh
+subfinder -d target.com -all -silent | anew subs
+puredns bruteforce subdomains-top1m.txt target.com -r resolvers.txt | anew subs
+cat subs | dnsx -silent -a -resp | anew resolved
+```
+
+# Port scanning y servicios
+
+```sh
+naabu -list resolved -top-ports 1000 -o ports.txt        # descubrimiento rápido
+nmap -sV -sC -p- -iL resolved -oA nmap_full              # enumeración profunda
+```
+
+# Hosts vivos y captura HTTP
+
+```sh
+cat resolved | httpx -title -status-code -tech-detect -ip -cname | anew metadata
+cat metadata | cut -d' ' -f1 | gowitness scan file -f -    # capturas de pantalla
+```
+
+# Recolección de URLs y endpoints
+
+```sh
+cat hosts | gau | anew urls                # URLs históricas (wayback, otx, commoncrawl)
+cat hosts | waybackurls | anew urls
+katana -u https://target -d 3 -jc | anew urls   # crawler activo + parseo de JS
+## Clasificar por patrón de bug (tomnomnom/gf)
+cat urls | gf xss; cat urls | gf ssrf; cat urls | gf redirect
+```
+
+# Vulnerabilidades (Nuclei + fuzzing)
+
+```sh
+cat metadata | cut -d' ' -f1 | nuclei -t cves/ -t exposures/ -t misconfiguration/ \
+  -severity critical,high,medium -o nuclei.txt
+ffuf -u https://target/FUZZ -w raft-medium-directories.txt -mc all -fc 404
+cat urls | arjun -oT arjun.txt            # parámetros ocultos
+```
+
+# Pipeline de recon (resumen)
+
+```sh
+subfinder -d target.com -all -silent \
+  | puredns resolve -r resolvers.txt \
+  | httpx -silent -title -tech-detect -status-code \
+  | tee live.txt \
+  | nuclei -t cves/ -severity critical,high
+```
+
+# Recursos
+### [[OSINT_cheatsheet]] · [[Dorks_CS]] · [[bug-bounty-cs]]
+### [ProjectDiscovery — herramientas de recon](https://github.com/projectdiscovery)
+### [tomnomnom/gf — patrones de clasificación](https://github.com/tomnomnom/gf)
+### [Can I take over XYZ — subdomain takeover](https://github.com/EdOverflow/can-i-take-over-xyz)

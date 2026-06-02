@@ -91,3 +91,60 @@
 |                         | `OR`                    | OR lógico.                 | `"api_key" OR "client_secret"` |
 |                         | `NOT` / `-`             | Exclusión.                 | `NOT "test"`                   |
 |                         | `""`                    | Cadena exacta.             | `"HEROKU_API_KEY"`             |
+
+# Censys
+| **Categoría** | **Operador / Sintaxis** | **Descripción Técnica** | **Ejemplo de Uso** |
+| ------------- | ----------------------- | ----------------------- | ------------------ |
+| **Servicios** | `services.port:` | Puerto del servicio. | `services.port:22` |
+|  | `services.service_name:` | Protocolo detectado. | `services.service_name:HTTP` |
+|  | `services.software.product:` | Producto del banner. | `services.software.product:"nginx"` |
+| **TLS / Cert** | `services.tls.certificates.leaf_data.subject.common_name:` | CN del certificado. | `...common_name:"*.target.com"` |
+|  | `services.tls.certificates.leaf_data.issuer.organization:` | Emisor del cert. | — |
+| **Red** | `ip:` / `autonomous_system.asn:` | IP / ASN. | `autonomous_system.asn:15169` |
+|  | `location.country:` | País. | `location.country:"Spain"` |
+| **HTTP** | `services.http.response.html_title:` | Título de la página. | `...html_title:"Dashboard"` |
+|  | `services.http.response.status_code:` | Código HTTP. | `...status_code:200` |
+
+# FOFA
+| **Operador** | **Descripción** | **Ejemplo** |
+| ------------ | --------------- | ----------- |
+| `domain=` | Dominio. | `domain="target.com"` |
+| `host=` | Host/subdominio. | `host="admin.target.com"` |
+| `ip=` | IP o CIDR. | `ip="1.1.1.1/24"` |
+| `port=` | Puerto. | `port="6379"` |
+| `title=` | Título HTML. | `title="phpMyAdmin"` |
+| `body=` | Texto del cuerpo. | `body="X-Powered-By"` |
+| `cert=` | Contenido del certificado. | `cert="target.com"` |
+| `&&` / `\|\|` | AND / OR. | `app="grafana" && country="ES"` |
+
+# Recetas listas para usar (Google)
+
+| Objetivo | Dork |
+|----------|------|
+| Directory listing | `intitle:"index of" "parent directory"` |
+| Ficheros de entorno | `intext:DB_PASSWORD ext:env -git` |
+| Backups SQL expuestos | `site:target.com ext:sql OR ext:bak OR ext:old` |
+| Paneles de login | `inurl:admin intitle:login site:target.com` |
+| phpinfo | `inurl:phpinfo.php` |
+| Documentos con metadatos | `site:target.com ext:pdf OR ext:docx OR ext:xlsx` |
+| Logs con errores | `intext:"error" ext:log site:target.com` |
+| Git expuesto | `inurl:".git" -github.com` |
+| Credenciales en config | `intitle:"index of" "config.php"` |
+| Cámaras / IoT | `intitle:"webcamXP" inurl:8080` |
+
+# Recetas Shodan
+
+| Objetivo | Dork |
+|----------|------|
+| RDP abierto | `port:3389` |
+| Redis sin auth | `product:Redis port:6379 -authentication` |
+| Bases de datos Mongo | `product:MongoDB port:27017` |
+| Cámaras | `webcamxp` / `has_screenshot:true` |
+| Paneles industriales (ICS) | `port:502` (Modbus), `port:102` (S7) |
+| Por país y org | `country:ES org:"Telefonica" port:445` |
+
+# Recursos
+### [[Shodan_CS]] · [[Censys_CS]] · [[OSINT_cheatsheet]] · [[RECON_CS]]
+### [Google Hacking Database (Exploit-DB)](https://www.exploit-db.com/google-hacking-database)
+### [sundowndev — Google dork cheatsheet](https://gist.github.com/sundowndev/283efaddbcf896ab405488330d1bbc06)
+### [Shodan dorks](https://github.com/nullfuzz-pentest/shodan-dorks) · [Awesome Censys queries](https://github.com/thehappydinoa/awesome-censys-queries)
