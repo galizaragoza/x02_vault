@@ -53,14 +53,14 @@ unison perfil [opciones]
 
 ## Filtros: qué sincronizar
 
-| Opción | Descripción | Ejemplo |
-|--------|-------------|---------|
-| `-path <subruta>` | Sincroniza solo esa subruta dentro de las raíces (repetible). | `-path proyecto/src` |
-| `-ignore <patrón>` | Excluye rutas que casen el patrón (`Name`, `Path` o `Regex`). | `-ignore 'Name *.tmp'` |
-| `-ignorenot <patrón>` | Sincroniza **solo** lo que case (inverso de `-ignore`). | `-ignorenot 'Name *.md'` |
-| `-follow <patrón>` | Sigue los enlaces simbólicos que casen (sincroniza el contenido apuntado). | `-follow 'Path link'` |
-| `-immutable <patrón>` | Marca rutas como inmutables: se crean pero nunca se actualizan ni borran. | `-immutable 'Path cache'` |
-| `-immutablenot <patrón>` | Inverso de `-immutable`. | `-immutablenot 'Name *.log'` |
+| Opción                   | Descripción                                                                | Ejemplo                      |
+| ------------------------ | -------------------------------------------------------------------------- | ---------------------------- |
+| `-path <subruta>`        | Sincroniza solo esa subruta dentro de las raíces (repetible).              | `-path proyecto/src`         |
+| `-ignore <patrón>`       | Excluye rutas que casen el patrón (`Name`, `Path` o `Regex`).              | `-ignore 'Name *.tmp'`       |
+| `-ignorenot <patrón>`    | Sincroniza **solo** lo que case (inverso de `-ignore`).                    | `-ignorenot 'Name *.md'`     |
+| `-follow <patrón>`       | Sigue los enlaces simbólicos que casen (sincroniza el contenido apuntado). | `-follow 'Path link'`        |
+| `-immutable <patrón>`    | Marca rutas como inmutables: se crean pero nunca se actualizan ni borran.  | `-immutable 'Path cache'`    |
+| `-immutablenot <patrón>` | Inverso de `-immutable`.                                                   | `-immutablenot 'Name *.log'` |
 
 > Tipos de patrón: `Name x` (casa el nombre base con glob), `Path a/b/c` (ruta relativa exacta a la raíz), `Regex re` (expresión regular sobre la ruta).
 

@@ -11,8 +11,11 @@ sort [opciones] [fichero...]
 | Opción | Descripción | Ejemplo |
 |--------|-------------|---------|
 | (por defecto) | Orden lexicográfico byte a byte (ASCII). `10` va antes que `9`. | `sort nombres.txt` |
-| `-n` / `--numeric-sort` | Orden numérico. Ignora blancos iniciales, trata `0x` como hex con `-n`. | `sort -n numeros.txt` |
+| `-n` / `--numeric-sort` | Orden numérico por valor del prefijo numérico de la línea. Ignora blancos iniciales. | `sort -n numeros.txt` |
+| `-g` / `--general-numeric-sort` | Orden numérico general vía `strtold`: soporta notación científica (`1.5e3`), pero más lento que `-n`. | `sort -g cientifico.txt` |
 | `-h` / `--human-numeric-sort` | Orden numérico para sufijos de tamaño: `1K < 1M < 1G`. Entiende salida de `du -h`. | `du -sh */ \| sort -h` |
+| `-d` / `--dictionary-order` | Considera solo blancos y caracteres alfanuméricos al comparar. | `sort -d texto.txt` |
+| `-i` / `--ignore-nonprinting` | Ignora caracteres no imprimibles al comparar. | `sort -i datos.txt` |
 | `-V` / `--version-sort` | Orden natural de versiones: `1.2` < `1.10`. | `sort -V versiones.txt` |
 | `-M` / `--month-sort` | Ordena por nombre de mes abreviado en inglés (JAN < FEB < ... < DEC). | `sort -M meses.txt` |
 | `-R` / `--random-sort` | Orden aleatorio (shuffle). Cada ejecución produce resultado diferente. | `sort -R wordlist.txt` |
@@ -64,6 +67,18 @@ sort [opciones] [fichero...]
 | `--parallel=<n>` | Número de hilos de ordenación paralela. Por defecto: número de CPUs. | `sort --parallel=4 fichero_grande.txt` |
 | `-S <tamaño>` / `--buffer-size=<tamaño>` | Tamaño del buffer de memoria (ej. `512M`, `2G`). | `sort -S 1G fichero_grande.txt` |
 | `-T <dir>` / `--temporary-directory=<dir>` | Directorio para ficheros temporales cuando no cabe en memoria. | `sort -T /tmp -S 500M enorme.txt` |
+| `--compress-program=PROG` | Comprime los ficheros temporales con `PROG` (ej. `gzip`, `zstd`). | `sort --compress-program=zstd enorme.txt` |
+| `--batch-size=NMERGE` | Nº máximo de ficheros temporales fusionados a la vez. | `sort --batch-size=32 enorme.txt` |
+
+---
+
+## Diagnóstico y entrada
+
+| Opción | Descripción | Ejemplo |
+|--------|-------------|---------|
+| `--debug` | Resalta la parte de cada línea usada como clave y avisa de usos ambiguos. Esencial para depurar `-k`. | `sort -k2n --debug datos.txt` |
+| `--files0-from=F` | Lee la lista de ficheros de entrada (nombres terminados en NUL) desde `F` (`-` = stdin). | `find . -name '*.txt' -print0 \| sort --files0-from=-` |
+| `--sort=WORD` | Selecciona el tipo de ordenación por nombre (`general-numeric`, `human-numeric`, `month`, `numeric`, `random`, `version`). | `sort --sort=version paquetes.txt` |
 
 ---
 
