@@ -1,0 +1,32 @@
+- [ ] **APK vulnerable**
+	- [ ] Escoger
+	- [ ] Reconocimiento
+		- [ ] MobSF
+		- [ ] Virustotal
+	- [ ] Análisis estático
+		- [ ] Jadx
+		- [ ] MobSF
+	- [ ] Análisis dinámico
+		- [ ] Objection
+		- [ ] Burp
+- [ ] **APK de repo no oficial**
+	- [ ] Escoger
+	- [ ] Reconocimiento
+		- [ ] MobSF
+		- [ ] Virustotal
+	- [ ] Análisis estático
+		- [ ] Jadx
+		- [ ] MobSF
+	- [ ] Análisis dinámico
+		- [ ] Objection
+		- [ ] Burp
+- [ ] **Waze**
+	- [ ] Reconocimiento
+		- [ ] MobSF
+		- [ ] Virustotal
+	- [ ] Análisis estático
+		- [ ] Jadx
+		- [ ] MobSF
+	- [ ] Análisis dinámico
+		- [ ] Objection
+		- [ ] Burp

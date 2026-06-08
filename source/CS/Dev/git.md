@@ -1,0 +1,19 @@
+
+| **Comando**        | **Parámetros comunes**                      | **Descripción**                                    | **Ejemplo de sintaxis**                                                                               |
+| -------------- | --------------------------------------- | ---------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `git init`     | `--bare`, `--template=`                 | Inicializa un nuevo repositorio Git            | `git init`  <br>`git init --bare mi_repo.git`                                                     |
+| `git clone`    | `--branch`, `--depth`, `--recursive`    | Clona un repositorio existente                 | `git clone https://github.com/usuario/repo.git`  <br>`git clone --branch desarrollo repo_url`     |
+| `git add`      | `.`, `-A`, `-u`, `-p`                   | Añade archivos al área de staging              | `git add archivo.txt`  <br>`git add .`  <br>`git add -p`                                          |
+| `git commit`   | `-m`, `-a`, `--amend`, `-v`             | Confirma cambios al historial                  | `git commit -m "Mensaje descriptivo"`  <br>`git commit --amend`                                   |
+| `git status`   | `-s`, `-b`, `--porcelain`               | Muestra el estado del directorio de trabajo    | `git status`  <br>`git status -s`                                                                 |
+| `git log`      | `--oneline`, `--graph`, `-n`, `--since` | Muestra el historial de commits                | `git log --oneline`  <br>`git log -n 5 --graph`                                                   |
+| `git branch`   | `-a`, `-d`, `-D`, `-m`                  | Lista, crea o elimina ramas                    | `git branch`  <br>`git branch nueva-rama`  <br>`git branch -d rama-vieja`                         |
+| `git checkout` | `-b`, `--`, `-f`                        | Cambia de rama o restaura archivos             | `git checkout desarrollo`  <br>`git checkout -b feature/nueva`  <br>`git checkout -- archivo.txt` |
+| `git merge`    | `--no-ff`, `--squash`, `-m`             | Fusiona ramas                                  | `git merge desarrollo`  <br>`git merge --no-ff feature`                                           |
+| `git pull`     | `--rebase`, `--no-commit`               | Obtiene cambios del remoto y fusiona           | `git pull origin main`  <br>`git pull --rebase`                                                   |
+| `git push`     | `-u`, `--tags`, `-f`                    | Envía cambios al repositorio remoto            | `git push origin main`  <br>`git push -u origin nueva-rama`                                       |
+| `git remote`   | `add`, `remove`, `rename`, `-v`         | Gestiona repositorios remotos                  | `git remote add origin url`  <br>`git remote -v`                                                  |
+| `git stash`    | `save`, `list`, `pop`, `apply`          | Guarda cambios temporalmente                   | `git stash`  <br>`git stash save "mensaje"`  <br>`git stash pop`                                  |
+| `git diff`     | `--cached`, `HEAD`, `--name-only`       | Muestra diferencias entre commits, ramas, etc. | `git diff`  <br>`git diff HEAD~1`  <br>`git diff --cached`                                        |
+| `git reset`    | `--soft`, `--mixed`, `--hard`           | Restablece el estado del repositorio           | `git reset HEAD~1`  <br>`git reset --hard commit_hash`                                            |
+| `git rebase`   | `-i`, `--continue`, `--abort`           | Reaplica commits sobre otra base               | `git rebase desarrollo`  <br>`git rebase -i HEAD~3`                                               |
