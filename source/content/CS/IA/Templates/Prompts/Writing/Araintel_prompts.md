@@ -121,3 +121,13 @@ Revísame tiempos verbales, faltas de ortográfica, imprecisiones temporales y m
 ```
 Representa esta escena es 16x9 pero stilo retro hacker 3D primitivo / early CGI noventero sobre [TEMA]. La imagen debe construirse como un entorno tecnológico artificial y especulativo, con una composición única y no repetitiva, sin limitarse a fondos oscuros: reflejos brillantes, sombras duras, superficies plásticas y acabado de render 3D antiguo de los años 90. El escenario debe variar en arquitectura visual, profundidad, perspectiva, pudiendo o no aparecer patrones geométricos, suelos en damero o rejilla, wireframes, módulos luminosos, cables, glitches visuales y objetos técnicos no necesariamente identificables. La composición debe evitar cualquier sensación de plantilla o repetición, priorizando un encuadre singular, una atmósfera propia y una distribución irregular de elementos. Prohibido incluir texto, letras, palabras, logotipos, marcas, carteles legibles o tipografía dentro de la imagen.
 ```
+
+```
+Recrea la imagen de referencia manteniendo exactamente la misma composición, los mismos elementos, las mismas figuras, las mismas posiciones, las mismas proporciones y el mismo encuadre. No añadas elementos nuevos.  Conserva todas las figuras existentes y aplícales únicamente un acabado CGI retro 3D primitivo de los años 90: apariencia de plástico renderizado, superficies brillantes, reflejos especulares, bordes limpios, volumen artificial, sombras duras, iluminación marcada y textura sintética de render antiguo. Todo debe parecer modelado en 3D retro, con materiales pulidos y luminosidades suaves.
+
+Si la imagen ya contiene luces, brillos, pantallas, cubos, estructuras, líneas, símbolos o detalles tecnológicos, refuérzalos de forma moderada sin cambiar su forma ni añadir elementos nuevos. Solo se deben mejorar los elementos que ya existen en la imagen.
+
+El fondo debe conservar la estructura visual de la imagen original, pero puede transformarse en un degradado oscuro, brillante y atmosférico, con sensación retrofuturista abstracta.
+
+Respeta la imagen de referencia por encima de cualquier otra instrucción. No inventes contenido. No cambies el tema. La imagen final debe parecer la misma escena, con los mismos elementos, pero convertida a un render CGI retro 3D brillante, artificial, plástico y noventero.
+```

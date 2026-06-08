@@ -1,3 +1,5 @@
+Una expresión regular (regex) es un patrón formal que describe conjuntos de cadenas de texto, usado para buscar, validar, extraer y sustituir. Existen varios "sabores" con sintaxis ligeramente distinta: **BRE** (POSIX básica, usada por `grep`/`sed` sin flags), **ERE** (POSIX extendida, `grep -E`/`sed -E`/`awk`) y **PCRE** (Perl-compatible, `grep -P`, `pcregrep`, lenguajes como Python/JS), que añade lookarounds, lazy matching y clases `\d`/`\w`/`\s`. Las tablas siguientes usan notación PCRE salvo indicación contraria.
+
 ♦
 
 | **Flags** | **Función**                                                                                | **Ejemplo de patrón** | **Resultado (coincide con)**                 |
@@ -45,11 +47,85 @@
 | Cuantificadores y alternación | `+? {2,}?`   | Encuentra el mínimo número de repeticiones posible.           | `a+?`                                     | "a" (mínimo en greedy)                |
 | Cuantificadores y alternación | `            | `                                                             | Encuentra una alternación entre opciones. | `a                                    |
 
+# Clases de caracteres POSIX
+
+Válidas dentro de corchetes (`[[:clase:]]`), portables entre BRE/ERE/PCRE.
+
+| Clase | Equivalente | Coincide con |
+|-------|-------------|--------------|
+| `[[:alpha:]]` | `[A-Za-z]` | Letras. |
+| `[[:digit:]]` | `[0-9]` / `\d` | Dígitos. |
+| `[[:alnum:]]` | `[A-Za-z0-9]` | Letras y dígitos. |
+| `[[:lower:]]` | `[a-z]` | Minúsculas. |
+| `[[:upper:]]` | `[A-Z]` | Mayúsculas. |
+| `[[:space:]]` | `\s` | Espacio, tab, newline, etc. |
+| `[[:blank:]]` | `[ \t]` | Espacio y tabulador. |
+| `[[:punct:]]` | — | Signos de puntuación. |
+| `[[:xdigit:]]` | `[0-9A-Fa-f]` | Dígitos hexadecimales. |
+| `[[:cntrl:]]` | — | Caracteres de control. |
+| `[[:print:]]` | — | Caracteres imprimibles (incluye espacio). |
+| `[[:graph:]]` | — | Imprimibles excepto espacio. |
+
+---
+
+# Equivalencias regex ↔ expansiones de Bash
+
+Bash no usa regex en el *globbing* de ficheros sino **patrones glob** (y *extended globbing* con `shopt -s extglob`). El operador `[[ str =~ regex ]]` sí usa ERE. Esta tabla relaciona construcciones regex con su equivalente glob/extglob. Diferencia clave: los globs son **anclados al patrón completo** (coincide toda la cadena), mientras que una regex coincide por defecto con cualquier subcadena.
+
+| Construcción regex | Glob / extglob de Bash | Significado | Ejemplo Bash |
+|--------------------|------------------------|-------------|--------------|
+| `.` | `?` | Un carácter cualquiera. | `ls archivo?.txt` |
+| `.*` | `*` | Cero o más caracteres cualesquiera. | `ls *.log` |
+| `[abc]` | `[abc]` | Uno de la lista. | `ls foto[123].png` |
+| `[a-z]` | `[a-z]` | Rango de caracteres. | `ls [a-z]*.sh` |
+| `[^abc]` / `[^...]` | `[!abc]` / `[!...]` | Cualquiera fuera de la lista. | `ls [!._]*` |
+| `[[:digit:]]` | `[[:digit:]]` | Clase POSIX (idéntica en ambos). | `ls log[[:digit:]].txt` |
+| `(foo\|bar)` | `@(foo\|bar)` | Exactamente una de las alternativas. | `rm @(tmp\|cache).db` |
+| `(foo)?` | `?(foo)` | Cero o una ocurrencia del grupo. | `ls index?(.html)` |
+| `(foo)*` | `*(foo)` | Cero o más ocurrencias del grupo. | `ls *(ab)c` |
+| `(foo)+` | `+(foo)` | Una o más ocurrencias del grupo. | `ls +([0-9]).txt` |
+| `(?!foo)` (negación) | `!(foo)` | Todo lo que **no** coincide con el patrón. | `ls !(*.bak)` |
+| `^...$` (anclaje total) | (implícito) | Coincidencia completa de la cadena. | El glob ya exige match completo. |
+| `{n,m}` (cuantificador) | `{a,b,c}` (brace exp.) | **No equivalen**: en regex es repetición; en Bash es expansión de lista literal. | `touch f{1,2,3}.txt` |
+| `\d{1,3}` (rango num.) | `{1..255}` (brace exp.) | **No equivalen**: brace expansion genera secuencias literales antes del globbing. | `echo {1..10}` |
+
+> [!warning] Brace expansion (`{1..5}`, `{a,b}`) y los cuantificadores de regex (`{1,5}`) **no son lo mismo**. La brace expansion ocurre antes y genera cadenas literales; no filtra por coincidencia. Para repetición real de patrones en Bash se usan los operadores extglob `*( )` / `+( )`.
+
+Para usar **regex ERE auténtica** en Bash, no glob:
+
+```bash
+shopt -s extglob               # habilita @() ?() *() +() !()
+
+if [[ "$ip" =~ ^([0-9]{1,3}\.){3}[0-9]{1,3}$ ]]; then
+    echo "IP válida: ${BASH_REMATCH[0]}"   # grupos en BASH_REMATCH[n]
+fi
+```
+
+---
+
 # Protips
 ### Capturar IPs
 ```
 ([0-9]{1,3}\.){3}[0-9]{1,3}
 ```
 
+### Otros patrones útiles
+```bash
+# Email (aproximado)
+[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}
+
+# URL http/https
+https?://[^\s/$.?#].[^\s]*
+
+# Fecha ISO 8601 (YYYY-MM-DD)
+\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])
+
+# MAC address
+([0-9A-Fa-f]{2}[:-]){5}[0-9A-Fa-f]{2}
+
+# Hash MD5 (32 hex) / SHA-1 (40 hex)
+\b[a-fA-F0-9]{32}\b
+\b[a-fA-F0-9]{40}\b
+```
 
 ![[regexs.png]]

@@ -33,6 +33,38 @@ free [opciones]
 
 ---
 
+## Interpretación de columnas
+
+| Columna | Descripción |
+|---------|-------------|
+| `total` | Memoria física (o swap) total instalada y utilizable (`MemTotal`/`SwapTotal`). |
+| `used` | Memoria en uso = `total - free - buffers - cache` (memoria realmente reclamada por procesos). |
+| `free` | Memoria completamente libre y sin usar (`MemFree`). Un valor bajo es normal y no indica problema. |
+| `shared` | Memoria compartida, principalmente `tmpfs`/`shm` (`Shmem`). |
+| `buff/cache` | Suma de buffers de bloque (`Buffers`) y caché de página/slab reclamable (`Cached` + `SReclaimable`). El kernel la libera bajo demanda. |
+| `available` | Estimación de memoria disponible para nuevas aplicaciones sin entrar en swap (`MemAvailable`). **Es la métrica clave**, no `free`. |
+
+Con `-w` (wide), `buff/cache` se desglosa en dos columnas separadas: `buffers` y `cache`.
+
+En la fila `Swap`, `used` indica cuánta memoria ha sido paginada a disco; un `used` de swap creciente bajo presión de RAM sugiere falta de memoria física.
+
+---
+
+## Relación con otras fuentes
+
+`free` lee de `/proc/meminfo`. Equivalencias directas:
+
+| `free` | Campo en `/proc/meminfo` |
+|--------|--------------------------|
+| `total` | `MemTotal` / `SwapTotal` |
+| `free` | `MemFree` / `SwapFree` |
+| `available` | `MemAvailable` |
+| `buffers` | `Buffers` |
+| `cache` | `Cached` + `SReclaimable` |
+| `shared` | `Shmem` |
+
+---
+
 ## Casos de uso comunes
 
 ```bash

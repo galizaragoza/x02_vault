@@ -27,6 +27,7 @@
 - Escribe una lista de 10 titulares SEO, directos, claros y concisos
 - Identifica frases en primera persona y sugiere cambios en tercera persona
 - Identifica frases o párrafos redundantes o que contengan información innecesaria y sugiere formas de hacerlo más conciso
+- Añade elementos de formato (negrita, backticks, cursivas...) donde corresponda, acorde al contexto del artículo
 
 # Ahora, en base al análisis y revisión que has realizado, genera una lista con todas las recomendaciones que has elaborado para perfeccionar el artículo.
 
@@ -62,7 +63,9 @@
 - Escribe una lista de 10 titulares SEO, directos, claros y concisos
 - Identifica frases en primera persona y sugiere cambios en tercera persona
 - Identifica frases o párrafos redundantes o que contengan información innecesaria y sugiere formas de hacerlo más conciso
-- Si encuentras la keyword "COMPLETAR" entre corchetes ("[]"), añade la información que falta con un tono adecuado al resto del artículo
+- Si encuentras instrucciones entre corchetes ("[]"), cúmplelas
+- Añade elementos de formato (negrita, backticks, cursivas...) donde corresponda, acorde al contexto del artículo
+	-- Aplica consistencia al formato, poniendo los protocolos entre backticks, anglicismos en cursiva...
 
 # Ahora, en base al análisis y revisión que has realizado, genera una lista con todas las recomendaciones que has elaborado para perfeccionar el artículo.
 ```
