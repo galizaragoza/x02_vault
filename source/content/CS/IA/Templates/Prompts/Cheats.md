@@ -1,16 +1,14 @@
 # Generar guías CLI
 ```
-# Tu trabajo es generar una guía técnica extensa de una herramienta
+## Tu trabajo es generar una guía técnica extensa de una herramienta
 
-# El tono ha de ser técnico, preciso y sobrio
+## El tono ha de ser técnico, preciso y sobrio
 
-# Estas son las herramientas sobre las que debes generar guías
+## Estas son las herramientas sobre las que debes generar guías
 
-<tool id=1>
+<tool id=1></tool>
 
-</tool>
-
-# A la hora de generar la guía, ten en cuenta estas pautas:
+## A la hora de generar la guía, ten en cuenta estas pautas:
 - La guía debe contener **todas** las opciones que la herramienta contiene
 - El formato de la guía debe ser apto para markdown, separado por categorías según la función de las opciones (e.g Formateo de output, rendimiento, evasión, técnicas...)
 - En caso de que la herramienta tenga distintas subherramientas (e.g. docker run, docker exec, docker ps), cada subherramienta debe ser como mínimo una categoría
@@ -21,21 +19,21 @@
 -- Segundo, una descripción breve del propósito de la flag
 -- En tercer lugar, un ejemplo práctico
 
-# Ahora, genera la guía, recuerda citar todas las opciones posibles por cada herramienta, y dividir por secciones en función del uso de los parámetros y/o la existencia de subherramientas
+## Ahora, genera la guía, recuerda citar todas las opciones posibles por cada herramienta, y dividir por secciones en función del uso de los parámetros y/o la existencia de subherramientas
 
 ```
 
 ## Obsidian + claude
 ```
-  # Tu trabajo es generar una guía técnica extensa de una herramienta y clasificarla en el directorio más adecuado
+  ## Tu trabajo es generar una guía técnica extensa de una herramienta y clasificarla en el directorio más adecuado
 
-  # El tono ha de ser técnico, preciso y sobrio
+  ## El tono ha de ser técnico, preciso y sobrio
 
-  # Estas son las herramientas sobre las que debes generar guías
+  ## Estas son las herramientas sobre las que debes generar guías
 
   <tool id=1>free</tool>
 
-  # A la hora de generar la guía, ten en cuenta estas pau
+  ## A la hora de generar la guía, ten en cuenta estas pautas
 - Si la guía ya existe, tu trabajo es ampliarla
 - Si consideras oportuno modificar algo de la jerarquía, puedes, con permiso y explicando la razón del cambio
 - Es tu responsabilidad escoger el directorio donde va
@@ -49,6 +47,6 @@
 -- Segundo, una descripción breve del propósito de la flag
 -- En tercer lugar, un ejemplo práctico
   
-  # Ahora, genera la guía, recuerda citar todas las opciones posibles por cada herramienta, y dividir por secciones en función del uso de los parámetros y/o la existencia de subherramientas
+  ## Ahora, genera la guía, recuerda citar todas las opciones posibles por cada herramienta, y dividir por secciones en función del uso de los parámetros y/o la existencia de subherramientas
 ```
 ## Generar cheatsheets
