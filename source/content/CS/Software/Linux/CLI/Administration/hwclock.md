@@ -1,6 +1,6 @@
 Herramienta de administración para el reloj de hardware (RTC). Permite mostrar la hora del reloj de hardware, establecerla a un tiempo específico, sincronizar con el reloj del sistema, compensar derivas, corregir la escala de tiempo del sistema y predecir valores futuros basados en la deriva.
 
-| **Parámetro**                      | **Función**                                                                           | **Ejemplo**                                          |
+| **Parámetro**                  | **Función**                                                                       | **Ejemplo**                                      |
 | ------------------------------ | --------------------------------------------------------------------------------- | ------------------------------------------------ |
 | `-r, --show`                   | Lee y muestra la hora del reloj de hardware en formato ISO 8601.                  | `hwclock --show`                                 |
 | `-s, --hctosys`                | Establece el reloj del sistema desde el reloj de hardware, compensando deriva.    | `hwclock --hctosys`                              |

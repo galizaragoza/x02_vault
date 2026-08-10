@@ -35,14 +35,14 @@ Configuración de metadatos de la petición y definición del verbo HTTP a emple
 
 Opciones relativas al cuerpo de la petición (payload) y la subida de archivos.
 
-|Opción|Descripción|Ejemplo|
-|---|---|---|
-|`-d`, `--data`|Envía datos en una petición POST (application/x-www-form-urlencoded).|`curl -d "name=user&pass=123" [http://site.com](http://site.com)`|
-|`--data-raw`|Envía datos POST sin procesar el símbolo `@`.|`curl --data-raw "{'id':1}" [http://api.com](http://api.com)`|
-|`--data-binary`|Envía datos POST exactamente como se especifican, sin procesar.|`curl --data-binary @file.bin [http://api.com](http://api.com)`|
-|`-F`, `--form`|Envía datos como multipart/form-data (emulación de formulario).|`curl -F "file=@img.png" [http://upload.com](http://upload.com)`|
-|`-T`, `--upload-file`|Transfiere un archivo local al destino (PUT o FTP).|`curl -T local.txt ftp://[server.com/remote.txt](https://server.com/remote.txt)`|
-|`-G`, `--get`|Convierte los datos de `-d` en parámetros de query string.|`curl -G -d "search=curl" [http://google.com](http://google.com)`|
+| Opción                | Descripción                                                           | Ejemplo                                                                          |
+| --------------------- | --------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `-d`, `--data`        | Envía datos en una petición POST (application/x-www-form-urlencoded). | `curl -d "name=user&pass=123" [http://site.com](http://site.com)`                |
+| `--data-raw`          | Envía datos POST sin procesar el símbolo `@`.                         | `curl --data-raw "{'id':1}" [http://api.com](http://api.com)`                    |
+| `--data-binary`       | Envía datos POST exactamente como se especifican, sin procesar.       | `curl --data-binary @file.bin [http://api.com](http://api.com)`                  |
+| `-F`, `--form`        | Envía datos como multipart/form-data (emulación de formulario).       | `curl -F "file=@img.png" [http://upload.com](http://upload.com)`                 |
+| `-T`, `--upload-file` | Transfiere un archivo local al destino (PUT o FTP).                   | `curl -T local.txt ftp://[server.com/remote.txt](https://server.com/remote.txt)` |
+| `-G`, `--get`         | Convierte los datos de `-d` en parámetros de query string.            | `curl -G -d "search=curl" [http://google.com](http://google.com)`                |
 ### Formateo de Output y Registro
 
 Control de la salida estándar, guardado de archivos y depuración.

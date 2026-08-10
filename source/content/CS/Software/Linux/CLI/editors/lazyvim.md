@@ -56,17 +56,17 @@ nvim                      # abre LazyVim
 
 ## Buffers
 
-| Atajo | Acción |
-|-------|--------|
-| `<S-h>` / `[b` | Buffer anterior. |
-| `<S-l>` / `]b` | Buffer siguiente. |
-| `` <leader>` `` / `<leader>bb` | Alterna con el último buffer. |
-| `<leader>bd` | Cierra el buffer (conserva la ventana). |
-| `<leader>bD` | Cierra buffer y ventana. |
-| `<leader>bo` | Cierra los demás buffers. |
-| `<leader>bp` | Fija (pin) el buffer. |
-| `<leader>bP` | Cierra los buffers no fijados. |
-
+| Atajo                          | Acción                                  |
+| ------------------------------ | --------------------------------------- |
+| `<S-h>` / `[b`                 | Buffer anterior.                        |
+| `<S-l>` / `]b`                 | Buffer siguiente.                       |
+| `` <leader>` `` / `<leader>bb` | Alterna con el último buffer.           |
+| `<leader>bd`                   | Cierra el buffer (conserva la ventana). |
+| `<leader>bD`                   | Cierra buffer y ventana.                |
+| `<leader>bo`                   | Cierra los demás buffers.               |
+| `<leader>bp`                   | Fija (pin) el buffer.                   |
+| `<leader>bP`                   | Cierra los buffers no fijados.          |
+ 
 ---
 
 ## Pestañas (tabs)

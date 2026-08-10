@@ -198,19 +198,19 @@ Se usan tras un operador o en modo visual. `i` = *inner* (contenido), `a` = *a/a
 
 ## Búsqueda y sustitución
 
-| Comando | Descripción | Ejemplo |
-|---------|-------------|---------|
-| `/<patrón>` / `?<patrón>` | Busca hacia adelante / atrás. | `/error` |
-| `n` / `N` | Siguiente / anterior coincidencia. | |
-| `*` / `#` | Busca la palabra bajo el cursor hacia adelante / atrás. | |
-| `:noh` | Desactiva el resaltado de la última búsqueda. | `:noh` |
-| `:s/old/new/` | Sustituye en la línea actual (primera ocurrencia). | `:s/foo/bar/` |
-| `:s/old/new/g` | Sustituye todas las ocurrencias de la línea. | `:s/foo/bar/g` |
-| `:%s/old/new/g` | Sustituye en todo el fichero. | `:%s/foo/bar/g` |
-| `:%s/old/new/gc` | Igual, pero pide confirmación en cada una. | `:%s/foo/bar/gc` |
-| `:'<,'>s/.../.../` | Sustituye solo en el rango visual seleccionado. | |
-| `:g/patrón/cmd` | Ejecuta `cmd` en cada línea que coincide. | `:g/TODO/d` (borra líneas con TODO) |
-| `:v/patrón/cmd` | Ejecuta `cmd` en cada línea que **no** coincide. | `:v/^#/d` |
+| Comando                   | Descripción                                             | Ejemplo                             |
+| ------------------------- | ------------------------------------------------------- | ----------------------------------- |
+| `/<patrón>` / `?<patrón>` | Busca hacia adelante / atrás.                           | `/error`                            |
+| `n` / `N`                 | Siguiente / anterior coincidencia.                      |                                     |
+| `*` / `#`                 | Busca la palabra bajo el cursor hacia adelante / atrás. |                                     |
+| `:noh`                    | Desactiva el resaltado de la última búsqueda.           | `:noh`                              |
+| `:s/old/new/`             | Sustituye en la línea actual (primera ocurrencia).      | `:s/foo/bar/`                       |
+| `:s/old/new/g`            | Sustituye todas las ocurrencias de la línea.            | `:s/foo/bar/g`                      |
+| `:%s/old/new/g`           | Sustituye en todo el fichero.                           | `:%s/foo/bar/g`                     |
+| `:%s/old/new/gc`          | Igual, pero pide confirmación en cada una.              | `:%s/foo/bar/gc`                    |
+| `:'<,'>s/.../.../`        | Sustituye solo en el rango visual seleccionado.         |                                     |
+| `:g/patrón/cmd`           | Ejecuta `cmd` en cada línea que coincide.               | `:g/TODO/d` (borra líneas con TODO) |
+| `:v/patrón/cmd`           | Ejecuta `cmd` en cada línea que **no** coincide.        | `:v/^#/d`                           |
 
 ---
 

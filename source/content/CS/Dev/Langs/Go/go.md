@@ -10,27 +10,27 @@ go <comando> [flags] [paquetes]
 
 ## Comandos principales
 
-| Comando | Descripción | Ejemplo |
-|---------|-------------|---------|
-| `go run` | Compila y ejecuta (binario temporal, no lo guarda). | `go run main.go` |
-| `go build` | Compila paquetes y deps a un binario. | `go build -o app ./cmd` |
-| `go install` | Compila e instala el binario en `$GOBIN`/`$GOPATH/bin`. | `go install ./cmd/app` |
-| `go test` | Ejecuta tests (`_test.go`) y benchmarks. | `go test ./...` |
-| `go get` | Añade/actualiza dependencias del módulo. | `go get github.com/gin-gonic/gin@latest` |
-| `go fmt` | Formatea código (envoltorio de `gofmt -l -w`). | `go fmt ./...` |
-| `go vet` | Análisis estático de construcciones sospechosas. | `go vet ./...` |
-| `go generate` | Ejecuta directivas `//go:generate` del código. | `go generate ./...` |
-| `go doc` | Muestra documentación de un paquete/símbolo. | `go doc fmt.Println` |
-| `go clean` | Elimina objetos y cachés de build. | `go clean -cache` |
-| `go list` | Lista paquetes/módulos y sus metadatos. | `go list -m all` |
-| `go env` | Muestra/edita la configuración del entorno Go. | `go env GOPATH` |
-| `go version` | Imprime la versión de Go (o de un binario). | `go version` |
-| `go fix` | Actualiza código a APIs nuevas. | `go fix ./...` |
-| `go bug` | Abre un reporte de bug con info del sistema. | `go bug` |
-| `go work` | Gestiona workspaces multi-módulo (Go 1.18+). | `go work init ./a ./b` |
-| `go mod` | Gestión de módulos (ver sección). | `go mod tidy` |
-| `go tool` | Invoca herramientas internas (`pprof`, `cover`...). | `go tool pprof cpu.prof` |
-| `go telemetry` | Configura la telemetría de la toolchain (Go 1.23+). | `go telemetry off` |
+| Comando        | Descripción                                             | Ejemplo                                  |
+| -------------- | ------------------------------------------------------- | ---------------------------------------- |
+| `go run`       | Compila y ejecuta (binario temporal, no lo guarda).     | `go run main.go`                         |
+| `go build`     | Compila paquetes y deps a un binario.                   | `go build -o app ./cmd`                  |
+| `go install`   | Compila e instala el binario en `$GOBIN`/`$GOPATH/bin`. | `go install ./cmd/app`                   |
+| `go test`      | Ejecuta tests (`_test.go`) y benchmarks.                | `go test ./...`                          |
+| `go get`       | Añade/actualiza dependencias del módulo.                | `go get github.com/gin-gonic/gin@latest` |
+| `go fmt`       | Formatea código (envoltorio de `gofmt -l -w`).          | `go fmt ./...`                           |
+| `go vet`       | Análisis estático de construcciones sospechosas.        | `go vet ./...`                           |
+| `go generate`  | Ejecuta directivas `//go:generate` del código.          | `go generate ./...`                      |
+| `go doc`       | Muestra documentación de un paquete/símbolo.            | `go doc fmt.Println`                     |
+| `go clean`     | Elimina objetos y cachés de build.                      | `go clean -cache`                        |
+| `go list`      | Lista paquetes/módulos y sus metadatos.                 | `go list -m all`                         |
+| `go env`       | Muestra/edita la configuración del entorno Go.          | `go env GOPATH`                          |
+| `go version`   | Imprime la versión de Go (o de un binario).             | `go version`                             |
+| `go fix`       | Actualiza código a APIs nuevas.                         | `go fix ./...`                           |
+| `go bug`       | Abre un reporte de bug con info del sistema.            | `go bug`                                 |
+| `go work`      | Gestiona workspaces multi-módulo (Go 1.18+).            | `go work init ./a ./b`                   |
+| `go mod`       | Gestión de módulos (ver sección).                       | `go mod tidy`                            |
+| `go tool`      | Invoca herramientas internas (`pprof`, `cover`...).     | `go tool pprof cpu.prof`                 |
+| `go telemetry` | Configura la telemetría de la toolchain (Go 1.23+).     | `go telemetry off`                       |
 
 ---
 

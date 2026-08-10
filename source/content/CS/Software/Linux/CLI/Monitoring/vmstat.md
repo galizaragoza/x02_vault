@@ -86,3 +86,23 @@ vmstat -s
 # Omitir la primera línea para ver solo actividad real
 vmstat -y 2 10
 ```
+
+---
+
+## Interpretación del reporte de disco (`-d`)
+
+Una fila por dispositivo, agrupada en lecturas y escrituras (contadores acumulados desde el arranque).
+
+| Bloque | Columna | Significado |
+|--------|---------|-------------|
+| **reads** | `total` | Lecturas completadas con éxito. |
+| **reads** | `merged` | Lecturas agrupadas (fusionadas) en una sola operación. |
+| **reads** | `sectors` | Sectores leídos. |
+| **reads** | `ms` | Milisegundos dedicados a leer. |
+| **writes** | `total` / `merged` / `sectors` / `ms` | Equivalentes para escritura. |
+| **IO** | `cur` | Operaciones de E/S en curso. |
+| **IO** | `sec` | Segundos dedicados a E/S. |
+
+> `vmstat` pertenece a `procps-ng`; lee de `/proc/meminfo`, `/proc/stat` y `/proc/*/stat`. Para histórico persistente o granularidad por dispositivo/red, usar [[sar]]; para E/S de disco detallada en vivo, [[iostat]].
+
+Relacionados: [[sar]] · [[iostat]] · [[free]] · [[top]] · [[pidstat]]

@@ -1,23 +1,86 @@
-**`xargs`** (arguments extended) es una utilidad de línea de comandos de Unix/Linux que construye y ejecuta comandos a partir de la entrada estándar (stdin). Su función principal es convertir una secuencia de argumentos de entrada en argumentos para otro comando, permitiendo procesar eficientemente listas de elementos que exceden los límites de longitud de argumentos del sistema.
+**`xargs`** (arguments extended) es una utilidad de Unix/Linux que construye y ejecuta líneas de comando a partir de elementos leídos de la entrada estándar. Convierte una secuencia de argumentos de entrada en argumentos para otro comando, agrupándolos para respetar el límite de longitud de la línea de comandos del sistema (`ARG_MAX`) y evitar el error `Argument list too long`. Es la pieza estándar para encadenar la salida de `find`, `grep`, `ls`, etc. con comandos que no leen de stdin. Referencia: GNU findutils 4.11.
 
 ```
-comando | xargs [opciones] comando_a_ejecutar
+comando | xargs [opciones] comando_a_ejecutar [args_iniciales]
 ```
 
-| **Parámetro**                              | **Función**                                                                           | **Sintaxis de Ejemplo**                                      |
-| -------------------------------------- | --------------------------------------------------------------------------------- | -------------------------------------------------------- |
-| `-0`, `--null`                         | Trata los elementos de entrada como separados por nulos (útil con `find -print0`) | `find . -name "*.txt" -print0 \| xargs -0 rm`            |
-| `-a <archivo>`, `--arg-file=<archivo>` | Lee argumentos desde un archivo en lugar de stdin                                 | `xargs -a lista.txt echo`                                |
-| `-d <delim>`, `--delimiter=<delim>`    | Usa un delimitador personalizado en lugar de espacios/tabuladores                 | `echo "a,b,c" \| xargs -d, -n1 echo`                     |
-| `-E <eof-str>`                         | Define una cadena de fin de archivo (EOF)                                         | `echo "1 2 3 STOP 4 5" \| xargs -E "STOP" echo`          |
-| `-I <replace-str>`                     | Reemplaza la cadena especificada en el comando con cada argumento de entrada      | `ls *.txt \| xargs -I {} mv {} {}.bak`                   |
-| `-L <num>`                             | Ejecuta el comando con hasta <num> líneas no vacías de entrada                    | `cat datos.txt \| xargs -L 2 echo`                       |
-| `-n <num>`, `--max-args=<num>`         | Usa como máximo <num> argumentos por invocación del comando                       | `echo "1 2 3 4 5" \| xargs -n 2 echo`                    |
-| `-p`, `--interactive`                  | Pide confirmación antes de ejecutar cada comando                                  | `ls *.log \| xargs -p rm`                                |
-| `-P <num>`, `--max-procs=<num>`        | Ejecuta hasta <num> procesos en paralelo (0 = ilimitado)                          | `seq 10 \| xargs -P 4 -n1 sleep`                         |
-| `-r`, `--no-run-if-empty`              | No ejecuta el comando si la entrada está vacía                                    | `find . -name "*.tmp" \| xargs -r rm`                    |
-| `-s <num>`, `--max-chars=<num>`        | Límite máximo de caracteres por línea de comandos                                 | `find . -name "*.txt" \| xargs -s 10000 echo`            |
-| `-t`, `--verbose`                      | Muestra el comando en stderr antes de ejecutarlo                                  | `echo "file1 file2" \| xargs -t rm`                      |
-| `-x`, `--exit`                         | Sale si la línea de comandos excede el tamaño máximo                              | `find / -name "*" \| xargs -x ls -la`                    |
-| `--show-limits`                        | Muestra los límites del sistema para la longitud de argumentos                    | `xargs --show-limits`                                    |
-| `--process-slot-var=<var>`             | Establece variable de entorno para procesos paralelos                             | `seq 5 \| xargs -P 2 --process-slot-var=SLOT echo $SLOT` |
+---
+
+## Entrada: origen y delimitadores
+
+| Parámetro | Función | Ejemplo |
+| --- | --- | --- |
+| `-0`, `--null` | Separa la entrada por NUL en vez de espacios/saltos (seguro con nombres raros; par de `find -print0`). | `find . -name "*.txt" -print0 \| xargs -0 rm` |
+| `-a <archivo>`, `--arg-file=<archivo>` | Lee los argumentos desde un fichero en vez de stdin. | `xargs -a lista.txt echo` |
+| `-d <delim>`, `--delimiter=<delim>` | Delimitador de entrada personalizado (desactiva el tratamiento de comillas). | `echo "a,b,c" \| xargs -d, -n1 echo` |
+| `-E <eof-str>` | Cadena que marca fin lógico de entrada (ignora lo que venga después). | `echo "1 2 STOP 3" \| xargs -E STOP echo` |
+| `-e[eof-str]`, `--eof[=eof-str]` | Variante GNU de `-E`; sin argumento desactiva la cadena EOF. | `xargs -e echo` |
+
+---
+
+## Control de invocación (cuántos argumentos por ejecución)
+
+| Parámetro | Función | Ejemplo |
+| --- | --- | --- |
+| `-n <num>`, `--max-args=<num>` | Máximo de argumentos por invocación del comando. | `echo "1 2 3 4 5" \| xargs -n 2 echo` |
+| `-L <num>` | Ejecuta el comando por cada `<num>` líneas no vacías de entrada. | `cat datos.txt \| xargs -L 2 echo` |
+| `-l[num]`, `--max-lines[=num]` | Sinónimo obsoleto de `-L` (default 1); mantenido por compatibilidad. | `cat datos.txt \| xargs -l echo` |
+| `-I <replace-str>` | Reemplaza `<replace-str>` por cada elemento; implica `-L 1` y desactiva el troceo. | `ls *.txt \| xargs -I {} mv {} {}.bak` |
+| `-i[replace-str]`, `--replace[=str]` | Sinónimo obsoleto de `-I` (default `{}`). | `ls \| xargs -i cp {} /backup/` |
+| `-s <num>`, `--max-chars=<num>` | Longitud máxima (en caracteres) de la línea de comandos generada. | `find . -name "*.txt" \| xargs -s 10000 echo` |
+
+---
+
+## Paralelismo
+
+| Parámetro | Función | Ejemplo |
+| --- | --- | --- |
+| `-P <num>`, `--max-procs=<num>` | Ejecuta hasta `<num>` procesos en paralelo (`0` = sin límite). | `seq 10 \| xargs -P 4 -n1 sleep` |
+| `--process-slot-var=<var>` | Exporta una variable con el índice de "slot" a cada proceso paralelo. | `seq 5 \| xargs -P2 --process-slot-var=SLOT sh -c 'echo $SLOT'` |
+
+---
+
+## Seguridad e interacción
+
+| Parámetro | Función | Ejemplo |
+| --- | --- | --- |
+| `-r`, `--no-run-if-empty` | No ejecuta el comando si la entrada está vacía (evita ejecuciones espurias). | `find . -name "*.tmp" \| xargs -r rm` |
+| `-p`, `--interactive` | Pide confirmación (`y/n`) antes de cada ejecución; implica `-t`. | `ls *.log \| xargs -p rm` |
+| `-o`, `--open-tty` | Reabre stdin desde `/dev/tty` en el hijo (para comandos interactivos como `vi`). | `find . -name "*.conf" \| xargs -o vi` |
+| `-x`, `--exit` | Aborta si una línea de comandos supera el límite de tamaño (`-s`/`-n`). | `find / -name "*" \| xargs -x ls -la` |
+
+---
+
+## Diagnóstico
+
+| Parámetro | Función | Ejemplo |
+| --- | --- | --- |
+| `-t`, `--verbose` | Imprime en stderr cada comando antes de ejecutarlo. | `echo "f1 f2" \| xargs -t rm` |
+| `--show-limits` | Muestra los límites del sistema para la longitud de argumentos. | `xargs --show-limits < /dev/null` |
+| `--help` | Muestra la ayuda y sale. | `xargs --help` |
+| `--version` | Muestra la versión y sale. | `xargs --version` |
+
+---
+
+## Casos prácticos
+
+```bash
+# Borrado seguro de resultados de find (NUL-safe + sin ejecución en vacío)
+find . -name "*.tmp" -print0 | xargs -0 -r rm
+
+# Renombrado con placeholder
+ls *.txt | xargs -I {} mv {} {}.bak
+
+# Descarga paralela de una lista de URLs (8 en vuelo)
+xargs -a urls.txt -P 8 -n 1 curl -sO
+
+# grep sobre miles de ficheros sin superar ARG_MAX
+find . -type f -print0 | xargs -0 grep -l "password"
+
+# Confirmación previa antes de un rm masivo
+find . -name "core.*" | xargs -p rm
+```
+
+> **Pitfall**: por defecto `xargs` trocea por espacios *y* interpreta comillas, lo que rompe con nombres que contienen espacios o saltos. Con entrada de `find`, usar siempre `find -print0 | xargs -0`.
+
+Ver también [[find]] · [[grep]] · [[fd-better-find]] · [[parallel]].

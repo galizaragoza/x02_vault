@@ -34,7 +34,7 @@
 | `--cgroup`         | Mostrar cgroup del socket                | `ss --cgroup`              |
 | `--csv`            | Salida en formato CSV                    | `ss --csv -t`              |
 ## Filtros avanzados
-| **Expresión**           | **Función**                       | **Sintaxis de Ejemplo**       |
+| **Expresión**       | **Función**                   | **Sintaxis de Ejemplo**   |
 | ------------------- | ----------------------------- | ------------------------- |
 | `state ESTABLISHED` | Sockets en estado ESTABLISHED | `ss -t state ESTABLISHED` |
 | `state LISTENING`   | Sockets en estado LISTENING   | `ss -t state LISTENING`   |
@@ -47,6 +47,8 @@
 | `state CLOSING`     | Sockets en estado CLOSING     | `ss -t state CLOSING`     |
 | `state LAST-ACK`    | Sockets en estado LAST-ACK    | `ss -t state LAST-ACK`    |
 | `state ALL`         | Todos los estados             | `ss -t state ALL`         |
+| `src`               |                               |                           |
+| `dst`               |                               |                           |
 ## Estados TCP
 | **Estado**        | **Descripción**                          | **Comando para monitorear**   |
 | ------------- | ------------------------------------ | ------------------------- |

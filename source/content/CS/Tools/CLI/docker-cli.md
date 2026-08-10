@@ -74,7 +74,7 @@
 | ----------------------- | ----------------------------------- | -------------------------------------- |
 | `docker builder prune`  | Limpia build cache                  | `docker builder prune -af`             |
 | `docker buildx`         | Builder avanzado (multi-arch)       | `docker buildx create --use mybuilder` |
-| `docker compose`        | Orquestación con docker-compose.yml | `docker compose up -d`                 |
+| `docker compose`        | Orquestación multi-contenedor ([[docker-compose]]) | `docker compose up -d`                 |
 | `docker container ls`   | Igual que `docker ps`               | `docker container ls -q` (solo IDs)    |
 | `docker context use`    | Cambia contexto                     | `docker context use prod`              |
 | `docker image prune`    | Borra imágenes dangling             | `docker image prune -af`               |

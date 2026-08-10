@@ -106,11 +106,12 @@ Muestra propiedades de unidades.
 | `--image=`  | Imagen de disco.           | `systemctl disable --image=/path unit` |
 # daemon-reload
 
-|Flag|Descripción|Ejemplo|
-|---|---|---|
-|`--quiet`|Suprime salida.|`systemctl daemon-reload --quiet`|
-|`--root=`|Ruta raíz.|`systemctl daemon-reload --root=/path`|
-|`--image=`|Imagen de disco.|`systemctl daemon-reload --image=/path`|
+| Flag       | Descripción      | Ejemplo                                 |
+| ---------- | ---------------- | --------------------------------------- |
+| `--quiet`  | Suprime salida.  | `systemctl daemon-reload --quiet`       |
+| `--root=`  | Ruta raíz.       | `systemctl daemon-reload --root=/path`  |
+| `--image=` | Imagen de disco. | `systemctl daemon-reload --image=/path` |
+| `--user`   | Servicios custom | `systemctl --user daemon-reload`        |
 # is-active
 
 | Flag      | Descripción      | Ejemplo                                   |
