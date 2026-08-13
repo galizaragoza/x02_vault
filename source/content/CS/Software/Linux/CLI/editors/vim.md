@@ -1,4 +1,4 @@
-Vim (Vi IMproved) es un editor de texto modal de terminal, sucesor de `vi`, presente en prácticamente cualquier sistema Unix. Su modelo de edición se basa en **modos** (normal, inserción, visual, comando) y en una gramática componible de *operador + movimiento/objeto de texto* que permite expresar ediciones complejas con pocas pulsaciones. Esta guía cubre los comandos por modo, los motions, operadores, registros, macros y la configuración esencial.
+oVim (Vi IMproved) es un editor de texto modal de terminal, sucesor de `vi`, presente en prácticamente cualquier sistema Unix. Su modelo de edición se basa en **modos** (normal, inserción, visual, comando) y en una gramática componible de *operador + movimiento/objeto de texto* que permite expresar ediciones complejas con pocas pulsaciones. Esta guía cubre los comandos por modo, los motions, operadores, registros, macros y la configuración esencial.
 
 ```
 vim [opciones] [fichero...]

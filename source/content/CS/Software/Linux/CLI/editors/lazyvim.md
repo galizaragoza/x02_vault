@@ -39,18 +39,18 @@ nvim                      # abre LazyVim
 
 ---
 
-## Ventanas (windows)
+	## Ventanas (windows)
 
-| Atajo | Acción |
-|-------|--------|
+| Atajo                           | Acción                                              |
+| ------------------------------- | --------------------------------------------------- |
 | `<C-h>` `<C-j>` `<C-k>` `<C-l>` | Mueve el foco entre ventanas (compatible con tmux). |
-| `<C-Up>` / `<C-Down>` | Aumenta / reduce la altura. |
-| `<C-Left>` / `<C-Right>` | Aumenta / reduce la anchura. |
-| `<leader>w-` / `<leader>-` | Divide la ventana horizontalmente. |
-| `<leader>w\|` / `<leader>\|` | Divide la ventana verticalmente. |
-| `<leader>wd` | Cierra la ventana. |
-| `<leader>ww` | Va a la otra ventana. |
-| `<leader>wm` | Modo zen / maximizar (toggle). |
+| `<C-Up>` / `<C-Down>`           | Aumenta / reduce la altura.                         |
+| `<C-Left>` / `<C-Right>`        | Aumenta / reduce la anchura.                        |
+| `<leader>w-` / `<leader>-`      | Divide la ventana horizontalmente.                  |
+| `<leader>w\|` / `<leader>\|`    | Divide la ventana verticalmente.                    |
+| `<leader>wd`                    | Cierra la ventana.                                  |
+| `<leader>ww`                    | Va a la otra ventana.                               |
+| `<leader>wm`                    | Modo zen / maximizar (toggle).                      |
 
 ---
 
